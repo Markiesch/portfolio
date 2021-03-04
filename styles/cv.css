@@ -1,0 +1,246 @@
+/*
+    Author: Mark Schuurmans
+    Date: 3-12-2020
+
+    Project Portfolio    
+*/
+.breadcrumbs {
+  -webkit-transform: translate(-10%, 45%) rotate(90deg);
+          transform: translate(-10%, 45%) rotate(90deg);
+}
+
+header {
+  position: relative;
+}
+
+main {
+  width: 100%;
+}
+
+main ::-webkit-scrollbar {
+  width: 5px;
+}
+
+main ::-webkit-scrollbar-track {
+  background: none;
+}
+
+main ::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
+main section {
+  height: 85vh;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.4);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+}
+
+main .cv {
+  overflow-y: scroll;
+}
+
+main .cv__information--container {
+  width: 95%;
+}
+
+main .cv h2 {
+  font-size: clamp(22px, 3.2vw, 42px);
+  line-height: clamp(22px, 3.2vw, 42px);
+  margin-top: 1.25em;
+}
+
+main .cv h2 + h4 {
+  margin-top: 0.5em;
+}
+
+main .cv h4 {
+  font-size: clamp(16px, 2vw, 26px);
+  line-height: clamp(16px, 2vw, 26px);
+  margin: 1.25em 0 0.25em 30px;
+  font-weight: 400;
+}
+
+main .cv h4 a {
+  color: var(--primary-color);
+  text-decoration: none;
+  position: relative;
+}
+
+main .cv h4 a:first-of-type {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+main .cv h4 a:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+main .cv h4 a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  height: 2px;
+  background-color: var(--primary-color);
+  -webkit-transition: -webkit-transform 600ms ease;
+  transition: -webkit-transform 600ms ease;
+  transition: transform 600ms ease;
+  transition: transform 600ms ease, -webkit-transform 600ms ease;
+  border-radius: 10px;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+main .cv img {
+  position: absolute;
+  -webkit-transform: rotate(270deg) translate(-39.8%, -200%);
+          transform: rotate(270deg) translate(-39.8%, -200%);
+  width: 85vh;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+main .cv__information {
+  margin-left: 9vw;
+}
+
+main .cv__information p {
+  margin: 0.35em 0 0 30px;
+}
+
+main .cv__information p a {
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+  padding-bottom: 5em;
+}
+
+main .information {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--primary-color);
+}
+
+main .information h3 {
+  position: relative;
+  display: inline;
+}
+
+main .information h3::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: -10px;
+  width: 40%;
+  left: 50%;
+  -webkit-transform: translatex(-50%);
+          transform: translatex(-50%);
+  background-color: red;
+}
+
+main .information img {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}
+
+main .information h3,
+main .information h4 {
+  color: white;
+}
+
+main .information div {
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+main .information div h4 {
+  text-align: left;
+  font-size: clamp(12px, 1.4vw, 20px);
+  font-weight: 400;
+}
+
+main .information div h4 i {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 950px) {
+  header {
+    height: 10vh;
+    margin-bottom: 5vh;
+  }
+  main .cv img {
+    position: absolute;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    width: 80vw;
+  }
+  main .cv__information {
+    margin: 10vh 0 10vh 9vw;
+    padding-bottom: 10vh;
+  }
+  main .cv__information h4 {
+    margin-left: 0;
+    font-weight: 500;
+  }
+  main .cv__information p {
+    margin-left: 0;
+  }
+  main section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  main .information {
+    padding: 40px 0;
+  }
+  main .information img {
+    width: 100px;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-width: 950px) {
+  header {
+    height: 15vh;
+  }
+  main {
+    width: 85%;
+  }
+  main section {
+    height: auto;
+  }
+  main .cv__information {
+    margin-top: 30vh;
+  }
+  main .cv img {
+    width: 68vw;
+  }
+}
+/*# sourceMappingURL=cv.css.map */

@@ -1,0 +1,155 @@
+<!-- 
+    Author: Mark Schuurmans
+    Date: 3-12-2020
+
+    Project Portfolio    
+-->
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="../images/dark-blue-logo-cropped.png" type="image/x-icon" />
+        <title>Results | Portfolio</title>
+        <!-- Stylesheet linking -->
+        <link rel="stylesheet" href="../styles/navbar.css" />
+        <link rel="stylesheet" href="../styles/portfolio.css" />
+        <script src="../scripts/script.js" defer></script>
+        <script src="../scripts/portfolio.js" defer></script>
+        <script src="https://kit.fontawesome.com/f6a56a5946.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <div class="breadcrumbs">
+                <a href="../index.html">Home <span>></span></a>
+                <a href="portfolio.html">Portfolio</a>
+            </div>
+            <nav class="flex align-center">
+                <a class="logo__link" href="../index.html"><img src="../images/dark-blue-logo-cropped.png" alt="logo" /></a>
+                <div class="flex menu align-center">
+                    <span>MENU</span>
+                    <div class="menu__button flex justify-center align-center">
+                        <div class="menu__button--burger"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="burger-menu">
+            <nav class="flex">
+                <ul class="flex">
+                    <li>
+                        <span>MENU</span>
+                    </li>
+                    <li>
+                        <a class="menu-item1" href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="menu-item2" href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="menu-item3" href="cv.html">Curriculum Vitae</a>
+                    </li>
+                    <li>
+                        <a class="menu-item4" href="resultaten.html">Resultaten</a>
+                    </li>
+                    <li>
+                        <a class="menu-item5" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mobile-nav">
+            <nav class="flex justify-center align-center">
+                <ul class="flex justify-center align-center">
+                    <li>
+                        <a class="flex align-center" href="portfolio.html"><i class="far fa-bookmark"></i>Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="flex align-center" href="cv.html"> <i class="fas fa-list-ul"></i>Skills </a>
+                    </li>
+                    <li>
+                        <a class="flex align-center" href="contact.html"><i class="far fa-envelope"></i>Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="burger-menu--background"></div>
+
+        <div class="background__text">
+            <h1>Portfolio</h1>
+        </div>
+
+        <a class="contact-button flex" href="contact.html"><i class="far fa-envelope"></i></a>
+
+        <main>
+            <section>
+                <div class="iframe--text">
+                    <p>FEATURED PROJECT</p>
+                    <h2>Praktijk Opdracht</h2>
+                    <h4>Hier onder zie je het eerste project van thema 2, de opdracht is een nieuwe startpagina voor het Koning Willem I College ontwerpen en realiseren.</h4>
+                    <p class="no--spacing">Startpagina Koning Willem I College</p>
+                </div>
+                <iframe src="../oefening_iframe/oefening.html"></iframe>
+            </section>
+            <section>
+                <div class="gallery">
+                    <div class="img__container">
+                        <img src="../images/oefening_1.png" alt="Bij deze oefening hebben we geleerd om een interactieve website te maken door gebruik te maken van promts in JavaScript" />
+                        <div class="gallery__image--bar">
+                            <span></span>
+                            <span></span>
+                            <span class="red"></span>
+                            <p class="no--spacing">Realiseren opdracht 1.3</p>
+                        </div>
+                    </div>
+                    <div class="img__container">
+                        <img src="../images/oefening_2.png" alt="Bij deze oefening hebben we geleerd hoe we een Tabel kunnen maken met het &lt;table&gt; element" />
+                        <div class="gallery__image--bar">
+                            <span></span>
+                            <span></span>
+                            <span class="red"></span>
+                            <p class="no--spacing">Realiseren opdracht 4.1</p>
+                        </div>
+                    </div>
+                    <div class="img__container">
+                        <img
+                            src="../images/oefening_3.png"
+                            alt="Bij deze oefening moest je een website maken voor een zelf uitgekozen bedrijf. Je moest hierbij een groot logo die de hele breedte in beslag neemt, een navigatie balk en een hoop tekst."
+                        />
+                        <div class="gallery__image--bar">
+                            <span></span>
+                            <span></span>
+                            <span class="red"></span>
+                            <p class="no--spacing">Realiseren opdracht 2.2</p>
+                        </div>
+                    </div>
+                    <div class="img__container">
+                        <img
+                            src="../images/psv-project.png"
+                            alt="Het eerste project werd in groepjes van 3 uitgewerkt. Bij dit project was het de bedoeling om een website van een voetbalclub na te maken."
+                        />
+                        <div class="gallery__image--bar">
+                            <span></span>
+                            <span></span>
+                            <span class="red"></span>
+                            <p class="no--spacing">Praktijk Project 1</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="full__image--container">
+                <figure>
+                    <img class="full__image" src="../images/logo.png" alt="Full Image" />
+                    <figcaption class="full__image--caption"></figcaption>
+                </figure>
+            </section>
+        </main>
+        <footer>
+            <p>
+                <span>Designed and developed by Mark Schuurmans</span>
+                <span>&copy; All rights reserved</span>
+            </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,271 @@
+/* 
+    Author: Mark Schuurmans
+    Date: 19-11-2020
+
+    Praktijkopdracht Periode 2
+*/
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-Regular.ttf");
+}
+
+/* Variables voor de standaard kleuren */
+:root {
+    --primiry-color: #100a77;
+}
+
+/* Verwijderd scrollbar op X axis */
+body {
+    margin-bottom: 100px;
+}
+
+/* Veranderd de tekst en achtergrondkleur wanneer de gebruiker deze selecteerd */
+*::selection {
+    color: white;
+    background-color: var(--primiry-color);
+}
+
+/* Verwijderen van default margin en padding die de browser meegeeft */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", Helvetica, sans-serif;
+}
+
+/* Default button styling */
+button {
+    transition: all 0.5s ease;
+    border: 2px var(--primiry-color) solid;
+    font-weight: 300;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+button:hover {
+    background-color: var(--primiry-color);
+    color: white;
+    border: 2px var(--primiry-color) solid;
+}
+
+/* Nav Bar Styling */
+header {
+    background-color: white;
+    position: sticky;
+    top: 0px;
+    /* Zet de header op de voorgrond */
+    z-index: 10;
+    box-shadow: 0px 5px 30px grey;
+}
+
+nav {
+    display: flex;
+    /* Verdeeld de witruimte in vlaken rondom alle elementen in de NAV */
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav img {
+    width: 10%;
+}
+
+nav button {
+    border: 2px var(--primiry-color) solid;
+    background-color: white;
+    padding: 5px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+li,
+li a {
+    list-style: none;
+    text-decoration: none;
+    color: var(--primiry-color);
+    font-weight: bold;
+}
+
+/* Main achtergrond afbeelding en zoekbalk styling */
+header + section {
+    flex-direction: column;
+}
+
+.main-image {
+    background-image: url("../images/background.jpg");
+    width: auto;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Het plaatsen van een ontzichtbare container die op de juiste plek staat om er heen te gaan met de `zoeken` knop in de NavBar */
+#searchbarscroll {
+    position: absolute;
+    top: 60vh;
+    height: 1vh;
+}
+
+.search-bar {
+    background-color: #100a77;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+    /* Verplaats search-bar zonder de rest te verplaatsen */
+    transform: translate(0%, -50%);
+    /* Zorgt voor ronde hoeken */
+    border-radius: 20px;
+    padding: 20px 0px;
+    color: white;
+}
+.search-bar input::placeholder {
+    color: white;
+}
+
+/* verwijderd de outline/border wanneer de gebruiker aan het typen is  */
+.search-bar input:focus {
+    outline: none;
+}
+
+.search-bar input {
+    background-color: var(--primiry-color);
+    padding: 2vh 2vw;
+    color: white;
+    border-radius: 100px;
+    border: 2px white solid;
+}
+section {
+    display: flex;
+    justify-content: center;
+}
+
+/* Domein sectie */
+.cards {
+    display: grid;
+    /*
+    repeat(auto-fit, minmax(300px, 1fr)) dit betekend dat de browser automatisch de grootte van de div aanpast van een minimale grootte 
+    van 400px en een maximale grootte van 1fr (1 friction, de hele grootte van het parent element)
+
+    Auto-fit werkt hetzelfde als auto-fill alleen generate Auto-fit geen grid columons of rows als er geen content over is (dit is makkelijk te zien met een fueture in mozilla firefox browser)
+    */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Ruimte tussen de child elements van .cards container */
+    grid-gap: 1rem;
+    /* totale breedte van .cards container zodat die niet tegen de kant aan staat */
+    width: 80%;
+    margin: 20vh;
+}
+
+.domein {
+    background-color: white;
+    box-shadow: 0px 5px 20px grey;
+    overflow: hidden;
+    /* Display grid zodat overflow hidden werkt ivm grootte van de breedte */
+    display: grid;
+    border-radius: 20px;
+}
+
+.domein-text {
+    height: 50%;
+    width: 100%;
+    background: white;
+    z-index: 5;
+}
+.domein-text h2 {
+    margin: 10% 0 0 10%;
+    color: var(--primiry-color);
+}
+
+.domein button {
+    padding: 10px 40px;
+    margin: 10% 40% 10% 10%;
+    border-radius: 15px;
+}
+
+.domein img {
+    width: 100%;
+    /* zorgt ervoor dat transitions op alle elementen 0.3 seconden duren met de vorm ease-out */
+    transition: all 0.5s ease-out;
+}
+
+.domein img:hover {
+    /* Maakt de afbeelding groter als je eroverheen hovered */
+    transform: scale(1.2);
+}
+
+/* Locatie sectie */
+#flex-section {
+    display: flex;
+    margin: auto;
+    margin-bottom: 20vh;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+#flex-section img {
+    width: 50%;
+}
+
+#flex-section h2 {
+    color: var(--primiry-color);
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+
+#flex-section button {
+    padding: 10px 20px;
+    margin-top: 10%;
+}
+
+#flex-section h3 {
+    font-weight: 100;
+    font-size: 22px;
+}
+
+#map {
+    width: 80vh;
+    height: 80vh;
+    border-radius: 30px;
+}
+
+@media screen and (max-width: 1200px) {
+    #flex-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+    }
+    #flex-section div {
+        text-align: center;
+        width: 70%;
+        margin: 0;
+        padding: 0;
+    }
+    #flex-section h2,
+    #flex-section p {
+        margin: 0;
+        padding: 0;
+    }
+
+    #flex-section button {
+        margin-bottom: 50px;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        text-align: center;
+    }
+}

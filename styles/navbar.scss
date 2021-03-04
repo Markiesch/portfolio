@@ -1,0 +1,609 @@
+/* 
+    Author: Mark Schuurmans
+    Date: 21-12-2020
+
+    Project Portfolio
+*/
+
+* {
+    // Verwijderd alle (onnodige) padding die op alle element van de website zitten
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // Zet de font naar "Segoe UI" op alle elementen met paar fallback fonts.
+    font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+}
+
+body {
+    --primary-color: #0f141e;
+    --grey-color: #878a8f;
+    --primary-accent-color: #151922;
+
+    // Veel gebruikte waardes hebben een aparte class waar hier de waardes worden toegekent
+    .flex {
+        display: flex;
+    }
+
+    .align-center {
+        display: flex;
+        align-items: center;
+    }
+
+    .justify-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    // Flex: 1 is staat voor 1 fraction dus als je alle element in een display flex `flex: 1` geeft nemen alle element dezelfe aantal ruimte in beslag
+    .flex-one {
+        flex: 1;
+    }
+
+    section {
+        // Zorgt ervoor dat alle section's 80% van de breedte inneemt (body) zodat deze niet tegen de rand aanstaat
+        width: 80%;
+        // Zet de (container) section in het midden van de container waar deze inbevint (main(100%) / body)
+        margin: 0 auto;
+    }
+
+    button {
+        cursor: pointer;
+    }
+}
+
+h1 {
+    padding-top: 8vh;
+    // Font-size met VW om deze responsive te maken aangezien deze niet groter hoeft te worden wanneer een gebruiker inzoomt
+    font-size: 19vw;
+    line-height: 15vw;
+    color: white;
+    // Geeft de text een schaduw zodat de te lezen op een witte achtergrond
+    text-shadow: 5px 5px 15px rgba(50, 50, 50, 0.1);
+    text-align: center;
+    z-index: -1;
+    pointer-events: none;
+
+    /* zorgt ervoor dat het lijkt alsof je de text niet kan selecteren */
+    &::selection {
+        background-color: none;
+        color: white;
+    }
+}
+
+:not(h1)::selection {
+    // Geeft (alle behalve h1) text een andere achtergrond kleur wanneer je deze selecteerd
+    // Dit werkt niet met *{} aangezien deze een hogere prioriteit heeft...
+    color: white;
+    background-color: var(--grey-color);
+}
+
+/*
+=======================
+    Font Styling
+=======================
+*/
+main {
+    p {
+        // Clamp(min, ideal, max) max is hier voor de desktop versie en min is voor de mobiele versie tablets zullen hier tussenin zitten
+        font-size: clamp(14px, 2.1vw, 20px);
+        color: var(--grey-color);
+        letter-spacing: 5px;
+    }
+
+    h2 {
+        font-size: clamp(40px, 4.2vw, 80px);
+        line-height: clamp(40px, 4.2vw, 80px);
+        color: var(--primary-color);
+    }
+
+    h3 {
+        font-size: clamp(18px, 2.7vw, 24px);
+        margin-top: 30px;
+        font-weight: 800;
+        color: var(--primary-color);
+    }
+
+    h4 {
+        font-size: clamp(18px, 2.7vw, 24px);
+        font-weight: 400;
+        color: var(--primary-color);
+    }
+
+    figcaption {
+        font-size: clamp(18px, 2.7vw, 24px);
+        line-height: clamp(18px, 2.7vw, 24px);
+        font-weight: 400;
+        color: var(--primary-color);
+    }
+
+    .no--spacing {
+        letter-spacing: initial;
+    }
+}
+
+/*
+=======================
+    Header Styling
+=======================
+*/
+
+// breadcrumbs styling
+.breadcrumbs {
+    position: fixed;
+    left: 0;
+    top: 40px;
+    transform: rotate(90deg);
+    padding: 5px;
+
+    a {
+        text-decoration: none;
+        color: var(--grey-color);
+        font-size: 18px;
+    }
+
+    a:hover span {
+        transform: rotate(180deg) translateY(-10%);
+    }
+
+    span {
+        display: inline-block;
+        transition: transform 600ms ease;
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.75);
+    }
+}
+
+header {
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+
+    &.open {
+        background-color: rgba(255, 255, 255, 0);
+
+        li a {
+            color: rgba(0, 0, 0, 0);
+        }
+    }
+
+    .menu {
+        height: 100%;
+
+        span {
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: var(--primary-color);
+        }
+    }
+    // Hamburger Menu Styling
+    .menu__button {
+        // Position relative zodat de psuedo elementen (::before en ::after ) deze relatief van dit element worden gepositioneerd
+        position: relative;
+        width: 80px;
+        height: 100%;
+        cursor: pointer;
+
+        &:hover .menu__button--burger::before {
+            transform: translateY(-14px);
+        }
+
+        &:hover .menu__button--burger::after {
+            transform: translateY(14px);
+        }
+
+        .menu__button--burger,
+        .menu__button--burger::before,
+        .menu__button--burger::after {
+            width: 50px;
+            height: 5px;
+            border-radius: 5px;
+            transition: transform 500ms ease-in-out, background-color 500ms ease-in-out;
+            background-color: var(--primary-color);
+        }
+
+        .menu__button--burger::before,
+        .menu__button--burger::after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            background-color: var(--primary-color);
+        }
+
+        .menu__button--burger::before {
+            transform: translateY(-10px);
+        }
+
+        .menu__button--burger::after {
+            transform: translateY(10px);
+        }
+
+        &.open .menu__button--burger {
+            transform: translateX(-50px);
+            background-color: transparent;
+        }
+
+        &.open .menu__button--burger::before {
+            transform: rotate(45deg) translate(35px, -35px);
+        }
+
+        &.open .menu__button--burger::after {
+            transform: rotate(-45deg) translate(35px, 35px);
+        }
+
+        &.open .menu__button--burger::after,
+        &.open .menu__button--burger::before {
+            background-color: white;
+        }
+    }
+}
+
+nav {
+    width: 91%;
+    height: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+
+    ul {
+        list-style-type: none;
+
+        li {
+            overflow: hidden;
+            font-size: 40px;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            height: 100%;
+            display: flex;
+            width: 200px;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+    }
+}
+
+.mobile-nav {
+    height: 100px;
+    width: 100vw;
+    z-index: 8;
+    background-color: var(--primary-color);
+    display: none;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    nav {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+
+        ul {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+
+            li {
+                width: calc(100% / 3);
+            }
+
+            a {
+                width: 100%;
+                flex-direction: column;
+                font-size: 20px;
+            }
+
+            a,
+            i {
+                color: white;
+            }
+        }
+    }
+}
+
+.logo__link {
+    height: 100%;
+
+    img {
+        height: 100%;
+    }
+}
+
+.burger-menu {
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 600ms ease-in-out;
+    background-color: var(--primary-accent-color);
+    width: 50vw;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9;
+
+    &.open {
+        transform: scaleX(1);
+
+        a {
+            animation: menufade 1s ease forwards;
+            transform: translateX(100%);
+        }
+        --menu-animation-delay: 50ms;
+        .menu-item1 {
+            animation-delay: var(--menu-animation-delay);
+        }
+
+        .menu-item2 {
+            animation-delay: calc(var(--menu-animation-delay) + 200ms);
+        }
+
+        .menu-item3 {
+            animation-delay: calc(var(--menu-animation-delay) + 400ms);
+        }
+
+        .menu-item4 {
+            animation-delay: calc(var(--menu-animation-delay) + 600ms);
+        }
+
+        .menu-item5 {
+            animation-delay: calc(var(--menu-animation-delay) + 800ms);
+        }
+    }
+    nav {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    a {
+        color: white;
+        width: 100%;
+        z-index: 1;
+        transition: color 600ms ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 0;
+            width: 0;
+            margin: auto;
+            display: block;
+            background-color: white;
+            z-index: -1;
+            transition: height 600ms ease, width 600ms ease;
+        }
+        &:hover {
+            color: var(--primary-color);
+            // Selecteerd het after element wanneer de gebruiker over de A tag heen hoverd
+            &::after {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+    span {
+        width: 100%;
+        color: white;
+        font-size: 16px;
+    }
+
+    &--background {
+        z-index: 8;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: fixed;
+        opacity: 0;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        transition: 1s ease;
+
+        &.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+}
+
+@keyframes menufade {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.contact-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-decoration: none;
+    z-index: 7;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+=======================
+    Footer Styling
+=======================
+*/
+footer {
+    width: 80%;
+    margin: 0 auto;
+    height: 10vh;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    p {
+        display: flex;
+        flex-direction: column;
+        color: var(--primary-color);
+        font-size: clamp(12px, 2.7vw, 16px);
+        font-weight: 400;
+    }
+}
+
+/*
+======================
+    Mobile  Styling
+======================
+*/
+@media screen and (max-width: 950px) {
+    .burger-menu {
+        transform: scaleY(0);
+        transform-origin: top;
+        &.open {
+            transform: scaleY(1);
+            transform-origin: bottom;
+        }
+    }
+
+    .menu--item {
+        display: none;
+    }
+
+    .burger-menu {
+        width: initial;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        &--background {
+            display: none;
+        }
+    }
+
+    .background__text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 75vh;
+        border-radius: 0 0 100px 100px;
+        z-index: -1;
+        background-color: #efefef;
+    }
+
+    .background__text h1 {
+        color: transparent;
+        text-shadow: none;
+    }
+
+    // Verbergt de breadcrumbs wanneer de website in mobiele weergave word getoont
+    .breadcrumbs {
+        display: none;
+    }
+
+    // Onthult de mobiele navigatie wanneer de website in mobiele weergave word getoont
+    .mobile-nav {
+        display: block;
+    }
+
+    footer {
+        margin-bottom: 10vh;
+    }
+}
+
+/*
+===============================
+    Mobile landscape Styling
+===============================
+*/
+@media screen and (orientation: landscape) and (max-width: 950px) {
+    header {
+        width: 85%;
+        height: 15%;
+    }
+
+    main,
+    .background__text {
+        width: 85%;
+        // !important zodat deze niet geoverride kan worden door andere CSS files
+        margin: 0 !important;
+    }
+
+    .background__text {
+        padding-bottom: 100vh;
+    }
+
+    .mobile-nav {
+        height: 100%;
+        width: 15%;
+        left: initial;
+
+        nav {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+
+            ul {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+
+                li {
+                    width: 100%;
+                    height: calc(100% / 3);
+                }
+
+                a {
+                    width: 100%;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}
+
+/*
+===============================
+    Mobile landscape Styling
+===============================
+*/
+@media print {
+    // Verwijderd de NavBar wanneer een gebruiker de pagina probeert te printen
+    header {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+}

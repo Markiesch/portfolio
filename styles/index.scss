@@ -1,0 +1,375 @@
+/* 
+    Author: Mark Schuurmans
+    Date: 3-12-2020
+
+    Project Portfolio
+*/
+
+main {
+    // verbergt het gedeelde vab de afbeelding in de section "project" die buiten beeld komt te staan
+    overflow-x: hidden;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.intro {
+    width: 80%;
+    margin: 0 auto;
+    height: 50vh;
+
+    &__text {
+        span {
+            color: #878a8f;
+        }
+
+        .intro__text--link {
+            position: relative;
+
+            &:first-of-type {
+                transform-origin: left;
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
+                transform-origin: right;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                right: 0;
+                transform: scaleX(0);
+                height: 3px;
+                background-color: var(--primary-color);
+                transition: transform 600ms ease;
+                border-radius: 10px;
+                transform-origin: left;
+            }
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .button {
+            border: 2px #ff4f6d solid;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 3vh;
+            color: white;
+            font-size: 40px;
+            background-color: #ff4f6d;
+            border-radius: 50px;
+            padding: 0.3em 0.5em;
+            transition: background-color 500ms ease, color 500ms ease;
+            &:hover {
+                color: #ff4f6d;
+                background-color: white;
+            }
+        }
+
+        i {
+            margin-right: 0.5em;
+        }
+    }
+
+    img {
+        height: 100%;
+        transition: transform 300ms ease;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.introduction {
+    margin-top: 10vh;
+    .introduction__text--firstline {
+        display: none;
+    }
+    transform: translateY(20%);
+    h2 {
+        margin-bottom: 0.6em;
+        font-size: clamp(40px, 4vw, 70px);
+        line-height: clamp(40px, 4vw, 70px);
+    }
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+    }
+    p {
+        font-size: clamp(12px, 2vw, 20px);
+        letter-spacing: 3px;
+    }
+
+    h4 {
+        margin-bottom: 1em;
+        text-align: left;
+        font-size: clamp(12px, 2vw, 20px);
+    }
+    &__name {
+        width: 30%;
+        flex-direction: column;
+        img {
+            width: 50%;
+        }
+        h4 {
+            font-weight: 600;
+            font-size: clamp(16px, 1.6vw, 28px);
+        }
+        &--underline {
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 10px;
+                background-color: #48bb78;
+                bottom: -0.6em;
+                left: 0;
+                border-radius: 5px;
+            }
+        }
+    }
+    &__text {
+        width: 70%;
+    }
+}
+
+.project {
+    align-items: center;
+    width: 100%;
+    margin-left: 10%;
+    z-index: 100;
+    transform: translateY(20%);
+
+    h2 {
+        margin-top: 0.1em;
+    }
+
+    h4 {
+        margin: 0.6em 0 0.3em 0;
+    }
+
+    img {
+        width: 60vw;
+    }
+}
+
+.introduction {
+    text-align: center;
+}
+
+.grades {
+    /* Plaatst alles in het midden van de .grades section (bedoelt om de button te centreren)*/
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+
+    img {
+        width: 100%;
+        height: 15vh;
+    }
+
+    &__background {
+        width: 100%;
+        height: 50vh;
+        background-color: var(--primary-color);
+    }
+
+    .grades__button {
+        // Dit is nodig om margin toe te kunnen voegen
+        display: inline-block;
+        color: white;
+        font-weight: 800;
+        background-color: var(--primary-color);
+        border-radius: 10px;
+        padding: 1.2em 2.6em;
+        text-decoration: none;
+        border: 0.2em var(--primary-color) solid;
+        transition: background 300ms ease, color 300ms ease;
+        &:hover {
+            color: var(--primary-color);
+            background: none;
+        }
+    }
+    .grid {
+        margin-top: 20vh;
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-row-gap: 20px;
+        grid-column-gap: 40px;
+        article {
+            background-color: rgb(255, 255, 255);
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            padding: 10px 20px;
+            .card__grade--theme {
+                margin-right: 50px;
+            }
+
+            .card__grade--container {
+                padding: 10px 0;
+                justify-content: space-between;
+            }
+
+            .card__grade {
+                position: relative;
+                background-color: #efefef;
+                width: 60px;
+                height: 40px;
+                margin: 0 10px 0 0;
+
+                h4::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 5px;
+                    height: 100%;
+                }
+
+                .green::before {
+                    background-color: #0dd66c;
+                }
+
+                .orange::before {
+                    background-color: #fb6340;
+                }
+
+                .red::before {
+                    background-color: #f5365c;
+                }
+            }
+        }
+    }
+}
+
+.contact__section {
+    margin: 100px auto;
+    width: 80%;
+    text-align: center;
+
+    h2 {
+        margin: 3em 0 1em 0;
+    }
+
+    .contact__button {
+        // Dit is nodig om margin toe te kunnen voegen
+        display: inline-block;
+        color: white;
+        font-weight: 800;
+        background-color: var(--primary-color);
+        border-radius: 50px;
+        padding: 1.2em 2.6em;
+        text-decoration: none;
+        border: 0.2em var(--primary-color) solid;
+        transition: background 300ms ease, color 300ms ease;
+        &:hover {
+            color: var(--primary-color);
+            background: none;
+        }
+    }
+}
+
+@media screen and (max-width: 950px) {
+    header {
+        background-color: rgba(239, 239, 239, 0.2);
+    }
+
+    .intro {
+        height: 80vh;
+        text-align: center;
+        flex-direction: column;
+        margin: 11vh auto 0 auto;
+
+        img {
+            margin-top: -10vh;
+            height: 70%;
+        }
+    }
+    .introduction {
+        .introduction__text--firstline {
+            display: block;
+            margin-bottom: 0;
+        }
+        transform: translateY(0%);
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+        }
+        p {
+            text-align: left;
+            margin-bottom: 2em;
+            font-size: clamp(13px, 2vw, 20px);
+            letter-spacing: 3px;
+        }
+
+        h4 {
+            text-align: left;
+            font-size: clamp(12px, 2vw, 20px);
+        }
+        .introduction__name {
+            display: none;
+        }
+
+        &__text {
+            width: 100%;
+        }
+    }
+    .project {
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column;
+
+        div {
+            text-align: center;
+        }
+
+        img {
+            width: 90vw;
+        }
+
+        .no--spacing {
+            margin-top: 1.5em;
+        }
+    }
+
+    .grades {
+        .card__grade {
+            width: 45px !important;
+            height: 30px !important;
+        }
+        .grid {
+            margin-top: 10vh;
+            width: 90%;
+            .card__grade--theme {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 950px) {
+    .intro {
+        margin: 20vh auto 80vh auto;
+    }
+
+    .grades {
+        &__background {
+            height: 140vh;
+        }
+        img {
+            margin-bottom: 2em;
+        }
+    }
+}
