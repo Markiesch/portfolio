@@ -24,14 +24,17 @@ function menuToggle() {
 
 let lastScrollTop = 0;
 const navbar = document.querySelector("header");
+const breadCrumbs = document.querySelector(".breadcrumbs");
 
 window.addEventListener("scroll", (e) => {
-    console.log(e);
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (window.pageYOffset < 700) return;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop) {
-        navbar.style.transform = "translate(-100%)";
+        navbar.style.transform = "translateY(-100%)";
+        breadCrumbs.style.opacity = "0";
     } else {
-        navbar.style.transform = "translate(0)";
+        navbar.style.transform = "translateY(0)";
+        breadCrumbs.style.opacity = "1";
     }
     lastScrollTop = scrollTop;
 });
