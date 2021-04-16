@@ -21,3 +21,17 @@ function menuToggle() {
     header.classList.toggle("open");
     background.classList.toggle("open");
 }
+
+let lastScrollTop = 0;
+const navbar = document.querySelector("header");
+
+window.addEventListener("scroll", (e) => {
+    console.log(e);
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        navbar.style.transform = "translate(-100%)";
+    } else {
+        navbar.style.transform = "translate(0)";
+    }
+    lastScrollTop = scrollTop;
+});
