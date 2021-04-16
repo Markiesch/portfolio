@@ -11,13 +11,44 @@ main {
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+@keyframes revealText {
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
 }
 
 .intro {
     width: 80%;
     margin: 0 auto;
     height: 50vh;
+
+    p,
+    h2,
+    h3,
+    a,
+    span {
+        animation: revealText 1s ease forwards;
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    h2 {
+        animation-delay: 250ms;
+    }
+
+    a,
+    span {
+        display: inline-block;
+        animation-delay: 500ms;
+    }
+
+    .button {
+        animation-delay: 750ms;
+    }
 
     &__text {
         span {
@@ -27,14 +58,11 @@ header {
         .intro__text--link {
             position: relative;
 
-            &:first-of-type {
-                transform-origin: left;
-            }
-
             &:hover::after {
                 transform: scaleX(1);
                 transform-origin: right;
             }
+
             &::after {
                 content: "";
                 position: absolute;
