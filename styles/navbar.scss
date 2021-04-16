@@ -153,6 +153,7 @@ section {
     left: 0;
     top: 40px;
     transform: rotate(90deg);
+    transition: opacity 300ms ease 150ms;
     padding: 5px;
 
     a {
@@ -178,6 +179,7 @@ header {
     width: 100%;
     position: fixed;
     z-index: 10;
+    transition: transform 500ms ease;
 
     &.open {
         background-color: rgba(255, 255, 255, 0);
