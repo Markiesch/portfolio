@@ -142,7 +142,7 @@ figcaption {
 
 section {
     // Zorgt ervoor dat alle section's 80% van de breedte inneemt (body) zodat deze niet tegen de rand aanstaat
-    min-width: 80%;
+    width: 80%;
     // Zet de (container) section in het midden van de container waar deze inbevint (main(100%) / body)
     margin: 0 auto;
 }
