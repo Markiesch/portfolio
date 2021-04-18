@@ -26,10 +26,9 @@ let lastScrollTop = 0;
 const navbar = document.querySelector("header");
 const breadCrumbs = document.querySelector(".breadcrumbs");
 
-window.addEventListener("scroll", (e) => {
-    if (window.pageYOffset < 700) return;
+window.addEventListener("scroll", () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop) {
+    if (scrollTop > lastScrollTop && window.pageYOffset > 700) {
         navbar.style.transform = "translateY(-100%)";
         breadCrumbs.style.opacity = "0";
     } else {
