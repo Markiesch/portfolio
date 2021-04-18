@@ -114,7 +114,6 @@ h2 {
 
 h3 {
     font-size: clamp(18px, 2.7vw, 24px);
-    margin-top: 30px;
     font-weight: 800;
     color: var(--primary-color);
 }
@@ -181,14 +180,6 @@ header {
     z-index: 10;
     transition: transform 500ms ease;
 
-    &.open {
-        background-color: rgba(255, 255, 255, 0);
-
-        li a {
-            color: rgba(0, 0, 0, 0);
-        }
-    }
-
     .menu {
         height: 100%;
 
@@ -198,6 +189,19 @@ header {
             color: var(--primary-color);
         }
     }
+
+    &.open {
+        background-color: rgba(0, 0, 0, 0);
+
+        li a {
+            color: rgba(0, 0, 0, 0);
+        }
+
+        nav span {
+            color: white;
+        }
+    }
+
     // Hamburger Menu Styling
     .menu__button {
         // Position relative zodat de psuedo elementen (::before en ::after ) deze relatief van dit element worden gepositioneerd
@@ -229,7 +233,6 @@ header {
             content: "";
             position: absolute;
             display: inline-block;
-            background-color: var(--primary-color);
         }
 
         .menu__button--burger::before {
