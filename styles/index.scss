@@ -26,11 +26,7 @@ header {
     margin: 0 auto;
     height: 50vh;
 
-    p,
-    h2,
-    h3,
-    a,
-    span {
+    :not(div) {
         animation: revealText 1s ease forwards;
         transform: translateY(30px);
         opacity: 0;
@@ -38,6 +34,10 @@ header {
 
     h2 {
         animation-delay: 250ms;
+    }
+
+    h3 {
+        margin-top: 30px;
     }
 
     a,
