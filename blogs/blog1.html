@@ -13,9 +13,8 @@
         <title>Results | Portfolio</title>
         <!-- Stylesheet linking -->
         <link rel="stylesheet" href="../styles/navbar.css" />
-        <link rel="stylesheet" href="../styles/portfolio.css" />
+        <link rel="stylesheet" href="../styles/blog.css" />
         <script src="../scripts/script.js" defer></script>
-        <script src="../scripts/portfolio.js" defer></script>
         <script src="https://kit.fontawesome.com/f6a56a5946.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -76,70 +75,51 @@
 
         <div class="burger-menu--background"></div>
 
-        <div class="background__text">
-            <h1>Portfolio</h1>
-        </div>
-
         <a class="contact-button flex" href="contact.html"><i class="far fa-envelope"></i></a>
 
+        <div class="popup">
+            <img src="../images/mockups/projectThema1MockUp.png" alt="" />
+        </div>
+
         <main>
-            <section>
-                <div class="iframe--text">
-                    <p>FEATURED PROJECT</p>
+            <section class="hero">
+                <div>
+                    <p>PROJECT</p>
                     <h2>Praktijk Opdracht</h2>
-                    <h4>Hier onder zie je het eerste project van thema 2, de opdracht is een nieuwe startpagina voor het Koning Willem I College ontwerpen en realiseren.</h4>
-                    <p class="no--spacing">Startpagina Koning Willem I College</p>
+                    <p>MIJN ROL</p>
+                    <h4>UX / UI</h4>
+                    <h4>Website Design</h4>
+                    <h4>Frontend Startpagina</h4>
+                    <h4>Frontend Teampagina</h4>
+                    <p>CLIENT</p>
+                    <h4>Koning Willem I College</h4>
+                    <p>YEAR</p>
+                    <h4>2020 — 2020</h4>
+                    <p>TEAM</p>
+                    <h4>Mark Schuurmans</h4>
+                    <h4>Bart Strik</h4>
+                    <h4>Bryan de Wolf</h4>
                 </div>
-                <iframe src="https://markiesch.github.io/PraktijkOpdrachtThema2/"></iframe>
+                <div>
+                    <p>Too lazy to add text ATM coming Soon! :D</p>
+                    <p class="no--spacing">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus, corrupti consequatur. Dicta veniam reiciendis, impedit earum reprehenderit alias excepturi officiis cupiditate
+                        et sint mollitia molestias illum accusamus tenetur ab cumque minima nobis repellat? Aliquam velit voluptas, perspiciatis esse veritatis minus molestiae voluptate deleniti id
+                        repudiandae placeat quisquam nihil temporibus optio cum quo magni ut, ratione, similique tenetur dolorem. Deserunt fuga tempore modi possimus magni excepturi temporibus est
+                        unde ullam? Aliquam cum eius fugiat quam molestiae, incidunt dolorum laborum dolor inventore quo illum vel architecto. Ullam, id ducimus dignissimos in aliquam ipsa velit odit
+                        cumque atque quae, eius est corporis quas!
+                    </p>
+                </div>
             </section>
-            <section>
-                <div class="transition--background"></div>
-                <img src="../images/character.png" class="bubble"></img>
-                <div class="gallery">
-                    <div class="img__container">
-                        <a href="../blogs/blog1.html">
-                            <img src="../images/oefening_1.png" alt="Bij deze oefening hebben we geleerd om een interactieve website te maken door gebruik te maken van promts in JavaScript" />
-                            <div class="gallery__image--bar">
-                                <p class="no--spacing">Realiseren opdracht 1.3</p>
-                                <span></span>
-                                <span></span>
-                                <span class="red"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="img__container">
-                        <a href="../index.html">
-                            <img src="../images/mockups/opdrachtThema3MockUp.png" alt="" />
-                            <div class="gallery__image--bar">
-                                <p class="no--spacing">Praktijk Opdracht Thema 3</p>
-                                <span></span>
-                                <span></span>
-                                <span class="red"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="img__container">
-                        <a href="../index.html">
-                            <img src="../images/mockups/projectThema3MockUp.png" alt="" />
-                            <div class="gallery__image--bar">
-                                <p class="no--spacing">Project Thema 3</p>
-                                <span></span>
-                                <span></span>
-                                <span class="red"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="img__container">
-                        <a href="../blogs/blog1.html">
-                            <img src="../images/mockups/projectThema1MockUp.png" alt="" />
-                            <div class="gallery__image--bar">
-                                <p class="no--spacing">Project Thema 1</p>
-                                <span></span>
-                                <span></span>
-                                <span class="red"></span>
-                            </div>
-                        </a>
-                    </div>
+            <section class="image--section">
+                <div>
+                    <img src="../images/mockups/projectThema1MockUp.png" alt="" />
+                </div>
+                <div>
+                    <img src="../images/projects/" alt="" />
+                </div>
+                <div>
+                    <img src="../images/projects/" alt="" />
                 </div>
             </section>
         </main>
@@ -149,5 +129,16 @@
                 <span>&copy; All rights reserved</span>
             </p>
         </footer>
+        <script>
+            const test = document.querySelector(".hero");
+            window.addEventListener("scroll", () => {
+                test.style.opacity = 1 - window.scrollTop() / test.height();
+            });
+            // $(document).ready(function () {
+            //     $(window).scroll(function () {
+            //         $("#hero-image").css("opacity", 1 - $(window).scrollTop() / $("#hero-image").height());
+            //     });
+            // });
+        </script>
     </body>
 </html>

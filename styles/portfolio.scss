@@ -10,6 +10,31 @@
     transform: translate(-24%, 110%) rotate(90deg);
 }
 
+.bubble {
+    width: 0;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 20;
+}
+
+.transition--background {
+    z-index: 19;
+    background-color: white;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: opacity 1s ease 250ms;
+}
+
+.animating {
+    pointer-events: all;
+    opacity: 1;
+}
+
 main {
     width: 90%;
     margin: 0 auto;
