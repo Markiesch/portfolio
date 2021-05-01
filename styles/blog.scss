@@ -46,12 +46,19 @@ h4 {
     }
 
     to {
-        transform: translate(-50%, 200%) scale(0.75);
+        transform: translate(-50%, 150%) scale(0.75);
     }
 }
 
 .image--section img {
     width: 100%;
+    display: block;
+    margin: 0 auto;
+    transition: width 600ms ease;
+}
+
+.image--section div {
+    margin-bottom: 3em;
 }
 
 .popup {

@@ -111,15 +111,28 @@
                     </p>
                 </div>
             </section>
+            <section>
+                <input type="range" min="25" max="100" value="100" class="slider" />
+                <p id="demo"></p>
+            </section>
             <section class="image--section">
                 <div>
                     <img src="../images/mockups/projectThema1MockUp.png" alt="" />
                 </div>
                 <div>
-                    <img src="../images/projects/" alt="" />
+                    <img src="../images/projects/index.png" alt="" />
                 </div>
                 <div>
-                    <img src="../images/projects/" alt="" />
+                    <img src="../images/projects/plattegrond.png" alt="" />
+                </div>
+                <div>
+                    <img src="../images/projects/club.png" alt="" />
+                </div>
+                <div>
+                    <img src="../images/projects/team.png" alt="" />
+                </div>
+                <div>
+                    <img src="../images/projects/contact.png" alt="" />
                 </div>
             </section>
         </main>
@@ -130,15 +143,14 @@
             </p>
         </footer>
         <script>
-            const test = document.querySelector(".hero");
-            window.addEventListener("scroll", () => {
-                test.style.opacity = 1 - window.scrollTop() / test.height();
-            });
-            // $(document).ready(function () {
-            //     $(window).scroll(function () {
-            //         $("#hero-image").css("opacity", 1 - $(window).scrollTop() / $("#hero-image").height());
-            //     });
-            // });
+            const slider = document.querySelector(".slider");
+            const images = document.querySelectorAll("main img");
+
+            slider.oninput = function () {
+                for (const image of images) {
+                    image.style.width = this.value + "%";
+                }
+            };
         </script>
     </body>
 </html>
