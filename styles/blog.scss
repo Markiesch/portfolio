@@ -5,6 +5,11 @@
     Project Portfolio    
 */
 
+.breadcrumbs {
+    // Zet de breadcrumbs op de goede plaats
+    transform: translate(-24%, 110%) rotate(90deg);
+}
+
 .hero {
     max-width: 1480px;
     min-height: 100vh;
