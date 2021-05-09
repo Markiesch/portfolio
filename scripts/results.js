@@ -3,37 +3,37 @@ const main = document.querySelector("main");
 const grades = [
     // Realiseren
     [
-        [8.4, 9.2, 5.8, 9.2],
-        [8.9, 8.1, 9.0, 9.3],
+        [9.2, 5.8, 9.2],
+        [8.1, 9.0, 9.3],
     ],
 
     // Testen en Verbeteren
     [
-        [9.0, 9.3, 8.9],
-        [9.1, 7.3, 10],
+        [9.3, 8.9],
+        [7.3, 10],
     ],
 
     // Computervaardigheden
     [
-        [8.8, 9.4, 8.0, 8.8],
-        [9.2, 9.2, 7.5, 10],
+        [9.4, 8.0, 8.8],
+        [9.2, 7.5, 10],
     ],
     // Beroepshouding
     [[6.0], [6.0]],
 
     // Burgerschap
-    [[6.0], [6.0]],
+    [[6.0], [8.0]],
 
     // Nederlands
     [
-        [7.9, 6.7, 9.0],
-        [6.9, 4.8, 9.0],
+        [6.7, 9.0],
+        [4.8, 9.0],
     ],
 
     // Engels
     [
-        [8.6, 8.1, 9.0],
-        [6.6, 6.3, 6.8],
+        [8.1, 9.0],
+        [6.3, 6.8],
     ],
 
     // Rekenen
@@ -41,8 +41,8 @@ const grades = [
 
     // Plannen en Ontwerpen
     [
-        [5.5, 4.3, 4.3, 6.7],
-        [8.8, 6.7, 8.1, 9.7],
+        [4.3, 4.3, 6.7],
+        [6.7, 9.1, 9.7],
     ],
 ];
 const names = ["Realiseren", "Testen en Verbeteren", "Computervaardigheden", "Beroepshouding", "Burgerschap", "Nederlands", "Engels", "Rekenen", "Plannen en Ontwerpen"];

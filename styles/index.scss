@@ -5,13 +5,17 @@
     Project Portfolio
 */
 
+:root {
+    --grade-background: #0d1017;
+}
+
 main {
     // verbergt het gedeelde vab de afbeelding in de section "project" die buiten beeld komt te staan
     overflow-x: hidden;
 }
 
 header {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: --page-background;
 }
 
 @keyframes revealText {
@@ -96,7 +100,7 @@ header {
             transition: background-color 500ms ease, color 500ms ease;
             &:hover {
                 color: #ff4f6d;
-                background-color: white;
+                background: none;
             }
         }
 
@@ -194,20 +198,17 @@ header {
 }
 
 .grades {
-    /* Plaatst alles in het midden van de .grades section (bedoelt om de button te centreren)*/
     text-align: center;
     width: 100%;
     z-index: 10;
 
-    img {
-        width: 100%;
-        height: 15vh;
+    path {
+        fill: var(--grade-background);
     }
 
     &__background {
-        width: 100%;
-        height: 50vh;
-        background-color: var(--primary-color);
+        padding-bottom: 3em;
+        background-color: var(--grade-background);
     }
 
     .grades__button {
@@ -226,36 +227,49 @@ header {
             background: none;
         }
     }
+
     .grid {
-        margin-top: 20vh;
-        width: 80%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-row-gap: 20px;
-        grid-column-gap: 40px;
+        min-width: 70%;
+        max-width: 800px;
+        margin: 15vh auto 3em auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3em;
         article {
-            background-color: rgb(255, 255, 255);
+            flex: 1 1 450px;
+            // box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.13);
+            // background-color: rgba(255, 255, 255, 0.8);
             border-radius: 20px;
-            width: 100%;
-            height: 100%;
-            margin: auto;
-            padding: 10px 20px;
+            animation: fadeIn 1s ease;
+
             .card__grade--theme {
-                margin-right: 50px;
+                margin-right: 2em;
+            }
+
+            h3 {
+                margin: 1em 0;
             }
 
             .card__grade--container {
-                padding: 10px 0;
                 justify-content: space-between;
+                align-items: center;
+                padding: 1em 1.5em;
+                background-color: var(--grade-card-background);
+
+                & > div:first-of-type {
+                    display: flex;
+                }
             }
 
             .card__grade {
                 position: relative;
-                background-color: #efefef;
+                background-color: var(--grade-card);
                 width: 60px;
                 height: 40px;
+                text-align: center;
                 margin: 0 10px 0 0;
 
+                // Styling voor klein balkje lanks cijfer
                 h4::before {
                     content: "";
                     position: absolute;
@@ -265,6 +279,7 @@ header {
                     height: 100%;
                 }
 
+                // De onderstaande classes worden met Javascript aan de element gegeven
                 .green::before {
                     background-color: #0dd66c;
                 }

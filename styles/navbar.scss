@@ -40,9 +40,27 @@ Table of contents
 }
 
 body {
-    --primary-color: #0f141e;
-    --grey-color: #878a8f;
-    --primary-accent-color: #151922;
+    background-color: var(--page-background);
+
+    --primary-color: hsl(220, 33%, 9%);
+    --primary-dark-color: hsl(220, 33%, 9%);
+    --primary-accent-color: hsl(222, 24%, 11%);
+    --grey-color: hsl(218, 3%, 55%);
+    --page-background: #fff;
+    --header-shadow: hsla(0, 0%, 20%, 0.1);
+    --header-color: var(--page-background);
+    --grade-card-background: hsl(0, 0%, 96%);
+    --grade-card-background-odd: hsl(0, 0%, 98%);
+}
+
+body.dark {
+    --page-background: var(--primary-dark-color);
+    --primary-color: white;
+    --primary-accent-color: hsl(222, 25%, 10%);
+    --grade-card-background: hsl(222, 25%, 10%);
+    --grade-card: hsl(222, 25%, 15%);
+    --grade-card-background-odd: #151922;
+    --header-shadow: rgba(100, 100, 100, 0.1);
 }
 
 // Veel gebruikte waardes hebben een aparte class waar hier de waardes worden toegekent
@@ -74,9 +92,9 @@ h1 {
     // Font-size met VW om deze responsive te maken aangezien deze niet groter hoeft te worden wanneer een gebruiker inzoomt
     font-size: 19vw;
     line-height: 15vw;
-    color: white;
+    color: var(--header-color);
     // Geeft de text een schaduw zodat de te lezen op een witte achtergrond
-    text-shadow: 5px 5px 15px rgba(50, 50, 50, 0.1);
+    text-shadow: 5px 5px 15px var(--header-shadow);
     text-align: center;
     z-index: -1;
     pointer-events: none;
@@ -84,7 +102,7 @@ h1 {
     /* zorgt ervoor dat het lijkt alsof je de text niet kan selecteren */
     &::selection {
         background-color: none;
-        color: white;
+        color: var(--header-color);
     }
 }
 
@@ -339,8 +357,11 @@ nav {
 .logo__link {
     height: 100%;
 
-    img {
+    svg {
         height: 100%;
+        path {
+            fill: var(--primary-color);
+        }
     }
 }
 
