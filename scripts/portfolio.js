@@ -6,12 +6,11 @@
 */
 
 const body = document.body;
-const links = document.querySelectorAll("main a");
 const bubble = document.querySelector(".bubble");
 const backgroundSquare = document.querySelector(".transition--background");
 const transitionTime = 600;
 
-document.querySelectorAll("a").forEach((e) => {
+document.querySelectorAll("main a").forEach((e) => {
     e.addEventListener("click", (e) => {
         const target = e.target.parentElement.href;
         e.preventDefault();
