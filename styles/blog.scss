@@ -56,10 +56,11 @@ h4 {
 }
 
 .image--section img {
-    width: 100%;
+    --width: 100%;
+    width: var(--width);
     display: block;
     margin: 0 auto;
-    transition: width 600ms ease;
+    transition: width 600ms ease-in-out;
 }
 
 .image--section div {
