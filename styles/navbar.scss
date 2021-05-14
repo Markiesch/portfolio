@@ -47,7 +47,7 @@ body {
     --primary-accent-color: hsl(222, 24%, 11%);
     --grey-color: hsl(218, 3%, 55%);
     --page-background: #fff;
-    --header-shadow: hsla(0, 0%, 20%, 0.1);
+    --header-shadow: hsla(0, 0%, 20%, 0.05);
     --header-color: var(--page-background);
     --grade-card-background: hsl(0, 0%, 96%);
     --grade-card-background-odd: hsl(0, 0%, 98%);
@@ -55,12 +55,13 @@ body {
 
 body.dark {
     --page-background: var(--primary-dark-color);
+    --page-background: var(--primary-dark-color);
     --primary-color: white;
     --primary-accent-color: hsl(222, 25%, 10%);
     --grade-card-background: hsl(222, 25%, 10%);
     --grade-card: hsl(222, 25%, 15%);
     --grade-card-background-odd: #151922;
-    --header-shadow: rgba(100, 100, 100, 0.1);
+    --header-shadow: rgba(50, 50, 50, 0.3);
 }
 
 // Veel gebruikte waardes hebben een aparte class waar hier de waardes worden toegekent
@@ -94,7 +95,7 @@ h1 {
     line-height: 15vw;
     color: var(--header-color);
     // Geeft de text een schaduw zodat de te lezen op een witte achtergrond
-    text-shadow: 5px 5px 15px var(--header-shadow);
+    text-shadow: 5px 0px 0.4em var(--header-shadow);
     text-align: center;
     z-index: -1;
     pointer-events: none;
@@ -107,8 +108,6 @@ h1 {
 }
 
 :not(h1)::selection {
-    // Geeft (alle behalve h1) text een andere achtergrond kleur wanneer je deze selecteerd
-    // Dit werkt niet met *{} aangezien deze een hogere prioriteit heeft...
     color: white;
     background-color: var(--grey-color);
 }
@@ -222,7 +221,6 @@ header {
 
     // Hamburger Menu Styling
     .menu__button {
-        // Position relative zodat de psuedo elementen (::before en ::after ) deze relatief van dit element worden gepositioneerd
         position: relative;
         width: 80px;
         height: 100%;
@@ -239,10 +237,10 @@ header {
         .menu__button--burger,
         .menu__button--burger::before,
         .menu__button--burger::after {
-            width: 50px;
-            height: 5px;
+            width: 40px;
+            height: 4px;
             border-radius: 5px;
-            transition: transform 500ms ease-in-out, background-color 500ms ease-in-out;
+            transition: transform 500ms ease-in-out, background-color 500ms ease-in-out 300ms;
             background-color: var(--primary-color);
         }
 
@@ -250,7 +248,6 @@ header {
         .menu__button--burger::after {
             content: "";
             position: absolute;
-            display: inline-block;
         }
 
         .menu__button--burger::before {
@@ -293,7 +290,7 @@ nav {
 
     li {
         overflow: hidden;
-        font-size: 40px;
+        font-size: clamp(2.25rem, calc(1.6rem + 2.5vw), 4rem);
     }
 
     a {
@@ -367,19 +364,32 @@ nav {
 
 // 3.4 Burger Menu
 .burger-menu {
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 600ms ease-in-out;
-    background-color: var(--primary-accent-color);
-    width: 50vw;
-    height: 100vh;
-    position: fixed;
-    right: 0;
-    top: 0;
     z-index: 9;
 
+    .background {
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 500ms ease-in-out;
+        background-color: var(--primary-accent-color);
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 9;
+    }
+
     &.open {
-        transform: scaleX(1);
+        .background {
+            transform: scaleY(1);
+            transform-origin: bottom;
+        }
+
+        nav {
+            opacity: 1;
+            pointer-events: all;
+            transition-delay: 300ms;
+        }
 
         a {
             animation: menufade 1s ease forwards;
@@ -392,69 +402,50 @@ nav {
         }
 
         .menu-item2 {
-            animation-delay: calc(var(--menu-animation-delay) + 200ms);
+            animation-delay: calc(var(--menu-animation-delay) + 100ms);
         }
 
         .menu-item3 {
-            animation-delay: calc(var(--menu-animation-delay) + 400ms);
+            animation-delay: calc(var(--menu-animation-delay) + 200ms);
         }
 
         .menu-item4 {
-            animation-delay: calc(var(--menu-animation-delay) + 600ms);
+            animation-delay: calc(var(--menu-animation-delay) + 300ms);
         }
 
         .menu-item5 {
-            animation-delay: calc(var(--menu-animation-delay) + 800ms);
+            animation-delay: calc(var(--menu-animation-delay) + 400ms);
         }
     }
 
     nav {
-        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
         justify-content: center;
         align-items: center;
         text-align: center;
-    }
-
-    ul {
-        flex-direction: column;
+        z-index: 9;
+        transition: opacity 300ms ease;
     }
 
     a {
-        color: white;
+        color: var(--grey-color);
         width: 100%;
-        z-index: 1;
         transition: color 600ms ease;
 
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 0;
-            width: 0;
-            margin: auto;
-            display: block;
-            background-color: white;
-            z-index: -1;
-            transition: height 600ms ease, width 600ms ease;
-        }
-
         &:hover {
-            color: var(--primary-color);
-
-            // Selecteerd het after element wanneer de gebruiker over de A tag heen hoverd
-            &::after {
-                height: 100%;
-                width: 100%;
-            }
+            color: white;
         }
     }
 
     span {
         width: 100%;
-        color: white;
+        color: var(--grey-color);
         font-size: 16px;
     }
 
