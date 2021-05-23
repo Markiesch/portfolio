@@ -41,7 +41,6 @@ Table of contents
 
 body {
     background-color: var(--page-background);
-
     --primary-color: hsl(220, 33%, 9%);
     --primary-dark-color: hsl(220, 33%, 9%);
     --primary-accent-color: hsl(222, 24%, 11%);
@@ -438,7 +437,8 @@ nav {
         width: 100%;
         transition: color 600ms ease;
 
-        &:hover {
+        &:hover,
+        &.active {
             color: white;
         }
     }
@@ -648,5 +648,9 @@ footer {
     header,
     .mobile-nav {
         display: none;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
     }
 }
