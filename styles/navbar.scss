@@ -23,7 +23,6 @@ Table of contents
 4. Mobile Styling
     4.1 Mobile landscape
 
-5. Print Styles
 */
 
 /* =================
@@ -52,17 +51,6 @@ body {
     --grade-card-background-odd: hsl(0, 0%, 98%);
 }
 
-body.dark {
-    --page-background: var(--primary-dark-color);
-    --page-background: var(--primary-dark-color);
-    --primary-color: white;
-    --primary-accent-color: hsl(222, 25%, 10%);
-    --grade-card-background: hsl(222, 25%, 10%);
-    --grade-card: hsl(222, 25%, 15%);
-    --grade-card-background-odd: #151922;
-    --header-shadow: rgba(50, 50, 50, 0.3);
-}
-
 // Veel gebruikte waardes hebben een aparte class waar hier de waardes worden toegekent
 .flex {
     display: flex;
@@ -89,6 +77,10 @@ body.dark {
 
 h1 {
     padding-top: 8vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     // Font-size met VW om deze responsive te maken aangezien deze niet groter hoeft te worden wanneer een gebruiker inzoomt
     font-size: 19vw;
     line-height: 15vw;
@@ -157,7 +149,7 @@ figcaption {
 
 section {
     // Zorgt ervoor dat alle section's 80% van de breedte inneemt (body) zodat deze niet tegen de rand aanstaat
-    width: 80%;
+    max-width: 1440px;
     // Zet de (container) section in het midden van de container waar deze inbevint (main(100%) / body)
     margin: 0 auto;
 }
@@ -532,6 +524,10 @@ footer {
      Mobile Styling
    =================== */
 @media screen and (max-width: 950px) {
+    section {
+        width: 90%;
+        max-width: 90%;
+    }
     .burger-menu {
         transform: scaleY(0);
         transform-origin: top;
@@ -566,11 +562,10 @@ footer {
         border-radius: 0 0 100px 100px;
         z-index: -1;
         background-color: #efefef;
-    }
 
-    .background__text h1 {
-        color: transparent;
-        text-shadow: none;
+        h1 {
+            display: none;
+        }
     }
 
     // Verbergt de breadcrumbs wanneer de website in mobiele weergave wordt getoont
@@ -637,20 +632,5 @@ footer {
                 flex-direction: column;
             }
         }
-    }
-}
-
-/* ================
-     Print Styles
-   ================ */
-@media print {
-    // Verwijderd de NavBar wanneer een gebruiker de pagina probeert te printen
-    header,
-    .mobile-nav {
-        display: none;
-    }
-
-    body {
-        -webkit-print-color-adjust: exact;
     }
 }
