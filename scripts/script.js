@@ -37,3 +37,8 @@ window.addEventListener("scroll", () => {
     }
     lastScrollTop = scrollTop;
 });
+
+const slider = document.querySelector(".slider > div");
+window.addEventListener("scroll", (e) => {
+    slider.style.transform = `translateX(-${window.pageYOffset / 6}px)`;
+});
