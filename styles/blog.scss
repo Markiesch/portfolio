@@ -63,6 +63,7 @@ h4 {
 .image--section img {
     --width: 100%;
     width: var(--width);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     display: block;
     margin: 0 auto;
     transition: width 600ms ease-in-out;
@@ -90,6 +91,13 @@ h4 {
     }
 }
 
+.slider {
+    max-width: 300px;
+    width: 300px;
+    display: block;
+    margin: 0 auto 3em auto;
+}
+
 .next--project {
     text-align: center;
     min-height: 100vh;
@@ -98,8 +106,7 @@ h4 {
     align-items: center;
 
     a {
-        line-height: 100%;
-        margin: 0.5em 0;
+        line-height: 1;
         font-size: 72px;
     }
 }
@@ -107,71 +114,19 @@ h4 {
 .next--project__link {
     display: block;
     position: relative;
+    border-bottom: 2px solid transparent;
+    transition: border 300ms ease;
+    padding: 0 0.25em;
+
+    &:hover {
+        border-bottom: 2px solid var(--primary-color);
+    }
 
     a {
         height: 100%;
         width: 100%;
         display: block;
-        padding: 0.25em;
         text-decoration: none;
         color: var(--primary-color);
-    }
-
-    &:hover {
-        &::after,
-        &::before {
-            transform: scaleY(1);
-        }
-
-        a::after,
-        a::before {
-            transform: scaleX(1);
-        }
-    }
-
-    &::after,
-    &::before,
-    a::after,
-    a::before {
-        content: "";
-        position: absolute;
-        background-color: black;
-        transition: transform 300ms ease;
-    }
-
-    &::after,
-    &::before {
-        height: 100%;
-        width: 2px;
-        top: 0;
-        transform: scaleY(0);
-    }
-
-    &::before {
-        transform-origin: top;
-        left: 0;
-    }
-
-    &::after {
-        transform-origin: bottom;
-        right: 0;
-    }
-
-    a::after,
-    a::before {
-        width: 100%;
-        height: 2px;
-        left: 0;
-        transform: scaleX(0);
-    }
-
-    a::before {
-        transform-origin: right;
-        top: 0;
-    }
-
-    a::after {
-        transform-origin: left;
-        bottom: 0;
     }
 }
