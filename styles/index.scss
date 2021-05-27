@@ -5,17 +5,9 @@
     Project Portfolio
 */
 
-:root {
-    --grade-background: #0d1017;
-}
-
 main {
     // verbergt het gedeelde vab de afbeelding in de section "project" die buiten beeld komt te staan
     overflow-x: hidden;
-}
-
-header {
-    background-color: --page-background;
 }
 
 @keyframes revealText {
@@ -62,51 +54,41 @@ header {
     }
 
     &__text {
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
         span {
             color: #878a8f;
         }
 
         .intro__text--link {
             position: relative;
+            // Pushes border futher down
+            padding-bottom: 4px;
+            font-weight: 700;
+            border-bottom: 2px solid transparent;
+            transition: border 300ms ease;
 
-            &:hover::after {
-                transform: scaleX(1);
-                transform-origin: right;
+            &:hover {
+                border-bottom: 2px solid var(--primary-color);
             }
-
-            &::after {
-                content: "";
-                position: absolute;
-                bottom: -3px;
-                left: 0;
-                right: 0;
-                transform: scaleX(0);
-                height: 3px;
-                background-color: var(--primary-color);
-                transition: transform 600ms ease;
-                border-radius: 10px;
-                transform-origin: left;
-            }
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
         }
 
         .button {
-            border: 2px #ff4f6d solid;
+            border: 2px #0659fd solid;
             font-weight: 600;
             display: inline-block;
-            margin-top: 0.75em;
+            margin-top: 1.5em;
             color: white;
-            font-size: 40px;
-            background-color: #ff4f6d;
-            border-radius: 50px;
-            padding: 0.3em 0.5em;
+            font-size: clamp(1.75rem, calc(1.5833rem + 0.7407vw), 2.25rem);
+            background-color: #0659fd;
+            border-radius: 10px;
+            padding: 0.25em 0.5em;
             transition: background-color 500ms ease, color 500ms ease;
             &:hover {
-                color: #ff4f6d;
+                color: #0659fd;
                 background: none;
             }
         }
@@ -119,9 +101,6 @@ header {
     img {
         height: 100%;
         transition: transform 300ms ease;
-        &:hover {
-            transform: scale(1.05);
-        }
     }
 }
 
@@ -158,7 +137,7 @@ header {
                 position: absolute;
                 width: 100%;
                 height: 10px;
-                background-color: #48bb78;
+                background-color: #0659fd;
                 bottom: -0.6em;
                 left: 0;
                 border-radius: 5px;
@@ -204,7 +183,7 @@ header {
     text-align: center;
 
     path {
-        fill: var(--grade-background);
+        fill: var(--slider-background);
     }
 
     .slider__button {
@@ -230,7 +209,7 @@ header {
     padding: 150px 0;
     font-size: clamp(11rem, calc(2.6667rem + 37vw), 36rem);
     height: 1em;
-    background-color: var(--grade-background);
+    background-color: var(--slider-background);
     // padding: 12em 0;
 
     & > div {
@@ -248,107 +227,6 @@ header {
         height: 100%;
     }
 }
-
-// .grades {
-//     text-align: center;
-//     width: 100%;
-//     max-width: 100%;
-//     z-index: 10;
-
-//     path {
-//         fill: var(--grade-background);
-//     }
-
-//     &__background {
-//         padding-bottom: 3em;
-//         background-color: var(--grade-background);
-//     }
-
-//     .grades__button {
-//         // Dit is nodig om margin toe te kunnen voegen
-//         display: inline-block;
-//         color: white;
-//         font-weight: 800;
-//         background-color: var(--primary-color);
-//         border-radius: 10px;
-//         padding: 1.2em 2.6em;
-//         text-decoration: none;
-//         border: 0.2em var(--primary-color) solid;
-//         transition: background 300ms ease, color 300ms ease;
-//         &:hover {
-//             color: var(--primary-color);
-//             background: none;
-//         }
-//     }
-
-//     .grid {
-//         min-width: 70%;
-//         max-width: 800px;
-//         margin: 15vh auto 3em auto;
-//         display: flex;
-//         flex-wrap: wrap;
-//         gap: 3em;
-//         article {
-//             flex: 1 1 450px;
-//             // box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.13);
-//             // background-color: rgba(255, 255, 255, 0.8);
-//             border-radius: 20px;
-//             animation: fadeIn 1s ease;
-
-//             .card__grade--theme {
-//                 margin-right: 2em;
-//             }
-
-//             h3 {
-//                 color: white;
-//                 margin: 1em 0;
-//             }
-
-//             .card__grade--container {
-//                 justify-content: space-between;
-//                 align-items: center;
-//                 padding: 1em 1.5em;
-//                 background-color: var(--grade-card-background);
-
-//                 & > div:first-of-type {
-//                     display: flex;
-//                 }
-//             }
-
-//             .card__grade {
-//                 position: relative;
-//                 background-color: var(--grade-card);
-//                 width: 60px;
-//                 height: 40px;
-//                 text-align: center;
-//                 margin: 0 10px 0 0;
-
-//                 // Styling voor klein balkje lanks cijfer
-//                 h4::before {
-//                     content: "";
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     width: 5px;
-//                     height: 100%;
-//                 }
-
-//                 // De onderstaande classes worden met Javascript aan de element gegeven
-//                 .green::before {
-//                     background-color: #0dd66c;
-//                 }
-
-//                 .orange::before {
-//                     background-color: #fb6340;
-//                 }
-
-//                 .red::before {
-//                     background-color: #f5365c;
-//                 }
-//             }
-//         }
-//     }
-// }
 
 .contact__section {
     margin: 100px auto;
@@ -444,33 +322,10 @@ header {
             margin-top: 1.5em;
         }
     }
-
-    .grades {
-        .card__grade {
-            width: 45px !important;
-            height: 30px !important;
-        }
-        .grid {
-            margin-top: 10vh;
-            width: 90%;
-            .card__grade--theme {
-                display: none;
-            }
-        }
-    }
 }
 
 @media screen and (orientation: landscape) and (max-width: 950px) {
     .intro {
         margin: 20vh auto 80vh auto;
-    }
-
-    .grades {
-        &__background {
-            height: 140vh;
-        }
-        img {
-            margin-bottom: 2em;
-        }
     }
 }
