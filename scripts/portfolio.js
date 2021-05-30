@@ -5,7 +5,6 @@
     Project Portfolio    
 */
 
-const body = document.body;
 const bubble = document.querySelector(".bubble");
 const backgroundSquare = document.querySelector(".transition--background");
 const transitionTime = 600;
@@ -14,8 +13,6 @@ document.querySelectorAll(".gallery a").forEach((e) => {
     e.addEventListener("click", (e) => {
         const target = e.target.parentElement.href;
         e.preventDefault();
-
-        console.log(target);
 
         bubble.src = e.target.src;
 
