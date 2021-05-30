@@ -58,32 +58,6 @@ section.contact-section {
     }
 }
 
-.form {
-    flex-direction: column;
-    justify-content: space-between;
-
-    input {
-        background: none;
-        position: relative;
-        border: none;
-        border-bottom: 2px solid black;
-        margin: 10px 0 0 10px;
-        padding: 5px;
-        background-color: #eee;
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-    label {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        pointer-events: none;
-    }
-}
-
 .expand-button {
     position: fixed;
     bottom: 0;
