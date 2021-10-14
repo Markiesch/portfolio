@@ -12,7 +12,16 @@ import Navigation from "./components/Navigation.vue";
 @Component({
   components: { Navigation },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  offsetY = 0;
+
+  mounted() {
+    addEventListener("scroll", () => {
+      this.offsetY = pageYOffset;
+    });
+    console.log(window);
+  }
+}
 </script>
 
 <style>
@@ -20,16 +29,7 @@ export default class App extends Vue {}
 
 :root {
   --primary-color: hsl(220, 33%, 9%);
-  --primary-dark-color: hsl(220, 33%, 9%);
-  --primary-accent-color: hsl(222, 24%, 11%);
-  --slider-background: #0d1017;
-  --grey-color: hsl(218, 3%, 55%);
-  --grey-color: #5f6368;
-  --page-background: #fff;
-  --header-shadow: hsla(0, 0%, 20%, 0.05);
-  --header-color: var(--page-background);
-  --grade-card-background: hsl(0, 0%, 96%);
-  --grade-card-background-odd: hsl(0, 0%, 98%);
+  --grey-color: hsl(213, 5%, 39%);
 }
 
 * {
@@ -55,11 +55,11 @@ a {
 }
 
 h1 {
-  position: absolute;
+  position: fixed;
   top: 10vh;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 19vw;
+  font-size: 18vw;
   line-height: 1;
   color: white;
   text-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.03);

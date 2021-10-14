@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>developer</h1>
+    <h1 :style="`top: -${offsetY / 2}px`">developer</h1>
     <section class="hero">
       <div>
         <h6>JUNIOR SOFTWARE DEVELOPER</h6>
@@ -16,10 +16,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component } from "vue-property-decorator";
+import App from "../App.vue";
 
 @Component
-export default class Home extends Vue {}
+export default class Home extends App {}
 </script>
 
 <style scoped>
