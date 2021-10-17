@@ -1,0 +1,38 @@
+h1 {
+  position: fixed;
+  top: calc(var(--scroll) * 0.25);
+  left: 0;
+  right: 0;
+  font-size: 18vw;
+  line-height: 1;
+  color: white;
+  text-shadow: 5px 0px 0.4em rgba(0, 0, 0, 0.05);
+  text-align: center;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+}
+
+h2 {
+  font-size: clamp(40px, 4.2vw, 80px);
+  line-height: 1;
+  color: var(--primary-color);
+}
+
+h3,
+p {
+  font-size: clamp(14px, 2.1vw, 20px);
+  font-weight: 400;
+  color: var(--primary-color);
+}
+
+h3 {
+  letter-spacing: 5px;
+  color: var(--grey-color);
+}
+
+@media screen and (max-width: 55rem) {
+  h1 {
+    display: none;
+  }
+}

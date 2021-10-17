@@ -1,47 +1,47 @@
 <template>
   <header>
-    <router-link to="/" exact class="logo--container">
-      <img src="../assets/logo.png" alt="logo" />
-    </router-link>
     <nav>
-      <router-link to="/" exact>Home</router-link>
-      <router-link to="/portfolio">Portfolio</router-link>
-      <router-link to="/cv">Curriculum Vitae</router-link>
-      <router-link to="/contact">Contact</router-link>
+      <router-link to="/" exact class="logo--container">
+        <img src="../assets/logo.png" alt="logo" />
+      </router-link>
+      <div>
+        <router-link to="/" exact>Home</router-link>
+        <router-link to="/portfolio">Portfolio</router-link>
+        <!-- <router-link to="/cv">Curriculum Vitae</router-link> -->
+        <!-- <router-link to="/contact">Contact</router-link> -->
+      </div>
     </nav>
   </header>
 </template>
 
-<style scoped>
+<style lang="scss">
 header {
   position: fixed;
   width: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
-}
+  height: var(--header-height);
+  transition: transform 300ms ease;
+  transform: translateY(var(--header-transform));
+  background-color: var(--header-background);
 
-.logo--container,
-img {
-  height: 100%;
-}
+  .logo--container,
+  img {
+    height: 100%;
+  }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  nav {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-a {
-  padding: 0.5rem;
-  text-decoration: none;
-  color: inherit;
-}
+  div {
+    display: flex;
+    gap: 2rem;
+  }
 
-.router-link-active {
-  font-weight: bold;
+  .router-link-active {
+    font-weight: bold;
+  }
 }
 </style>
