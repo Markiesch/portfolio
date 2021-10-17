@@ -20,12 +20,11 @@ export default class Home extends Vue {
 
 <style lang="scss" scoped>
 .project--section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 20px;
 
   article {
-    flex: 1 1 500px;
     border-radius: 10px;
     overflow: hidden;
   }

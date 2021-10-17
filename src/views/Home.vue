@@ -27,7 +27,7 @@
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .hero {
   display: flex;
   align-items: center;
