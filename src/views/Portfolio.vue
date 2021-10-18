@@ -9,6 +9,8 @@
         <img :src="require(`@/assets/${project.mockup ? 'mockups/' + project.mockup : 'projects/' + project.name + '/' + project.gallery[0]}.png`)" :alt="project.title" />
       </router-link>
     </article>
+    <!-- An empty article tag to avoid images taking up the full width -->
+    <article></article>
   </section>
 </template>
 

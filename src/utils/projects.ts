@@ -8,6 +8,24 @@ export interface IProjects {
 
 const projects: IProjects[] = [
   {
+    name: "foodz",
+    title: "KW1C study choice test",
+    mockup: "foodz",
+    gallery: ["homepage", "login", "overzicht", "editor", "edit", "appearance"],
+  },
+  {
+    name: "notes",
+    title: "Notes webapp",
+    mockup: "notes",
+    gallery: ["homepage", "editor", "favorite"],
+  },
+  {
+    name: "memory",
+    title: "Notes webapp",
+    mockup: "memory",
+    gallery: ["homepage", "game", "victory"],
+  },
+  {
     name: "pettelaer",
     title: "Tennisclub de Pettelear",
     mockup: "pettelaer",
@@ -20,26 +38,10 @@ const projects: IProjects[] = [
     gallery: ["homepage", "question", "print"],
   },
   {
-    name: "psv",
-    title: "football club PSV",
-    mockup: "psv",
-    gallery: ["homepage", "team", "plattegrond", "club", "contact"],
-  },
-  {
     name: "studytest",
     title: "KW1C study choice test",
     mockup: "kw1c",
     gallery: ["homepage", "form-name", "form-question", "result"],
-  },
-  {
-    name: "foodz",
-    title: "KW1C study choice test",
-    gallery: ["homepage", "login", "overzicht", "editor", "edit", "appearance"],
-  },
-  {
-    name: "drawingapp",
-    title: "Drawing webapp",
-    gallery: ["homepage"],
   },
 ];
 
