@@ -49,7 +49,7 @@ section {
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 1rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 
     img {
       width: 100%;
