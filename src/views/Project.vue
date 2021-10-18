@@ -8,7 +8,7 @@
     </article>
   </section>
   <section v-else>
-    <h2>404 - Couldn't find the any project named {{ param }}</h2>
+    <h2>404 - Couldn't find any project named {{ param }}</h2>
   </section>
 </template>
 
