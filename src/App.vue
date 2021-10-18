@@ -69,4 +69,16 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+@media print {
+  header,
+  h1,
+  .contact--section {
+    display: none;
+  }
+
+  section {
+    text-align: center;
+  }
+}
 </style>
