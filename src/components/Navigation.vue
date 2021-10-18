@@ -17,6 +17,7 @@
 <style lang="scss">
 header {
   position: fixed;
+  z-index: 2;
   width: 100%;
   height: var(--header-height);
   transition: transform 300ms ease;
