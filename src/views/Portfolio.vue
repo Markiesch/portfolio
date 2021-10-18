@@ -29,23 +29,27 @@ export default class Home extends Vue {
 
 <style lang="scss" scoped>
 .project--section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 
   article {
-    border-radius: 10px;
+    flex: 1 1 500px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.75rem;
 
     img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
       transition: transform 300ms ease;
+      display: block;
+      border-radius: 0.75rem;
     }
 
     &:hover img {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
   }
 }

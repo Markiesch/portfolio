@@ -36,6 +36,11 @@ const projects: IProjects[] = [
     title: "KW1C study choice test",
     gallery: ["homepage", "login", "overzicht", "editor", "edit", "appearance"],
   },
+  {
+    name: "drawingapp",
+    title: "Drawing webapp",
+    gallery: ["homepage"],
+  },
 ];
 
 export default projects;
