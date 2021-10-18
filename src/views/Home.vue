@@ -23,7 +23,7 @@
   </section>
   <section class="contact--section">
     <h2>Interested to work with me?</h2>
-    <button><span>let's talk</span></button>
+    <button>let's talk</button>
   </section>
 </template>
 
@@ -75,6 +75,7 @@ h2 {
 }
 
 .contact--section {
+  margin: 10rem auto;
   text-align: center;
 }
 
