@@ -8,28 +8,28 @@ export interface IProjects {
 
 const projects: IProjects[] = [
   {
-    name: "tennis",
+    name: "pettelaer",
     title: "Tennisclub de Pettelear",
     mockup: "pettelaer",
-    gallery: [""],
+    gallery: ["homepage", "login", "overzicht"],
   },
   {
     name: "dentist",
     title: "Dentist practice 's-Hertogenbosch",
     mockup: "dentist",
-    gallery: [""],
+    gallery: ["homepage", "question", "print"],
   },
   {
     name: "psv",
     title: "football club PSV",
     mockup: "psv",
-    gallery: [""],
+    gallery: ["homepage", "team", "plattegrond", "club", "contact"],
   },
   {
-    name: "test",
+    name: "studytest",
     title: "KW1C study choice test",
     mockup: "kw1c",
-    gallery: [""],
+    gallery: ["homepage", "form-name", "form-question", "result"],
   },
   {
     name: "foodz",
