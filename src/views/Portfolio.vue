@@ -5,7 +5,7 @@
 
   <section class="project--section">
     <article v-for="(project, index) of projects" :key="index">
-      <router-link :to="`/${project.name}`">
+      <router-link :to="`/project/${project.name}`">
         <img :src="require(`@/assets/${project.mockup ? 'mockups/' + project.mockup : 'projects/' + project.name + '/' + project.gallery[0]}.png`)" :alt="project.title" />
       </router-link>
     </article>
