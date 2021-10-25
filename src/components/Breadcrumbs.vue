@@ -9,9 +9,7 @@
         <slot></slot>
       </span>
     </div>
-    <h2>
-      <slot></slot>
-    </h2>
+    <h2><slot /></h2>
   </section>
 </template>
 
