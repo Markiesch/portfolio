@@ -15,15 +15,9 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from "vue-class-component";
-import Breadcrumbs from "@/components/Breadcrumbs.vue";
+import { Vue } from "vue-class-component";
 import Portfolio from "@/utils/projects";
 
-@Options({
-  components: {
-    Breadcrumbs,
-  },
-})
 export default class Home extends Vue {
   projects = Portfolio;
 }

@@ -28,16 +28,10 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from "vue-class-component";
-import Breadcrumbs from "@/components/Breadcrumbs.vue";
+import { Vue } from "vue-class-component";
 import "mapbox-gl/dist/mapbox-gl.css";
 import * as mapboxgl from "mapbox-gl";
 
-@Options({
-  components: {
-    Breadcrumbs,
-  },
-})
 export default class Home extends Vue {
   accessToken = process.env.VUE_APP_MAPBOX_KEY;
   zoom = 13;

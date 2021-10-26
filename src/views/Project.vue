@@ -14,13 +14,9 @@
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
-import Breadcrumbs from "@/components/Breadcrumbs.vue";
 import Projects, { IProjects } from "@/utils/projects";
 
 @Options({
-  components: {
-    Breadcrumbs,
-  },
   prop: {
     project: String,
   },
