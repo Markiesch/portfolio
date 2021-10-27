@@ -54,7 +54,7 @@ export default class Home extends Vue {
 #map {
   height: 400px;
   max-height: 60vh;
-  background-color: var(--grey-color);
+  background-color: #f5f5f5;
   border-radius: 1rem 1rem 0 0;
 }
 

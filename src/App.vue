@@ -21,7 +21,7 @@ export default class App extends Vue {
   lastScrollTop = 0;
 
   mounted() {
-    window.addEventListener("scroll", (e) => {
+    window.addEventListener("scroll", () => {
       const root = document.documentElement;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -41,7 +41,7 @@ export default class App extends Vue {
 :root {
   --primary-color: hsl(220, 33%, 10%);
   --secondary-color: hsl(220, 98%, 51%);
-  --grey-color: hsl(0, 0%, 40%);
+  --grey-color: hsla(0, 0%, 0%, 0.6);
   --header-height: 80px;
   --header-transform: 0;
   --scroll: 0px;
