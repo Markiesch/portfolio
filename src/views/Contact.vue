@@ -10,15 +10,17 @@
     <article>
       <form>
         <label for="name">Name</label>
-        <input type="text" id="name" />
+        <input v-model="name" type="text" id="name" />
 
         <label for="email">Email</label>
-        <input type="text" id="email" />
+        <input v-model="mail" type="text" id="email" />
 
         <label for="name">Message</label>
-        <textarea type="text" id="name" />
+        <textarea v-model="message" type="text" id="name" />
 
-        <button>SEND MESSAGE</button>
+        <div v-show="error" class="alert">{{ error }}</div>
+
+        <button @click.prevent="sendMail">SEND MESSAGE</button>
       </form>
     </article>
     <article class="information">
@@ -54,10 +56,18 @@
 import { Vue } from "vue-class-component";
 import "mapbox-gl/dist/mapbox-gl.css";
 import * as mapboxgl from "mapbox-gl";
+import emailjs from "emailjs-com";
 
 export default class Home extends Vue {
   accessToken = process.env.VUE_APP_MAPBOX_KEY;
+  serviceId = process.env.VUE_APP_SERVICEID;
   zoom = 13;
+
+  name = "";
+  mail = "";
+  message = "";
+
+  error = "";
 
   mounted() {
     const map = new mapboxgl.Map({
@@ -69,6 +79,34 @@ export default class Home extends Vue {
     });
 
     new mapboxgl.Marker().setLngLat([5.372594, 51.664729]).addTo(map);
+  }
+
+  sendMail() {
+    this.checkForm();
+    if (this.error) return;
+
+    emailjs.send(
+      "service_aaz65ue",
+      "template_u9s6t3c",
+      {
+        to_name: "Mark",
+        from_name: this.name,
+        from_mail: this.mail,
+        message: this.message,
+      },
+      "user_NMitHqHt8szocKARc4txD"
+    );
+  }
+
+  checkForm() {
+    if (this.name.length < 3) return (this.error = "Name must be atleast 2 characters long");
+
+    const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!mailRegExp.test(this.mail.toLowerCase())) return (this.error = "Please enter a valid email");
+
+    if (this.message.length < 20) return (this.error = "Please enter a message that has atleast 20 characters");
+
+    this.error = "";
   }
 }
 </script>
@@ -128,6 +166,15 @@ export default class Home extends Vue {
     margin-top: 1rem;
     display: block;
     width: 100%;
+  }
+
+  .alert {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.75rem;
+    border-radius: 5px;
+    color: hsl(0, 100%, 66%);
+    background-color: hsla(0, 100%, 66%, 0.1);
   }
 }
 
