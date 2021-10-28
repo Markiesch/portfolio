@@ -12,14 +12,24 @@
     </article>
   </section>
   <section class="project--section">
-    <div>
+    <article>
       <h3>FEATURED PROJECT</h3>
       <h2>{{ projects[0].title }}</h2>
       <p>{{ projects[0].description }}</p>
-    </div>
-    <div>
+    </article>
+    <article>
       <img src="@/assets/mockups/dentist.png" alt="Project" />
-    </div>
+    </article>
+  </section>
+  <section class="about--section">
+    <article></article>
+    <article>
+      <p>Hey! I am Mark Schuurmans,</p>
+      <p>
+        a 17 years old student at the Koning Willen I College, where I study to become a Software Developer. I am currently in my first year of this 4-year-old BOL education. I am currently working
+        with HTML, CSS, Javascript, PHP, SQL, and VueJS. But when I am not coding or shifting pixels around, I fill my free time by playing video games and basketball.
+      </p>
+    </article>
   </section>
   <section class="contact--section">
     <h2>Interested to work with me?</h2>
@@ -70,8 +80,9 @@ h2 {
   flex-wrap: wrap;
   align-items: center;
   gap: 2rem;
+  margin-bottom: 5rem;
 
-  & > div {
+  article {
     flex: 1 1 400px;
   }
 
