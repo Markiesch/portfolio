@@ -1,8 +1,27 @@
 <template>
   <h1>Portfolio</h1>
 
-  <Breadcrumbs>{{ project ? project.title : "Project" }}</Breadcrumbs>
-  <section v-if="project">
+  <Breadcrumbs>{{ project?.title }}</Breadcrumbs>
+  <section class="project" v-if="project">
+    <div class="project--information">
+      <div>
+        <h3>MY ROLE</h3>
+        <p v-for="(role, index) of project.roles" :key="index">{{ role }}</p>
+
+        <h3>CLIENT</h3>
+        <p>{{ project.client }}</p>
+
+        <h3>YEAR</h3>
+        <p>{{ project.date }}</p>
+
+        <h3>LINKS & RESOURCES</h3>
+        <p>{{ project.links }}</p>
+      </div>
+      <div>
+        <p>{{ project?.description }}</p>
+      </div>
+    </div>
+
     <article v-for="(image, index) of project.gallery" :key="index">
       <img :src="require(`@/assets/projects/${project.name}/${image}.png`)" alt="" />
     </article>
@@ -13,16 +32,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from "vue-class-component";
+import { Vue } from "vue-class-component";
 import Projects, { IProjects } from "@/utils/projects";
 
-@Options({
-  prop: {
-    project: String,
-  },
-})
 export default class Home extends Vue {
-  param: string = "";
+  param = "";
   project: IProjects | null = null;
 
   mounted() {
@@ -34,13 +48,32 @@ export default class Home extends Vue {
       return name === paramProject || name.includes(paramProject);
     });
 
-    this.project = project ?? null;
+    this.project = project || null;
   }
 }
 </script>
 
 <style lang="scss" scoped>
-section {
+.project {
+  &--information {
+    padding-bottom: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    & > div {
+      flex: 1 1 400px;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    p + h3 {
+      margin-top: 1rem;
+    }
+  }
+
   article {
     border-radius: 10px;
     overflow: hidden;
