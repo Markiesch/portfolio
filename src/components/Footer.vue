@@ -1,10 +1,10 @@
 <template>
   <footer>
-    <div>
+    <article>
       <p>Designed and developed by Mark Schuurmans</p>
       <p>© All rights reserved</p>
-    </div>
-    <div class="link--container">
+    </article>
+    <article class="link--container">
       <a target="_blank" href="https://github.com/Markiesch">
         <svg viewBox="0 0 496 512">
           <path
@@ -19,13 +19,14 @@
           ></path>
         </svg>
       </a>
-    </div>
+    </article>
   </footer>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 footer {
   margin: 4rem auto;
+  max-width: 1440px;
   display: flex;
   align-items: center;
   justify-content: space-between;

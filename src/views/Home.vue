@@ -1,21 +1,21 @@
 <template>
   <h1>developer</h1>
   <section class="hero">
-    <div>
+    <article>
       <h3>JUNIOR SOFTWARE DEVELOPER</h3>
       <h2>I Build Awesome Experience</h2>
       <router-link to="/portfolio">View Projects</router-link> -
       <router-link to="/">Contact me</router-link>
-    </div>
-    <div>
+    </article>
+    <article>
       <img src="../assets/character.png" alt="character" />
-    </div>
+    </article>
   </section>
   <section class="project--section">
     <div>
       <h3>FEATURED PROJECT</h3>
-      <h2>Praktijk Opdracht</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A repudiandae, ab dicta illo quas quidem qui ipsam in repellendus facere?</p>
+      <h2>{{ projects[0].title }}</h2>
+      <p>{{ projects[0].description }}</p>
     </div>
     <div>
       <img src="@/assets/mockups/dentist.png" alt="Project" />
@@ -27,6 +27,15 @@
   </section>
 </template>
 
+<script lang="ts">
+import { Vue } from "vue-class-component";
+import Portfolio from "@/utils/projects";
+
+export default class Home extends Vue {
+  projects = Portfolio;
+}
+</script>
+
 <style lang="scss" scoped>
 .hero {
   display: flex;
@@ -36,18 +45,18 @@
   min-height: 100vh;
   padding-bottom: var(--header-height);
 
-  div {
+  article {
     flex: 1 1 400px;
   }
 
-  div + div {
+  article + article {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   img {
-    max-width: 450px;
+    max-width: 25rem;
     width: 90%;
   }
 }

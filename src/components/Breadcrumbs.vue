@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="breadcrumbs--section">
     <div class="breadcrumbs">
       <router-link class="home--link" to="/">Home</router-link>
       <svg viewBox="0 0 192 512">
@@ -13,8 +13,8 @@
   </section>
 </template>
 
-<style lang="scss" scoped>
-section {
+<style lang="scss">
+.breadcrumbs--section {
   margin: 3rem auto;
 
   .breadcrumbs {
