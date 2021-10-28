@@ -26,6 +26,7 @@
 <style lang="scss">
 footer {
   margin: 4rem auto;
+  padding: 0 1rem;
   max-width: 1440px;
   display: flex;
   align-items: center;
