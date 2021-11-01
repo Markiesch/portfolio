@@ -3,7 +3,11 @@
   <section class="hero">
     <article>
       <h3>JUNIOR SOFTWARE DEVELOPER</h3>
-      <h2>I Build Awesome Experience</h2>
+      <h2>
+        <span v-for="(letter, index) of 'I build awesome experience'" :key="index">
+          {{ letter }}
+        </span>
+      </h2>
       <router-link to="/portfolio">View Projects</router-link> -
       <router-link to="/">Contact me</router-link>
     </article>
@@ -35,6 +39,7 @@
     <h2>Interested to work with me?</h2>
     <button>let's talk</button>
   </section>
+  <canvas></canvas>
 </template>
 
 <script lang="ts">
@@ -43,6 +48,67 @@ import Portfolio from "@/utils/projects";
 
 export default class Home extends Vue {
   projects = Portfolio;
+
+  mounted() {
+    const canvas = document.querySelector("canvas")!;
+    const ctx = canvas.getContext("2d");
+    const targets = Array.from(document.querySelectorAll("section article *"));
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    class Projectile {
+      velocity = -5;
+      radius = 20;
+
+      constructor(public x: number, public y: number) {
+        this.draw();
+      }
+
+      draw() {
+        if (!ctx) return;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = "#550055";
+        ctx.fill();
+      }
+
+      update() {
+        this.draw();
+        this.y = this.y + this.velocity;
+      }
+    }
+
+    let projectiles: Projectile[] = [];
+
+    //@ts-ignore
+    console.log(targets[0].offsetWidth);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+
+      projectiles.forEach((projectile, index) => {
+        projectile.update();
+
+        for (const target of targets) {
+          if (target.classList.contains("hide")) continue;
+          const distance = Math.hypot(projectile.x - target.getBoundingClientRect().left, projectile.y - target.getBoundingClientRect().top);
+          // @ts-ignore
+          if (distance - projectile.radius - target.offsetWidth / 2 < 1) {
+            setTimeout(() => {
+              projectiles.splice(index, 1);
+              target.classList.add("hide");
+            }, 0);
+          }
+        }
+      });
+    }
+    animate();
+
+    addEventListener("click", (e) => {
+      projectiles.push(new Projectile(e.pageX, e.pageY));
+    });
+  }
 }
 </script>
 
@@ -103,5 +169,18 @@ h2 {
   .hero {
     text-align: center;
   }
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
+
+.hide {
+  opacity: 0;
 }
 </style>
