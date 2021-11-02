@@ -52,13 +52,13 @@ export default class Home extends Vue {
   mounted() {
     const canvas = document.querySelector("canvas")!;
     const ctx = canvas.getContext("2d");
-    const targets = Array.from(document.querySelectorAll("section article *"));
+    const targets = Array.from(document.querySelectorAll(".hero span"));
     canvas.width = innerWidth;
     canvas.height = innerHeight;
 
     class Projectile {
       velocity = -5;
-      radius = 20;
+      radius = 10;
 
       constructor(public x: number, public y: number) {
         this.draw();
@@ -80,8 +80,9 @@ export default class Home extends Vue {
 
     let projectiles: Projectile[] = [];
 
-    //@ts-ignore
-    console.log(targets[0].offsetWidth);
+    // for (const target of targets) {
+    // console.log(target.getBoundingClientRect().left);
+    // }
 
     function animate() {
       requestAnimationFrame(animate);
@@ -90,9 +91,16 @@ export default class Home extends Vue {
       projectiles.forEach((projectile, index) => {
         projectile.update();
 
+        console.log(projectile.y);
         for (const target of targets) {
           if (target.classList.contains("hide")) continue;
-          const distance = Math.hypot(projectile.x - target.getBoundingClientRect().left, projectile.y - target.getBoundingClientRect().top);
+
+          // @ts-ignore
+          const centerX = target.getBoundingClientRect().left + target.offsetWidth / 2;
+          // @ts-ignore
+          const centerY = target.getBoundingClientRect().top + target.offsetHeight / 2;
+          const distance = Math.hypot(projectile.x - centerX, projectile.y - centerY);
+
           // @ts-ignore
           if (distance - projectile.radius - target.offsetWidth / 2 < 1) {
             setTimeout(() => {
@@ -106,7 +114,7 @@ export default class Home extends Vue {
     animate();
 
     addEventListener("click", (e) => {
-      projectiles.push(new Projectile(e.pageX, e.pageY));
+      projectiles.push(new Projectile(e.clientX, e.clientY));
     });
   }
 }
