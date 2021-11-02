@@ -80,9 +80,10 @@ export default class Home extends Vue {
 
     let projectiles: Projectile[] = [];
 
-    // for (const target of targets) {
-    // console.log(target.getBoundingClientRect().left);
-    // }
+    for (const target of targets) {
+      // Hide all `empty` elements by default to avoid invisible targets
+      if (!target.innerHTML.replaceAll(" ", "")) target.classList.add("hide");
+    }
 
     function animate() {
       requestAnimationFrame(animate);
@@ -91,7 +92,6 @@ export default class Home extends Vue {
       projectiles.forEach((projectile, index) => {
         projectile.update();
 
-        console.log(projectile.y);
         for (const target of targets) {
           if (target.classList.contains("hide")) continue;
 
@@ -104,6 +104,7 @@ export default class Home extends Vue {
           // @ts-ignore
           if (distance - projectile.radius - target.offsetWidth / 2 < 1) {
             setTimeout(() => {
+              console.log(target.innerHTML);
               projectiles.splice(index, 1);
               target.classList.add("hide");
             }, 0);
