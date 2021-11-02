@@ -56,6 +56,38 @@ export default class Home extends Vue {
     canvas.width = innerWidth;
     canvas.height = innerHeight;
 
+    let left = false;
+    let forwards = false;
+    let backwards = false;
+    let right = false;
+
+    class Player {
+      velocity = 5;
+      radius = 20;
+
+      constructor(public x: number, public y: number) {
+        this.draw();
+      }
+
+      draw() {
+        if (!ctx) return;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = "#550055";
+        ctx.fill();
+      }
+
+      update() {
+        this.draw();
+        if (left) this.x -= this.velocity;
+        if (right) this.x += this.velocity;
+        if (forwards) this.y -= this.velocity;
+        if (backwards) this.y += this.velocity;
+      }
+    }
+
+    const player = new Player(40, 40);
+
     class Projectile {
       velocity = -5;
       radius = 10;
@@ -74,7 +106,7 @@ export default class Home extends Vue {
 
       update() {
         this.draw();
-        this.y = this.y + this.velocity;
+        this.y += this.velocity;
       }
     }
 
@@ -88,6 +120,7 @@ export default class Home extends Vue {
     function animate() {
       requestAnimationFrame(animate);
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      player.update();
 
       projectiles.forEach((projectile, index) => {
         projectile.update();
@@ -116,6 +149,20 @@ export default class Home extends Vue {
 
     addEventListener("click", (e) => {
       projectiles.push(new Projectile(e.clientX, e.clientY));
+    });
+
+    addEventListener("keydown", (e) => {
+      if (e.key === "a") left = true;
+      if (e.key === "w") forwards = true;
+      if (e.key === "s") backwards = true;
+      if (e.key === "d") right = true;
+    });
+    addEventListener("keyup", (e) => {
+      if (e.key === "a") left = false;
+      if (e.key === "w") forwards = false;
+      if (e.key === "s") backwards = false;
+      if (e.key === "d") right = false;
+      console.log(e);
     });
   }
 }
