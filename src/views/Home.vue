@@ -54,7 +54,7 @@ export default class Home extends Vue {
     const ctx = canvas.getContext("2d");
     const targets = Array.from(document.querySelectorAll(".hero span"));
     canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    canvas.height = document.documentElement.offsetHeight;
 
     let left = false;
     let forwards = false;
@@ -89,10 +89,9 @@ export default class Home extends Vue {
     const player = new Player(40, 40);
 
     class Projectile {
-      velocity = -5;
       radius = 10;
 
-      constructor(public x: number, public y: number) {
+      constructor(public x: number, public y: number, private velocityX: number, private velocityY: number) {
         this.draw();
       }
 
@@ -106,7 +105,8 @@ export default class Home extends Vue {
 
       update() {
         this.draw();
-        this.y += this.velocity;
+        this.x += this.velocityX;
+        this.y += this.velocityY;
       }
     }
 
@@ -137,7 +137,6 @@ export default class Home extends Vue {
           // @ts-ignore
           if (distance - projectile.radius - target.offsetWidth / 2 < 1) {
             setTimeout(() => {
-              console.log(target.innerHTML);
               projectiles.splice(index, 1);
               target.classList.add("hide");
             }, 0);
@@ -147,8 +146,9 @@ export default class Home extends Vue {
     }
     animate();
 
-    addEventListener("click", (e) => {
-      projectiles.push(new Projectile(e.clientX, e.clientY));
+    addEventListener("click", (event) => {
+      const angle = Math.atan2(event.pageY - player.y, event.pageX - player.x);
+      projectiles.push(new Projectile(player.x, player.y, Math.cos(angle) * 3, Math.sin(angle) * 3));
     });
 
     addEventListener("keydown", (e) => {
@@ -157,12 +157,12 @@ export default class Home extends Vue {
       if (e.key === "s") backwards = true;
       if (e.key === "d") right = true;
     });
+
     addEventListener("keyup", (e) => {
       if (e.key === "a") left = false;
       if (e.key === "w") forwards = false;
       if (e.key === "s") backwards = false;
       if (e.key === "d") right = false;
-      console.log(e);
     });
   }
 }
@@ -228,11 +228,10 @@ h2 {
 }
 
 canvas {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
   z-index: 10;
 }
 
