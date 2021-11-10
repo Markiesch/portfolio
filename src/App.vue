@@ -3,17 +3,20 @@
   <main>
     <router-view />
   </main>
+  <mobile-navigation />
   <Footer />
 </template>
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
 import Navigation from "@/components/Navigation.vue";
+import MobileNavigation from "@/components/MobileNavigation.vue";
 import Footer from "@/components/Footer.vue";
 
 @Options({
   components: {
     Navigation,
+    MobileNavigation,
     Footer,
   },
 })
@@ -42,6 +45,7 @@ export default class App extends Vue {
   --primary-color: hsl(220, 33%, 10%);
   --secondary-color: hsl(220, 98%, 51%);
   --grey-color: hsla(0, 0%, 0%, 0.6);
+  --mobile-nav-height: 5rem;
   --header-height: 80px;
   --header-transform: 0;
   --scroll: 0px;
