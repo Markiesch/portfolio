@@ -19,6 +19,7 @@ section {
 
   h2 {
     margin: 0.25em 0 0.75em 0;
+    line-height: 1.3;
   }
 
   .button--container {
