@@ -18,7 +18,7 @@
       <p>{{ projects[0].description }}</p>
     </article>
     <article>
-      <img src="@/assets/mockups/dentist.png" alt="Project" />
+      <img :src="require(`@/assets/mockups/${projects[0].mockup}.png`)" alt="Project" />
     </article>
   </section>
   <section class="about--section">
@@ -52,11 +52,11 @@ export default class Home extends Vue {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height));
   padding-bottom: var(--header-height);
 
   article {
-    flex: 1 1 400px;
+    flex: 1 1 25rem;
   }
 
   article + article {
@@ -83,14 +83,14 @@ h2 {
   margin-bottom: 5rem;
 
   article {
-    flex: 1 1 400px;
+    flex: 1 1 25rem;
   }
 
   img {
     width: 100%;
     display: block;
-    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.75rem;
   }
 }
 
