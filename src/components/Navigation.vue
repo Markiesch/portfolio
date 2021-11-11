@@ -2,7 +2,7 @@
   <header class="navigation">
     <nav>
       <router-link to="/" exact class="logo--container">
-        <img src="../assets/logo.png" alt="logo" />
+        <img src="../assets/logo.svg" alt="logo" />
       </router-link>
       <div class="link--container">
         <router-link to="/" exact>Home</router-link>
@@ -16,12 +16,18 @@
     </nav>
   </header>
 
-  <div class="menu" :class="{ open: menuOpen }">
+  <div @click="menuOpen = !menuOpen" class="menu" :class="{ open: menuOpen }">
+    <header>
+      <div class="burger--menu__container">
+        <div class="burger--menu"></div>
+      </div>
+    </header>
     <nav>
-      <router-link to="/">home</router-link>
-      <router-link to="/portfolio">portfolio</router-link>
-      <router-link to="/resume">resume</router-link>
-      <router-link to="/contact">contact</router-link>
+      <span>MENU</span>
+      <router-link to="/">Home</router-link>
+      <router-link to="/portfolio">Portfolio</router-link>
+      <router-link to="/resume">Resume</router-link>
+      <router-link to="/contact">Contact</router-link>
     </nav>
   </div>
 </template>
@@ -44,11 +50,6 @@ export default class Navigation extends Vue {
   transform: translateY(var(--header-transform));
   background-color: var(--header-background);
 
-  .logo--container,
-  img {
-    height: 100%;
-  }
-
   nav {
     height: 100%;
     display: flex;
@@ -56,51 +57,41 @@ export default class Navigation extends Vue {
     align-items: center;
   }
 
-  .link--container {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .burger--menu__container {
-    position: relative;
+  .logo--container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 5rem;
+    height: 90%;
+  }
+
+  img {
     height: 100%;
-    cursor: pointer;
+  }
 
-    .burger--menu::before,
-    .burger--menu::after,
-    .burger--menu {
-      width: 2.5rem;
-      height: 0.25rem;
-      border-radius: 0.25rem;
-      transition: transform 600ms ease, background-color 600ms ease;
-      background-color: var(--primary-color);
-    }
+  .link--container a {
+    padding: 1rem;
+  }
 
-    .burger--menu::before,
-    .burger--menu::after {
-      content: "";
-      position: absolute;
-    }
+  .burger--menu::before,
+  .burger--menu::after,
+  .burger--menu {
+    background-color: var(--primary-color);
+  }
 
-    .burger--menu::before {
-      transform: translateY(-0.75rem);
-    }
+  .burger--menu::before {
+    transform: translateY(-0.7rem);
+  }
 
-    .burger--menu::after {
-      transform: translateY(0.75rem);
-    }
+  .burger--menu::after {
+    transform: translateY(0.7rem);
+  }
 
-    &:hover .burger--menu::before {
-      transform: translateY(-0.9rem);
-    }
+  &:hover .burger--menu::before {
+    transform: translateY(-0.9rem);
+  }
 
-    &:hover .burger--menu::after {
-      transform: translateY(0.9rem);
-    }
+  &:hover .burger--menu::after {
+    transform: translateY(0.9rem);
   }
 
   .router-link-active {
@@ -109,10 +100,10 @@ export default class Navigation extends Vue {
 }
 
 .menu {
+  display: grid;
+  grid-template-rows: auto 1fr;
   position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 3;
   top: 0;
   left: 0;
   right: 0;
@@ -126,25 +117,92 @@ export default class Navigation extends Vue {
     transform: translateY(0);
   }
 
-  a {
-    font-size: 1.5rem;
+  header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 1440px;
+    padding: 0 1em;
+    height: var(--header-height);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  span {
+    color: var(--grey-color);
+    color: #ffffff99;
+    letter-spacing: 0.25rem;
     margin-bottom: 1rem;
+  }
+
+  a {
+    font-size: clamp(2rem, 1.33rem + 2.96vw, 4rem);
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.5rem;
     display: block;
     text-align: center;
     opacity: 0.4;
+    transition: opacity 300ms ease;
   }
 
   .router-link-active,
   a:hover {
     opacity: 1;
   }
+
+  .burger--menu::before,
+  .burger--menu {
+    background-color: white;
+  }
+
+  .burger--menu {
+    transform: rotate(45deg);
+  }
+
+  .burger--menu::before {
+    transform: rotate(90deg);
+  }
+}
+
+/* ==========================
+   ===== Hamburger icon =====
+   ========================== */
+.burger--menu__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 100%;
+  cursor: pointer;
+}
+
+.burger--menu::before,
+.burger--menu::after,
+.burger--menu {
+  width: 2.75rem;
+  height: 0.25rem;
+  border-radius: 0.25rem;
+  transition: transform 600ms ease;
+}
+
+.burger--menu::before,
+.burger--menu::after {
+  content: "";
+  position: absolute;
 }
 
 @media screen and (max-width: 50rem) {
-  .navigation {
-    .link--container {
-      display: none;
-    }
+  .link--container {
+    display: none;
   }
 }
 </style>
