@@ -18,9 +18,9 @@
   margin: 3rem auto;
 
   .breadcrumbs {
-    font-size: 1rem;
     display: flex;
     align-items: center;
+    margin-bottom: 1rem;
     gap: 0.5rem;
 
     svg {
@@ -41,10 +41,6 @@
       color: var(--grey-color);
       fill: var(--grey-color);
     }
-  }
-
-  h2 {
-    margin-top: 0.25em;
   }
 }
 </style>
