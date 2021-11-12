@@ -6,11 +6,9 @@
   <section class="project--section">
     <article v-for="(project, index) of projects" :key="index">
       <router-link :to="`/project/${project.name}`">
-        <img :src="require(`@/assets/${project.mockup ? 'mockups/' + project.mockup : 'projects/' + project.name + '/' + project.gallery[0]}.png`)" :alt="project.title" />
+        <img :src="require(`@/assets/mockups/${project.mockup}.png`)" :alt="project.title" />
       </router-link>
     </article>
-    <!-- An empty article tag to avoid images taking up the full width -->
-    <article></article>
   </section>
 </template>
 
@@ -25,28 +23,30 @@ export default class Home extends Vue {
 
 <style lang="scss" scoped>
 .project--section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  padding: 0.5rem;
 
   article {
-    flex: 1 1 500px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0.5rem;
     border-radius: 0.75rem;
+    overflow: hidden;
 
     img {
+      display: block;
       width: 100%;
       transition: transform 300ms ease;
-      display: block;
-      border-radius: 0.75rem;
     }
 
     &:hover img {
       transform: scale(1.05);
     }
+  }
+}
+
+@media screen and (max-width: 40rem) {
+  .project--section {
+    grid-template-columns: 1fr;
   }
 }
 </style>
