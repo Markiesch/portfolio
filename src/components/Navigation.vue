@@ -86,11 +86,11 @@ export default class Navigation extends Vue {
     transform: translateY(0.7rem);
   }
 
-  &:hover .burger--menu::before {
+  .burger--menu__container:hover .burger--menu::before {
     transform: translateY(-0.9rem);
   }
 
-  &:hover .burger--menu::after {
+  .burger--menu__container:hover .burger--menu::after {
     transform: translateY(0.9rem);
   }
 
