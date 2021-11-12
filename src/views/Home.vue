@@ -22,9 +22,11 @@
     </article>
   </section>
   <section class="about--section">
-    <article></article>
     <article>
-      <p>Hey! I am Mark Schuurmans,</p>
+      <p class="heading"><span>Hey!</span> I am Mark Schuurmans,</p>
+      <img src="../assets/character.png" alt="character" />
+    </article>
+    <article>
       <p>
         a 17 years old student at the Koning Willen I College, where I study to become a Software Developer. I am currently in my first year of this 4-year-old BOL education. I am currently working
         with HTML, CSS, Javascript, PHP, SQL, and VueJS. But when I am not coding or shifting pixels around, I fill my free time by playing video games and basketball.
@@ -91,6 +93,41 @@ h2 {
     display: block;
     box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.2);
     border-radius: 0.75rem;
+  }
+}
+
+.about--section {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: auto 1fr;
+
+  .heading {
+    color: #222;
+  }
+
+  span {
+    position: relative;
+  }
+
+  span::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    height: 0.5rem;
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    left: 0;
+    width: 100%;
+  }
+
+  img {
+    max-width: 12.5rem;
+    margin: 1.5em auto 0 auto;
+    display: block;
+  }
+
+  p {
+    color: var(--grey-color);
   }
 }
 
