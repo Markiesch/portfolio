@@ -2,6 +2,7 @@
   <h1>Portfolio</h1>
 
   <Breadcrumbs>{{ project?.title }}</Breadcrumbs>
+
   <section class="project" v-if="project">
     <div class="project--information">
       <div>
@@ -26,29 +27,18 @@
       <img :src="require(`@/assets/projects/${project.name}/${image}.png`)" alt="" />
     </article>
   </section>
-  <section v-else>
-    <h2>404 - Couldn't find any project named {{ param }}</h2>
-  </section>
 </template>
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-import Projects, { IProjects } from "@/utils/projects";
+import projects, { IProjects } from "@/utils/projects";
 
 export default class Home extends Vue {
-  param = "";
   project: IProjects | null = null;
 
   mounted() {
-    this.param = this.$route.params.project.toString();
-    const paramProject = this.param.toLowerCase();
-
-    let project = Projects.find(({ name }) => {
-      name = name.toLowerCase();
-      return name === paramProject || name.includes(paramProject);
-    });
-
-    this.project = project || null;
+    const paramProject = this.$route.params.project.toString().toLowerCase();
+    this.project = projects.find(({ name }) => name.includes(paramProject)) || null;
   }
 }
 </script>
