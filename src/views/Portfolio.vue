@@ -3,8 +3,8 @@
 
   <Breadcrumbs>Portfolio</Breadcrumbs>
 
-  <section class="project--section">
-    <article v-for="(project, index) of projects" :key="index">
+  <section class="projects--section">
+    <article v-for="(project, index) of projects" :key="index" class="fade-in" :style="`animation-delay: ${index * 150}ms`">
       <router-link :to="`/project/${project.name}`">
         <img :src="require(`@/assets/mockups/${project.mockup}.png`)" :alt="project.title" />
       </router-link>
@@ -21,8 +21,8 @@ export default class Home extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-.project--section {
+<style lang="scss">
+.projects--section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   padding: 0.5rem;
@@ -45,7 +45,7 @@ export default class Home extends Vue {
 }
 
 @media screen and (max-width: 40rem) {
-  .project--section {
+  .projects--section {
     grid-template-columns: 1fr;
   }
 }
