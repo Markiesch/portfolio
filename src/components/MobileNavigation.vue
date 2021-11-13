@@ -39,7 +39,7 @@
   left: 0;
   z-index: 20;
   width: 100%;
-  height: var(--mobile-nav-height);
+  height: var(--nav-height);
   background-color: var(--secondary-color);
   background-color: var(--primary-color);
   color: white;
@@ -71,7 +71,7 @@
 
 @media screen and (max-width: 50rem) {
   body {
-    padding-bottom: var(--mobile-nav-height);
+    padding-bottom: var(--nav-height);
   }
 
   .mobile--navigation {
