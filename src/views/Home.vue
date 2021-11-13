@@ -1,12 +1,12 @@
 <template>
-  <h1>developer</h1>
+  <p class="background-text">developer</p>
   <section class="hero">
     <article>
       <div class="image--container">
         <img src="../assets/character.png" alt="character" />
       </div>
       <p class="fade-in">Hi! I'm Mark👋,</p>
-      <h2 class="fade-in">I build awesome experience</h2>
+      <h1 class="fade-in header">I build awesome experience</h1>
       <div class="fade-in cta">
         <router-link class="portfolio--link" to="/portfolio">
           <svg viewBox="0 0 576 512" class="svg-inline--fa fa-eye fa-w-18 fa-9x">
@@ -52,7 +52,7 @@
     </article>
   </section>
 
-  <section class="contact--section">
+  <section class="cta--section">
     <h2>Interested to work with me?</h2>
     <router-link to="/contact">Let's work together</router-link>
   </section>
@@ -74,8 +74,8 @@ export default class Home extends Vue {
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
-  min-height: calc(100vh - var(--header-height));
-  padding-bottom: var(--header-height);
+  min-height: calc(100vh - var(--nav-height));
+  padding-bottom: var(--nav-height);
 
   .image--container {
     height: 8rem;
@@ -96,10 +96,10 @@ export default class Home extends Vue {
     margin: 0 auto;
   }
 
-  h2 {
-    font-weight: 600;
+  h1 {
     animation-delay: 300ms;
     max-width: 17ch;
+    line-height: 1;
     margin: 1rem auto 3rem auto;
   }
 
@@ -216,7 +216,7 @@ export default class Home extends Vue {
   }
 }
 
-.contact--section {
+.cta--section {
   padding-bottom: 5rem;
   text-align: center;
 
