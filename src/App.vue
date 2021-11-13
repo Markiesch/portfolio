@@ -42,9 +42,8 @@ export default class App extends Vue {
   --primary-color: hsl(220, 33%, 10%);
   --secondary-color: hsl(220, 98%, 51%);
   --grey-color: hsla(0, 0%, 0%, 0.6);
-  --mobile-nav-height: 5rem;
-  --header-height: 80px;
-  --scroll: 0px;
+  --nav-height: 5rem;
+  --scroll: 0;
 }
 
 * {
