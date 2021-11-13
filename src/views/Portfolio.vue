@@ -1,5 +1,5 @@
 <template>
-  <h1>Portfolio</h1>
+  <p class="background-text">Portfolio</p>
 
   <Breadcrumbs>Portfolio</Breadcrumbs>
 

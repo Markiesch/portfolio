@@ -1,5 +1,5 @@
 <template>
-  <h1>Portfolio</h1>
+  <p class="background-text">Portfolio</p>
 
   <Breadcrumbs>{{ project?.title }}</Breadcrumbs>
 
@@ -39,6 +39,8 @@ export default class Home extends Vue {
   mounted() {
     const paramProject = this.$route.params.project.toString().toLowerCase();
     this.project = projects.find(({ name }) => name.includes(paramProject)) || null;
+
+    if (!this.project) this.$router.push("/404");
   }
 }
 </script>

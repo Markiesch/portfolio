@@ -1,5 +1,5 @@
 <template>
-  <h1>404</h1>
+  <p class="background-text">404</p>
   <section>
     <h3>Something went wrong...</h3>
     <h2>Oops! We couldn't find that page.</h2>
