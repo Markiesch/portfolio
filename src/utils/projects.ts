@@ -12,7 +12,7 @@ export interface IProjects {
 const projects: IProjects[] = [
   {
     name: "foodz",
-    title: "Foodz - schoolproject",
+    title: "Foodz",
     date: "March 2021",
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",
