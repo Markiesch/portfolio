@@ -8,7 +8,7 @@
 
   <section class="contact--section">
     <article class="information">
-      <h2>Get in toch</h2>
+      <h2>Get in touch</h2>
       <a href="https://www.google.com/maps/place/Den+Dungen" target="_blank">
         <svg viewBox="0 0 384 512">
           <path
