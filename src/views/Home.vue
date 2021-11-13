@@ -45,8 +45,8 @@
     <article>
       <p class="heading">Hey! I'm Mark👋,</p>
       <p>
-        a 17 years old front-end development enthusiast with 2+ years of experience. I am currently living and studying in 's-Hertogenbosch, the Netherlands. I am currently work with HTML, CSS,
-        Javascript, PHP, SQL, and VueJS. But when I am not coding or shifting pixels around, I fill my free time by playing video games and basketball.
+        a 17 year old front-end development enthusiast with 2+ years of experience. I currently live and study in 's-Hertogenbosch, the Netherlands. Learning and working with HTML, CSS, Javascript,
+        PHP, SQL, and VueJS is daily business for me, but when I am not coding or shifting pixels around, I like to fill my free time by playing video games and basketball.
       </p>
       <router-link to="/portfolio"></router-link>
     </article>
