@@ -110,6 +110,7 @@ export default class Navigation extends Vue {
   height: 100vh;
   background-color: var(--primary-color);
   color: white;
+  overflow: hidden;
   transition: transform 300ms ease;
   transform: translateY(-100%);
 
