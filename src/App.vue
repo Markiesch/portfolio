@@ -28,8 +28,6 @@ export default class App extends Vue {
       const root = document.documentElement;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      root.style.setProperty("--header-transform", scrollTop > this.lastScrollTop && scrollTop ? "-100%" : "0");
-      root.style.setProperty("--header-background", scrollTop > innerHeight / 4 ? "white" : "transparent");
       root.style.setProperty("--scroll", -scrollTop + "px");
       this.lastScrollTop = scrollTop;
     });
@@ -39,7 +37,6 @@ export default class App extends Vue {
 
 <style lang="scss">
 @import "styles/typography.scss";
-@import "styles/components.scss";
 
 :root {
   --primary-color: hsl(220, 33%, 10%);
@@ -47,7 +44,6 @@ export default class App extends Vue {
   --grey-color: hsla(0, 0%, 0%, 0.6);
   --mobile-nav-height: 5rem;
   --header-height: 80px;
-  --header-transform: 0;
   --scroll: 0px;
 }
 
@@ -56,10 +52,6 @@ export default class App extends Vue {
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-}
-
-main {
-  padding-top: var(--header-height);
 }
 
 nav,
@@ -72,6 +64,19 @@ section {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.fade-in {
+  animation: fade-in 600ms ease forwards;
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media print {
