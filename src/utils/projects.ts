@@ -16,7 +16,7 @@ const projects: IProjects[] = [
     date: "March 2021",
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",
-    mockup: "foodz",
+    mockup: "foodz2",
     description: "Foodz is a web app built for Horeca students at Koning Willem I College (not for use purposes), where these students can view, add, edit and delete catering events.",
     gallery: ["homepage", "login", "overzicht", "editor", "edit", "appearance"],
   },

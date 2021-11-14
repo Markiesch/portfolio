@@ -31,6 +31,8 @@ export default class Home extends Vue {
     margin: 0.5rem;
     border-radius: 0.75rem;
     overflow: hidden;
+    background-color: #242527;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
 
     img {
       display: block;

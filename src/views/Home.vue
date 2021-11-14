@@ -27,15 +27,18 @@
   </section>
 
   <section class="project--section">
-    <article>
-      <h2>{{ projects[0].title }}</h2>
-      <p>{{ projects[0].description }}</p>
-    </article>
-    <article>
-      <router-link :to="`/project/${projects[0].name}`">
-        <img :src="require(`@/assets/mockups/${projects[0].mockup}.png`)" alt="Project" />
-      </router-link>
-    </article>
+    <h2 class="project--title">Projects</h2>
+    <div class="projects--container">
+      <article v-for="(project, index) of projects" :key="index">
+        <router-link :to="`/project/${project.name}`">
+          <img :src="require(`@/assets/mockups/${project.mockup}.png`)" alt="Project" />
+        </router-link>
+        <div class="overlay">
+          <p>{{ project.date }}</p>
+          <h2>{{ project.title }}</h2>
+        </div>
+      </article>
+    </div>
   </section>
 
   <section class="about--section">
@@ -131,33 +134,74 @@ export default class Home extends Vue {
 }
 
 .project--section {
-  display: flex;
   align-items: center;
-  flex-wrap: wrap;
   padding: 0;
+  overflow: hidden;
+
+  .project--title {
+    margin: 0 0 2rem 1rem;
+  }
+
+  .projects--container {
+    position: relative;
+    display: flex;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 5%;
+      height: 100%;
+      top: 0;
+    }
+
+    &::after {
+      right: 0;
+      background: linear-gradient(to right, transparent, #00000099);
+    }
+
+    p {
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      color: #f5f6f8;
+      font-weight: 300;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: white;
+    }
+  }
 
   article {
-    margin: 1rem;
-    flex: 1 1 25rem;
+    position: relative;
+    margin: 0 1rem;
+    flex: 0 0 40%;
+    border-radius: 0.5rem;
+    background-color: #242527;
+    box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.2);
   }
 
-  h2 {
-    margin-bottom: 1rem;
-  }
-
-  p {
-    color: var(--grey-color);
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
   }
 
   img {
     width: 100%;
     display: block;
-    box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.2);
-    border-radius: 0.75rem;
     transition: transform 300ms ease;
 
     &:hover {
-      transform: translateX(-2.5%) scale(1.025);
+      transform: scale(1.025);
     }
   }
 }
