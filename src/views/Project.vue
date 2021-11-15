@@ -16,10 +16,12 @@
         <p>{{ project.date }}</p>
 
         <h3>LINKS & RESOURCES</h3>
-        <p>{{ project.links }}</p>
+        <p v-for="(link, index) of project.links" :key="index">
+          <a :href="link.url" target="_blank" rel="noopener">{{ link.name }}</a>
+        </p>
       </div>
       <div>
-        <p>{{ project?.description }}</p>
+        <p>{{ project.description }}</p>
       </div>
     </div>
 
