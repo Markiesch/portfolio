@@ -1,12 +1,13 @@
 export interface IProjects {
   name: string;
-  title: string;
   date: string;
+  title: string;
+  description: string;
   roles: string[];
   client: string;
-  mockup?: string;
-  description?: string;
-  gallery?: string[];
+  links?: { name: string; url: string }[];
+  mockup: string;
+  gallery: string[];
 }
 
 const projects: IProjects[] = [
@@ -16,7 +17,11 @@ const projects: IProjects[] = [
     date: "March 2021",
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",
-    mockup: "foodz2",
+    mockup: "foodz",
+    links: [
+      { name: "github", url: "https://github.com/Markiesch/ProjectThema4" },
+      { name: "live demo", url: "https://markiesch.github.io/ProjectThema4/" },
+    ],
     description: "Foodz is a web app built for Horeca students at Koning Willem I College (not for use purposes), where these students can view, add, edit and delete catering events.",
     gallery: ["homepage", "login", "overzicht", "editor", "edit", "appearance"],
   },
@@ -27,6 +32,10 @@ const projects: IProjects[] = [
     roles: ["UI/UX", "Frontend"],
     client: "Personal project",
     mockup: "notes",
+    links: [
+      { name: "github", url: "https://github.com/Markiesch/vue-notes" },
+      { name: "live demo", url: "https://vue-notesapp.netlify.app/" },
+    ],
     description: "Notes is a web-based personal project, started to dive a bit deeper in the world of VueJs with Vuetify.",
     gallery: ["homepage", "editor", "favorite"],
   },
@@ -37,6 +46,10 @@ const projects: IProjects[] = [
     roles: ["UI/UX", "Frontend"],
     client: "Personal project",
     mockup: "memory",
+    links: [
+      { name: "github", url: "https://github.com/Markiesch/MemoryGame" },
+      { name: "live demo", url: "https://vue-memory-games.netlify.app/" },
+    ],
     description: "The memory game is a pair matching game where the player has to click on 2 cards, if they are the same then they remain. The game ends whenever all cards are flipped successfully.",
     gallery: ["homepage", "game", "victory"],
   },
@@ -47,6 +60,7 @@ const projects: IProjects[] = [
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",
     mockup: "pettelaer",
+    links: [{ name: "github", url: "https://github.com/Markiesch/PraktijkOpdrachtThema4" }],
     description: "A small website builded for members of the tennis club BTC De Pettelaer, where members can view various information about other members.",
     gallery: ["homepage", "login", "overzicht"],
   },
@@ -57,6 +71,10 @@ const projects: IProjects[] = [
     roles: ["UI/UX", "Frontend"],
     client: "Koning Willem I College",
     mockup: "dentist",
+    links: [
+      { name: "github", url: "https://github.com/Markiesch/PraktijkOpdrachtThema3" },
+      { name: "live demo", url: "https://markiesch.github.io/PraktijkOpdrachtThema3/" },
+    ],
     description: "A small website made for patients at Tandarts Den Bosch where patients can do a self-test to receive a brush core.",
     gallery: ["homepage", "question", "print"],
   },
@@ -67,6 +85,7 @@ const projects: IProjects[] = [
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",
     mockup: "kw1c",
+    links: [{ name: "github", url: "https://github.com/Markiesch/ProjectThema3" }],
     description: "A web-based studyselftest made for students at Koning Willem I College.",
     gallery: ["homepage", "form-name", "form-question", "result"],
   },
