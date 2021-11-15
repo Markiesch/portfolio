@@ -27,18 +27,24 @@
   </section>
 
   <section class="project--section">
-    <h2 class="project--title">Projects</h2>
+    <h2>Recent projects</h2>
     <div class="projects--container">
-      <article v-for="(project, index) of projects" :key="index">
+      <article v-for="(project, index) of projects.slice(0, 3)" :key="index">
         <router-link :to="`/project/${project.name}`">
           <img :src="require(`@/assets/mockups/${project.mockup}.png`)" alt="Project" />
         </router-link>
-        <div class="overlay">
-          <p>{{ project.date }}</p>
-          <h2>{{ project.title }}</h2>
+        <div class="details">
+          <div>
+            <p>/ {{ index + 1 < 10 ? "0" + (index + 1) : index }}</p>
+          </div>
+          <div>
+            <p class="project--title">{{ project.title }}</p>
+            <p class="project--date">{{ project.date }}</p>
+          </div>
         </div>
       </article>
     </div>
+    <router-link class="project--cta" to="/portfolio">All projects</router-link>
   </section>
 
   <section class="about--section">
@@ -51,7 +57,6 @@
         a 17 year old front-end development enthusiast with 2+ years of experience. I currently live and study in 's-Hertogenbosch, the Netherlands. Learning and working with HTML, CSS, Javascript,
         PHP, SQL, and VueJS is daily business for me, but when I am not coding or shifting pixels around, I like to fill my free time by playing video games and basketball.
       </p>
-      <router-link to="/portfolio"></router-link>
     </article>
   </section>
 
@@ -134,75 +139,62 @@ export default class Home extends Vue {
 }
 
 .project--section {
-  align-items: center;
-  padding: 0;
-  overflow: hidden;
-
-  .project--title {
-    margin: 0 0 2rem 1rem;
-  }
+  padding: 2rem 0 0 0;
 
   .projects--container {
-    position: relative;
-    display: flex;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      width: 5%;
-      height: 100%;
-      top: 0;
-    }
-
-    &::after {
-      right: 0;
-      background: linear-gradient(to right, transparent, #00000099);
-    }
-
-    p {
-      text-transform: uppercase;
-      letter-spacing: 0.25rem;
-      color: #f5f6f8;
-      font-weight: 300;
-    }
-
-    h2 {
-      margin-bottom: 1rem;
-      color: white;
-    }
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   }
 
   article {
-    position: relative;
-    margin: 0 1rem;
-    flex: 0 0 40%;
+    margin: 0.5rem;
+    overflow: hidden;
     border-radius: 0.5rem;
-    background-color: #242527;
-    box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.2);
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    padding: 2rem;
-    flex-direction: column;
-    justify-content: space-between;
-    pointer-events: none;
+    background-color: hsla(220, 33%, 10%, 0.075);
+    box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.05);
   }
 
   img {
     width: 100%;
+    padding: 2rem 0;
     display: block;
     transition: transform 300ms ease;
 
     &:hover {
-      transform: scale(1.025);
+      transform: scale(1.05);
     }
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: right;
+    padding: 1rem;
+  }
+
+  .project--title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .project--date {
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+  }
+
+  .project--cta {
+    background-color: var(--primary-color);
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0 0.5em;
+    padding: 1em 1.25em;
+    line-height: 1;
+    color: white;
+    font-weight: 300;
+    border-radius: 0.25rem;
   }
 }
 
@@ -261,18 +253,22 @@ export default class Home extends Vue {
 }
 
 .cta--section {
-  padding-bottom: 5rem;
+  padding-bottom: 2.5rem;
   text-align: center;
 
   a {
     display: inline-block;
-    margin-top: 2rem;
-    font-size: 3rem;
+    margin-top: 1rem;
+    font-size: clamp(1.5rem, 1.16rem + 1.48vw, 2.5rem);
+
     padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
     font-weight: 500;
     color: var(--primary-color);
-    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -282,7 +278,7 @@ export default class Home extends Vue {
   }
 
   .about--section {
-    grid-template-columns: 1fr;
+    display: block;
 
     img {
       display: none;
