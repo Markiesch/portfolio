@@ -29,20 +29,9 @@
   <section class="project--section">
     <h2>Recent projects</h2>
     <div class="projects--container">
-      <article v-for="(project, index) of projects.slice(0, 3)" :key="index">
-        <router-link :to="`/project/${project.name}`">
-          <img :src="require(`@/assets/mockups/${project.mockup}.png`)" alt="Project" />
-        </router-link>
-        <div class="details">
-          <div>
-            <p>/ {{ index + 1 < 10 ? "0" + (index + 1) : index }}</p>
-          </div>
-          <div>
-            <p class="project--title">{{ project.title }}</p>
-            <p class="project--date">{{ project.date }}</p>
-          </div>
-        </div>
-      </article>
+      <template v-for="(project, index) of projects.slice(0, 3)" :key="index">
+        <ProjectMockup :project="project" :index="index" />
+      </template>
     </div>
     <router-link class="project--cta" to="/portfolio">All projects</router-link>
   </section>
@@ -67,9 +56,15 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
+import { Vue, Options } from "vue-class-component";
+import ProjectMockup from "@/components/ProjectMockup.vue";
 import portfolio from "@/utils/projects";
 
+@Options({
+  components: {
+    ProjectMockup,
+  },
+})
 export default class Home extends Vue {
   projects = portfolio;
 }
@@ -145,44 +140,6 @@ export default class Home extends Vue {
     margin: 2rem 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-  }
-
-  article {
-    margin: 0.5rem;
-    overflow: hidden;
-    border-radius: 0.5rem;
-    background-color: hsla(220, 33%, 10%, 0.075);
-    box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.05);
-  }
-
-  img {
-    width: 100%;
-    padding: 2rem 0;
-    display: block;
-    transition: transform 300ms ease;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
-
-  .details {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    text-align: right;
-    padding: 1rem;
-  }
-
-  .project--title {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-
-  .project--date {
-    text-transform: uppercase;
-    letter-spacing: 0.25rem;
   }
 
   .project--cta {

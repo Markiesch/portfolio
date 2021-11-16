@@ -1,23 +1,26 @@
 <template>
   <p class="background-text">Portfolio</p>
-
   <Breadcrumbs>Portfolio</Breadcrumbs>
 
   <section class="projects--section">
-    <article v-for="(project, index) of projects" :key="index" class="fade-in" :style="`animation-delay: ${index * 150}ms`">
-      <router-link :to="`/project/${project.name}`">
-        <img :src="require(`@/assets/mockups/${project.mockup}.png`)" :alt="project.title" />
-      </router-link>
-    </article>
+    <template v-for="(project, index) of projects" :key="index">
+      <ProjectMockup :project="project" :index="index" />
+    </template>
   </section>
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
-import Portfolio from "@/utils/projects";
+import { Vue, Options } from "vue-class-component";
+import ProjectMockup from "@/components/ProjectMockup.vue";
+import portfolio from "@/utils/projects";
 
+@Options({
+  components: {
+    ProjectMockup,
+  },
+})
 export default class Home extends Vue {
-  projects = Portfolio;
+  projects = portfolio;
 }
 </script>
 
@@ -26,24 +29,6 @@ export default class Home extends Vue {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   padding: 0.5rem;
-
-  article {
-    margin: 0.5rem;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    background-color: #242527;
-    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
-
-    img {
-      display: block;
-      width: 100%;
-      transition: transform 300ms ease;
-    }
-
-    &:hover img {
-      transform: scale(1.05);
-    }
-  }
 }
 
 @media screen and (max-width: 40rem) {
