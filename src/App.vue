@@ -46,7 +46,9 @@ export default class App extends Vue {
   --scroll: 0;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -54,8 +56,10 @@ export default class App extends Vue {
 }
 
 nav,
-section {
-  max-width: 1440px;
+section,
+footer,
+.menu header {
+  max-width: 90rem;
   margin: 0 auto;
   padding: 0 1rem;
 }

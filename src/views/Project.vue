@@ -56,7 +56,7 @@ export default class Home extends Vue {
     gap: 1rem;
 
     & > div {
-      flex: 1 1 400px;
+      flex: 1 1 25rem;
     }
 
     h3 {
@@ -69,7 +69,7 @@ export default class Home extends Vue {
   }
 
   article {
-    border-radius: 10px;
+    border-radius: 0.75rem;
     overflow: hidden;
     margin-bottom: 1rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);

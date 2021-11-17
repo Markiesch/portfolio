@@ -1,9 +1,10 @@
 <template>
   <footer>
     <article>
-      <p>Designed and developed by Mark Schuurmans</p>
-      <p>© All rights reserved</p>
+      <p>&copy; 2021 Mark Schuurmans</p>
+      <p>All rights reserved</p>
     </article>
+
     <article class="link--container">
       <a href="https://github.com/Markiesch" aria-label="Github" target="_blank" rel="noopener">
         <svg viewBox="0 0 496 512">
@@ -25,15 +26,14 @@
 
 <style lang="scss">
 footer {
-  margin: 4rem auto;
-  padding: 0 1rem;
-  max-width: 1440px;
   display: flex;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 
   p {
-    font-size: 1rem;
+    font-size: clamp(0.8125rem, 0.75rem + 0.27vw, 1rem);
     font-weight: 400;
   }
 
@@ -43,7 +43,7 @@ footer {
   }
 
   svg {
-    height: 1.75rem;
+    height: 1.5rem;
     display: block;
 
     path {

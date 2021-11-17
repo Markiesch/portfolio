@@ -123,8 +123,8 @@ export default class Home extends Vue {
 
 <style lang="scss" scoped>
 #map {
-  height: 400px;
-  max-height: 60vh;
+  height: 25rem;
+  max-height: 50vh;
   background-color: #f5f5f5;
   border-radius: 1rem;
 }
@@ -187,7 +187,7 @@ export default class Home extends Vue {
   textarea {
     padding: 0.5em;
     border: 1px solid rgba(120, 120, 120, 0.5);
-    border-radius: 5px;
+    border-radius: 0.25rem;
     width: 100%;
   }
 
@@ -195,14 +195,14 @@ export default class Home extends Vue {
     margin: 0 !important;
     resize: vertical;
     height: 4rem;
-    max-height: 200px;
+    max-height: 12.5;
   }
 
   .alert {
     width: 100%;
     margin: 1rem 0;
     padding: 0.75rem;
-    border-radius: 5px;
+    border-radius: 0.25rem;
     color: hsl(0, 100%, 66%);
     background-color: hsla(0, 100%, 66%, 0.1);
   }

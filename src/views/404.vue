@@ -48,13 +48,13 @@ section {
       height: 1px;
       background: var(--primary-color);
       opacity: 0;
-      transform: translateY(5px);
+      transform: translateY(0.25rem);
       transition-property: transform, opacity;
       transition-duration: 300ms;
     }
 
     &::after {
-      bottom: -5px;
+      bottom: -0.25rem;
       width: 70%;
       left: 15%;
     }

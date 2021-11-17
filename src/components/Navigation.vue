@@ -123,11 +123,8 @@ export default class Navigation extends Vue {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    max-width: 1440px;
-    padding: 0 1em;
     height: var(--nav-height);
     width: 100%;
-    margin: 0 auto;
   }
 
   nav {
