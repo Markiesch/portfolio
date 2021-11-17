@@ -27,10 +27,13 @@
 <style lang="scss">
 footer {
   display: flex;
-  padding-bottom: 1rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+
+  article {
+    padding: 1.5rem 0;
+  }
 
   p {
     font-size: clamp(0.8125rem, 0.75rem + 0.27vw, 1rem);
