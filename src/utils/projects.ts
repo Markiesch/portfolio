@@ -27,7 +27,7 @@ const projects: IProjects[] = [
   },
   {
     name: "notes",
-    title: "Notes webapp",
+    title: "Notes",
     date: "March 2021",
     roles: ["UI/UX", "Frontend"],
     client: "Personal project",
@@ -55,7 +55,7 @@ const projects: IProjects[] = [
   },
   {
     name: "pettelaer",
-    title: "Tennisclub de Pettelear",
+    title: "De Pettelear",
     date: "March 2021",
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",
@@ -66,7 +66,7 @@ const projects: IProjects[] = [
   },
   {
     name: "dentist",
-    title: "Dentist practice 's-Hertogenbosch",
+    title: "Dentist",
     date: "March 2021",
     roles: ["UI/UX", "Frontend"],
     client: "Koning Willem I College",
@@ -80,7 +80,7 @@ const projects: IProjects[] = [
   },
   {
     name: "studytest",
-    title: "KW1C study choice test",
+    title: "KW1C studytest",
     date: "March 2021",
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",

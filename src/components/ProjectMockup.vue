@@ -8,7 +8,7 @@
         <p>/ {{ index + 1 < 10 ? "0" + (index + 1) : index }}</p>
       </div>
       <div>
-        <p class="project--title">{{ project.title }}</p>
+        <p class="section--title">{{ project.title }}</p>
         <p class="project--date">{{ project.date }}</p>
       </div>
     </div>
