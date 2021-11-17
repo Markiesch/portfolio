@@ -27,7 +27,7 @@
   </section>
 
   <section class="project--section">
-    <h2>Recent projects</h2>
+    <h2 class="section--title">Recent projects</h2>
     <div class="projects--container">
       <template v-for="(project, index) of projects.slice(0, 3)" :key="index">
         <ProjectMockup :project="project" :index="index" />
@@ -51,7 +51,7 @@
 
   <section class="cta--section">
     <h2>Interested to work with me?</h2>
-    <router-link to="/contact">Let's work together</router-link>
+    <router-link class="section--title" to="/contact">Let's work together</router-link>
   </section>
 </template>
 
@@ -135,24 +135,24 @@ export default class Home extends Vue {
 
 .project--section {
   padding: 2rem 0 0 0;
+}
 
-  .projects--container {
-    margin: 2rem 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-  }
+.projects--container {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+}
 
-  .project--cta {
-    background-color: var(--primary-color);
-    display: inline-block;
-    font-size: 1rem;
-    margin: 0 0.5em;
-    padding: 1em 1.25em;
-    line-height: 1;
-    color: white;
-    font-weight: 300;
-    border-radius: 0.25rem;
-  }
+.project--cta {
+  background-color: var(--primary-color);
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0 0.5em;
+  padding: 1em 1.25em;
+  line-height: 1;
+  color: white;
+  font-weight: 300;
+  border-radius: 0.25rem;
 }
 
 .about--section {
@@ -232,6 +232,10 @@ export default class Home extends Vue {
 @media screen and (max-width: 55rem) {
   .hero {
     text-align: center;
+  }
+
+  .projects--container {
+    grid-template-columns: 1fr;
   }
 
   .about--section {
