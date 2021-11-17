@@ -77,16 +77,4 @@ a {
     transform: translateY(0);
   }
 }
-
-@media print {
-  header,
-  h1,
-  .contact--section {
-    display: none;
-  }
-
-  section {
-    text-align: center;
-  }
-}
 </style>
