@@ -24,13 +24,16 @@ export default class App extends Vue {
   lastScrollTop = 0;
 
   mounted() {
-    window.addEventListener("scroll", () => {
-      const root = document.documentElement;
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    this.updateScroll();
+    window.addEventListener("scroll", this.updateScroll);
+  }
 
-      root.style.setProperty("--scroll", -scrollTop + "px");
-      this.lastScrollTop = scrollTop;
-    });
+  updateScroll() {
+    const root = document.documentElement;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    root.style.setProperty("--scroll", -scrollTop + "px");
+    this.lastScrollTop = scrollTop;
   }
 }
 </script>
