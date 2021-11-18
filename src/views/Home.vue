@@ -2,12 +2,12 @@
   <p class="background-text">developer</p>
   <section class="hero">
     <article>
-      <div class="image--container">
+      <div class="fade-in image--container">
         <img src="../assets/character.png" alt="character" />
       </div>
-      <p class="fade-in">Hi! I'm Mark👋,</p>
-      <h1 class="fade-in header">I build awesome experience</h1>
-      <div class="fade-in cta">
+      <p class="slide-in">Hi! I'm Mark👋,</p>
+      <h1 class="slide-in header">I build awesome experience</h1>
+      <div class="slide-in cta">
         <router-link class="portfolio--link" to="/portfolio">
           <svg viewBox="0 0 576 512" class="svg-inline--fa fa-eye fa-w-18 fa-9x">
             <path
@@ -84,6 +84,7 @@ export default class Home extends Vue {
     height: 8rem;
     margin-bottom: 1rem;
     display: block;
+    animation-delay: 600ms;
   }
 
   img {

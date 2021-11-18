@@ -72,16 +72,27 @@ a {
   color: inherit;
 }
 
+.slide-in {
+  animation: slide-in 600ms ease forwards;
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+@keyframes slide-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .fade-in {
   animation: fade-in 600ms ease forwards;
   opacity: 0;
-  transform: translateY(2rem);
 }
 
 @keyframes fade-in {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>
