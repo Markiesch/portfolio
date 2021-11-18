@@ -4,7 +4,7 @@
 
   <section class="projects--section">
     <template v-for="(project, index) of projects" :key="index">
-      <ProjectMockup :project="project" :index="index" />
+      <ProjectMockup :project="project" :index="index" class="slide-in" :style="`animation-delay: ${index * 200}ms`" />
     </template>
   </section>
 </template>
