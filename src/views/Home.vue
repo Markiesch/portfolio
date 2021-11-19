@@ -136,6 +136,10 @@ export default class Home extends Vue {
 
 .project--section {
   padding: 2rem 0 0 0;
+
+  h2 {
+    padding: 0 0.5rem;
+  }
 }
 
 .projects--container {
