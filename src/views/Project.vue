@@ -1,7 +1,8 @@
 <template>
-  <h1>Portfolio</h1>
+  <p class="background-text">Portfolio</p>
 
   <Breadcrumbs>{{ project?.title }}</Breadcrumbs>
+
   <section class="project" v-if="project">
     <div class="project--information">
       <div>
@@ -15,10 +16,12 @@
         <p>{{ project.date }}</p>
 
         <h3>LINKS & RESOURCES</h3>
-        <p>{{ project.links }}</p>
+        <p v-for="(link, index) of project.links" :key="index">
+          <a :href="link.url" target="_blank" rel="noopener">{{ link.name }}</a>
+        </p>
       </div>
       <div>
-        <p>{{ project?.description }}</p>
+        <p>{{ project.description }}</p>
       </div>
     </div>
 
@@ -26,29 +29,20 @@
       <img :src="require(`@/assets/projects/${project.name}/${image}.png`)" alt="" />
     </article>
   </section>
-  <section v-else>
-    <h2>404 - Couldn't find any project named {{ param }}</h2>
-  </section>
 </template>
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-import Projects, { IProjects } from "@/utils/projects";
+import projects, { IProjects } from "@/utils/projects";
 
 export default class Home extends Vue {
-  param = "";
   project: IProjects | null = null;
 
   mounted() {
-    this.param = this.$route.params.project.toString();
-    const paramProject = this.param.toLowerCase();
+    const paramProject = this.$route.params.project.toString().toLowerCase();
+    this.project = projects.find(({ name }) => name.includes(paramProject)) || null;
 
-    let project = Projects.find(({ name }) => {
-      name = name.toLowerCase();
-      return name === paramProject || name.includes(paramProject);
-    });
-
-    this.project = project || null;
+    if (!this.project) this.$router.push("/404");
   }
 }
 </script>
@@ -62,7 +56,7 @@ export default class Home extends Vue {
     gap: 1rem;
 
     & > div {
-      flex: 1 1 400px;
+      flex: 1 1 25rem;
     }
 
     h3 {
@@ -75,7 +69,7 @@ export default class Home extends Vue {
   }
 
   article {
-    border-radius: 10px;
+    border-radius: 0.75rem;
     overflow: hidden;
     margin-bottom: 1rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);

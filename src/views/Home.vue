@@ -1,229 +1,251 @@
 <template>
-  <h1>developer</h1>
+  <p class="background-text">developer</p>
   <section class="hero">
     <article>
-      <h3>JUNIOR SOFTWARE DEVELOPER</h3>
-      <h2>
-        <span v-for="(letter, index) of 'I build awesome experience'" :key="index">
-          {{ letter }}
-        </span>
-      </h2>
-      <router-link to="/portfolio">View Projects</router-link> -
-      <router-link to="/">Contact me</router-link>
-    </article>
-    <article>
-      <img src="../assets/character.png" alt="character" />
+      <div class="fade-in image--container">
+        <img src="../assets/character.png" alt="character" />
+      </div>
+      <p class="slide-in">Hi! I'm Mark👋,</p>
+      <h1 class="slide-in header">I build awesome experience</h1>
+      <div class="slide-in cta">
+        <router-link class="portfolio--link" to="/portfolio">
+          <svg viewBox="0 0 576 512" class="svg-inline--fa fa-eye fa-w-18 fa-9x">
+            <path
+              d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
+            ></path>
+          </svg>
+          <span>View Projects</span>
+        </router-link>
+        <router-link to="/contact">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+          </svg>
+          <span>Contact me</span>
+        </router-link>
+      </div>
     </article>
   </section>
+
   <section class="project--section">
-    <article>
-      <h3>FEATURED PROJECT</h3>
-      <h2>{{ projects[0].title }}</h2>
-      <p>{{ projects[0].description }}</p>
-    </article>
-    <article>
-      <img src="@/assets/mockups/dentist.png" alt="Project" />
-    </article>
+    <h2 class="section--title">Recent projects</h2>
+    <div class="projects--container">
+      <template v-for="(project, index) of projects.slice(0, 3)" :key="index">
+        <ProjectMockup :project="project" :index="index" />
+      </template>
+    </div>
+    <router-link class="project--cta" to="/portfolio">All projects</router-link>
   </section>
+
   <section class="about--section">
-    <article></article>
+    <article class="image--container">
+      <img src="../assets/character2.png" alt="character" />
+    </article>
     <article>
-      <p>Hey! I am Mark Schuurmans,</p>
+      <p class="heading">Hey! I'm Mark👋,</p>
       <p>
-        a 17 years old student at the Koning Willen I College, where I study to become a Software Developer. I am currently in my first year of this 4-year-old BOL education. I am currently working
-        with HTML, CSS, Javascript, PHP, SQL, and VueJS. But when I am not coding or shifting pixels around, I fill my free time by playing video games and basketball.
+        a 17 year old front-end development enthusiast with 2+ years of experience. I currently live and study in 's-Hertogenbosch, the Netherlands. Learning and working with HTML, CSS, Javascript,
+        PHP, SQL, and VueJS is daily business for me, but when I am not coding or shifting pixels around, I like to fill my free time by playing video games and basketball.
       </p>
     </article>
   </section>
-  <section class="contact--section">
+
+  <section class="cta--section">
     <h2>Interested to work with me?</h2>
-    <button>let's talk</button>
+    <router-link class="section--title" to="/contact">Let's work together</router-link>
   </section>
   <canvas></canvas>
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
-import Portfolio from "@/utils/projects";
+import { Vue, Options } from "vue-class-component";
+import ProjectMockup from "@/components/ProjectMockup.vue";
+import portfolio from "@/utils/projects";
 
+@Options({
+  components: {
+    ProjectMockup,
+  },
+})
 export default class Home extends Vue {
-  projects = Portfolio;
-
-  mounted() {
-    const canvas = document.querySelector("canvas")!;
-    const ctx = canvas.getContext("2d");
-    const targets = Array.from(document.querySelectorAll(".hero span"));
-    canvas.width = innerWidth;
-    canvas.height = document.documentElement.offsetHeight;
-
-    let left = false;
-    let forwards = false;
-    let backwards = false;
-    let right = false;
-
-    class Player {
-      velocity = 5;
-      radius = 20;
-
-      constructor(public x: number, public y: number) {
-        this.draw();
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        ctx.fillStyle = "#550055";
-        ctx.fill();
-      }
-
-      update() {
-        this.draw();
-        if (left) this.x -= this.velocity;
-        if (right) this.x += this.velocity;
-        if (forwards) this.y -= this.velocity;
-        if (backwards) this.y += this.velocity;
-      }
-    }
-
-    const player = new Player(40, 40);
-
-    class Projectile {
-      radius = 10;
-
-      constructor(public x: number, public y: number, private velocityX: number, private velocityY: number) {
-        this.draw();
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        ctx.fillStyle = "#550055";
-        ctx.fill();
-      }
-
-      update() {
-        this.draw();
-        this.x += this.velocityX;
-        this.y += this.velocityY;
-      }
-    }
-
-    let projectiles: Projectile[] = [];
-
-    for (const target of targets) {
-      // Hide all `empty` elements by default to avoid invisible targets
-      if (!target.innerHTML.replaceAll(" ", "")) target.classList.add("hide");
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-      ctx?.clearRect(0, 0, canvas.width, canvas.height);
-      player.update();
-
-      projectiles.forEach((projectile, index) => {
-        projectile.update();
-
-        for (const target of targets) {
-          if (target.classList.contains("hide")) continue;
-
-          // @ts-ignore
-          const centerX = target.getBoundingClientRect().left + target.offsetWidth / 2;
-          // @ts-ignore
-          const centerY = target.getBoundingClientRect().top + target.offsetHeight / 2;
-          const distance = Math.hypot(projectile.x - centerX, projectile.y - centerY);
-
-          // @ts-ignore
-          if (distance - projectile.radius - target.offsetWidth / 2 < 1) {
-            setTimeout(() => {
-              projectiles.splice(index, 1);
-              target.classList.add("hide");
-            }, 0);
-          }
-        }
-      });
-    }
-    animate();
-
-    addEventListener("click", (event) => {
-      const angle = Math.atan2(event.pageY - player.y, event.pageX - player.x);
-      projectiles.push(new Projectile(player.x, player.y, Math.cos(angle) * 3, Math.sin(angle) * 3));
-    });
-
-    addEventListener("keydown", (e) => {
-      if (e.key === "a") left = true;
-      if (e.key === "w") forwards = true;
-      if (e.key === "s") backwards = true;
-      if (e.key === "d") right = true;
-    });
-
-    addEventListener("keyup", (e) => {
-      if (e.key === "a") left = false;
-      if (e.key === "w") forwards = false;
-      if (e.key === "s") backwards = false;
-      if (e.key === "d") right = false;
-    });
-  }
+  projects = portfolio;
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .hero {
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  min-height: 100vh;
-  padding-bottom: var(--header-height);
+  text-align: center;
+  min-height: calc(100vh - var(--nav-height));
+  padding-bottom: var(--nav-height);
 
-  article {
-    flex: 1 1 400px;
+  .image--container {
+    height: 8rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation-delay: 600ms;
   }
 
-  article + article {
+  img {
+    height: 100%;
+  }
+
+  p {
+    color: var(--primary-color);
+    background-color: hsla(220, 33%, 10%, 0.05);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  h1 {
+    animation-delay: 300ms;
+    max-width: 17ch;
+    line-height: 1;
+    margin: 1rem auto 3rem auto;
+  }
+
+  .cta {
+    animation-delay: 600ms;
+  }
+
+  a {
+    font-size: 1.25rem;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    font-weight: 300;
+    align-items: center;
+  }
+
+  svg {
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    fill: currentColor;
+  }
+
+  .portfolio--link {
+    background-color: var(--primary-color);
+    margin-right: 1rem;
+    color: white;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  }
+}
+
+.project--section {
+  padding: 2rem 0 0 0;
+}
+
+.projects--container {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+}
+
+.project--cta {
+  background-color: var(--primary-color);
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0 0.5em;
+  padding: 1em 1.25em;
+  line-height: 1;
+  color: white;
+  font-weight: 300;
+  border-radius: 0.25rem;
+}
+
+.about--section {
+  display: grid;
+  align-items: center;
+  padding: 5rem 0;
+  min-height: 60vh;
+  grid-template-columns: 1fr auto;
+  color: var(--primary-color);
+
+  article {
+    padding: 0 1rem;
+  }
+
+  .image--container {
+    width: 25rem;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   img {
-    max-width: 25rem;
+    max-width: 15rem;
     width: 90%;
   }
-}
 
-h2 {
-  margin-bottom: 0.5em;
-}
+  .heading {
+    background-color: var(--primary-color);
+    font-size: 1rem;
+    display: inline-block;
+    padding: 1em 1.25em;
+    line-height: 1;
+    margin-bottom: 1rem;
+    color: white;
+    font-weight: 300;
+    position: relative;
+    border-radius: 0.25rem;
 
-.project--section {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 5rem;
-
-  article {
-    flex: 1 1 400px;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0.5rem solid transparent;
+      border-right-color: var(--primary-color);
+    }
   }
 
-  img {
-    width: 100%;
-    display: block;
-    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+  p {
+    font-weight: 400;
+    line-height: 1.5;
   }
 }
 
-.contact--section {
-  margin: 10rem auto;
+.cta--section {
+  padding-bottom: 2.5rem;
   text-align: center;
+
+  a {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: clamp(1.5rem, 1.16rem + 1.48vw, 2.5rem);
+
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    color: var(--primary-color);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 @media screen and (max-width: 55rem) {
   .hero {
     text-align: center;
+  }
+
+  .projects--container {
+    grid-template-columns: 1fr;
+  }
+
+  .about--section {
+    display: block;
+
+    img {
+      display: none;
+    }
   }
 }
 

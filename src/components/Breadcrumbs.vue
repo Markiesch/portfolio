@@ -15,13 +15,18 @@
 
 <style lang="scss">
 .breadcrumbs--section {
-  margin: 3rem auto;
+  margin: 2rem auto;
+  padding: 0.5rem;
 
   .breadcrumbs {
-    font-size: 1rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    a,
+    span {
+      padding: 0.5rem;
+    }
 
     svg {
       height: 1rem;
@@ -44,7 +49,8 @@
   }
 
   h2 {
-    margin-top: 0.25em;
+    line-height: 1;
+    padding-left: 0.5rem;
   }
 }
 </style>

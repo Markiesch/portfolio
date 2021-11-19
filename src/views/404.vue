@@ -1,8 +1,8 @@
 <template>
-  <h1>404</h1>
+  <p class="background-text">404</p>
   <section>
     <h3>Something went wrong...</h3>
-    <h2>Oops! We couldn't find that page.</h2>
+    <h2 class="section--title">Oops! We couldn't find that page.</h2>
     <p class="subtitle">Maybe you can find what you need here?</p>
     <p class="button--container">
       <router-link class="link" to="/portfolio">projects</router-link>
@@ -19,6 +19,7 @@ section {
 
   h2 {
     margin: 0.25em 0 0.75em 0;
+    line-height: 1.3;
   }
 
   .button--container {
@@ -47,13 +48,13 @@ section {
       height: 1px;
       background: var(--primary-color);
       opacity: 0;
-      transform: translateY(5px);
+      transform: translateY(0.25rem);
       transition-property: transform, opacity;
       transition-duration: 300ms;
     }
 
     &::after {
-      bottom: -5px;
+      bottom: -0.25rem;
       width: 70%;
       left: 15%;
     }
