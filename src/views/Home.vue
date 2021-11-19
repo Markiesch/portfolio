@@ -53,7 +53,6 @@
     <h2>Interested to work with me?</h2>
     <router-link class="section--title" to="/contact">Let's work together</router-link>
   </section>
-  <canvas></canvas>
 </template>
 
 <script lang="ts">
@@ -247,17 +246,5 @@ export default class Home extends Vue {
       display: none;
     }
   }
-}
-
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-}
-
-.hide {
-  opacity: 0;
 }
 </style>
