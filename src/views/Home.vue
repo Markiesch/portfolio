@@ -80,6 +80,7 @@ export default class Home extends Vue {
 
   img {
     height: 7.5rem;
+    width: 7.5rem;
     display: block;
     margin: 0 auto;
     margin-bottom: 1rem;
