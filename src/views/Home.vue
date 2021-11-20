@@ -2,9 +2,7 @@
   <p class="background-text">developer</p>
   <section class="hero">
     <article>
-      <div class="fade-in image--container">
-        <img src="../assets/character.png" alt="character" />
-      </div>
+      <img src="../assets/character.png" alt="character" />
       <p class="slide-in">Hi! I'm Mark👋,</p>
       <h1 class="slide-in header">I build awesome experience</h1>
       <div class="slide-in cta">
@@ -80,15 +78,11 @@ export default class Home extends Vue {
   min-height: calc(100vh - var(--nav-height));
   padding-bottom: var(--nav-height);
 
-  .image--container {
-    height: 8rem;
-    margin-bottom: 1rem;
-    display: block;
-    animation-delay: 600ms;
-  }
-
   img {
-    height: 100%;
+    height: 7.5rem;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
   }
 
   p {
