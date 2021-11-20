@@ -14,19 +14,10 @@ import MobileNavigation from "@/components/MobileNavigation.vue";
 import Footer from "@/components/Footer.vue";
 
 @Options({
-  components: {
-    Navigation,
-    MobileNavigation,
-    Footer,
-  },
+  components: { Navigation, MobileNavigation, Footer },
 })
 export default class App extends Vue {
   lastScrollTop = 0;
-
-  mounted() {
-    this.updateScroll();
-    window.addEventListener("scroll", this.updateScroll);
-  }
 
   updateScroll() {
     const root = document.documentElement;
@@ -34,6 +25,11 @@ export default class App extends Vue {
 
     root.style.setProperty("--scroll", -scrollTop + "px");
     this.lastScrollTop = scrollTop;
+  }
+
+  mounted() {
+    this.updateScroll();
+    window.addEventListener("scroll", this.updateScroll);
   }
 }
 </script>
