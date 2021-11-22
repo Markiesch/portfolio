@@ -34,7 +34,7 @@ export default class Home extends Vue {}
 
   img {
     width: 100%;
-    padding: 2rem 0;
+    padding: 2.5rem 1.5rem;
     display: block;
     transition: transform 300ms ease;
 
