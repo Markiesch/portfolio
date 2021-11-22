@@ -4,7 +4,7 @@
     <article>
       <img src="../assets/character.png" alt="character" />
       <p class="slide-in">Hi! I'm Mark👋,</p>
-      <h1 class="slide-in header">I build awesome experience</h1>
+      <h1 class="slide-in header">I build awesome experiences</h1>
       <div class="slide-in cta">
         <router-link class="portfolio--link" to="/portfolio">
           <svg viewBox="0 0 576 512" class="svg-inline--fa fa-eye fa-w-18 fa-9x">
