@@ -108,7 +108,7 @@ export default class Home extends Vue {
 
   a {
     font-size: 1.25rem;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     border-radius: 0.25rem;
     display: inline-flex;
     font-weight: 300;
