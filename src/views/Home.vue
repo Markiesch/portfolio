@@ -210,7 +210,10 @@ export default class Home extends Vue {
 }
 
 .cta--section {
-  padding-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0 5rem 0;
   text-align: center;
 
   a {
