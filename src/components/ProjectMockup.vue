@@ -51,15 +51,9 @@ export default class Home extends Vue {}
     padding: 1rem;
   }
 
-  .project--title {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-
   .project--date {
     text-transform: uppercase;
-    letter-spacing: 0.25rem;
+    letter-spacing: 0.1rem;
   }
 }
 </style>
