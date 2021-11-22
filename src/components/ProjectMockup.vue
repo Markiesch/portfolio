@@ -5,7 +5,7 @@
     </router-link>
     <div class="details">
       <div>
-        <p>/ {{ index + 1 < 10 ? "0" + (index + 1) : index }}</p>
+        <p>/ {{ index + 1 < 10 ? "0" + (index + 1) : index + 1 }}</p>
       </div>
       <div>
         <p class="section--title">{{ project.title }}</p>
