@@ -55,8 +55,8 @@
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
-import ProjectMockup from "@/components/ProjectMockup.vue";
-import portfolio from "@/utils/projects";
+import ProjectMockup from "../components/ProjectMockup.vue";
+import portfolio from "../utils/projects";
 
 @Options({
   components: {

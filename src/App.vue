@@ -9,9 +9,9 @@
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
-import Navigation from "@/components/Navigation.vue";
-import MobileNavigation from "@/components/MobileNavigation.vue";
-import Footer from "@/components/Footer.vue";
+import Navigation from "./components/Navigation.vue";
+import MobileNavigation from "./components/MobileNavigation.vue";
+import Footer from "./components/Footer.vue";
 
 @Options({
   components: { Navigation, MobileNavigation, Footer },

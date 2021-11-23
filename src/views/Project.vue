@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-import projects, { IProjects } from "@/utils/projects";
+import projects, { IProjects } from "../utils/projects";
 
 export default class Home extends Vue {
   project: IProjects | null = null;
