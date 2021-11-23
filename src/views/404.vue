@@ -26,7 +26,6 @@ section {
     display: flex;
     margin-top: 1rem;
     justify-content: center;
-    gap: 2rem;
   }
 
   .subtitle {
@@ -37,6 +36,7 @@ section {
   // Link hover effect
   .link {
     position: relative;
+    padding: 1rem;
 
     &::before,
     &::after {

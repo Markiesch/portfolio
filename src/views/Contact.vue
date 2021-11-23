@@ -154,8 +154,11 @@ export default class Home extends Vue {
     grid-template-columns: 2rem 1fr;
     margin-top: 0.75rem;
     align-items: center;
-    gap: 1rem;
     color: var(--primary-color);
+
+    span {
+      padding-left: 0.75rem;
+    }
   }
 
   form {

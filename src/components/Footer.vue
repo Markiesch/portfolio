@@ -42,11 +42,11 @@ footer {
 
   .link--container {
     display: flex;
-    gap: 1rem;
   }
 
   svg {
     height: 1.5rem;
+    margin: 0.5rem;
     display: block;
 
     path {

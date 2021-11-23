@@ -53,7 +53,6 @@ export default class Home extends Vue {
     padding-bottom: 5rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
 
     & > div {
       flex: 1 1 25rem;
