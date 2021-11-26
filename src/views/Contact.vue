@@ -35,7 +35,7 @@
       </a>
     </article>
     <article>
-      <form>
+      <form data-netlify="true">
         <div>
           <label for="name">Name</label>
           <input v-model="name" type="text" id="name" />
@@ -53,7 +53,7 @@
       </form>
 
       <div v-show="error" class="alert">{{ error }}</div>
-      <div class="send--button" @click.prevent="sendMail">
+      <div class="send--button" @click="sendMail">
         <svg viewBox="0 0 24 24">
           <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
         </svg>
@@ -66,50 +66,27 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 import "mapbox-gl/dist/mapbox-gl.css";
-import * as mapboxgl from "mapbox-gl";
-import emailjs from "emailjs-com";
+import { Map, Marker } from "mapbox-gl";
 
 export default class Home extends Vue {
-  accessToken = process.env.VUE_APP_MAPBOX_KEY;
-  serviceId = process.env.VUE_APP_SERVICEID;
-  zoom = 13;
-
   name = "";
   mail = "";
   message = "";
-
   error = "";
 
   mounted() {
-    const map = new mapboxgl.Map({
-      accessToken: this.accessToken,
+    const map = new Map({
+      accessToken: process.env.VUE_APP_MAPBOX_KEY,
       container: "map",
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/streets-v11?optimize=true",
       center: [5.372594, 51.664729],
-      zoom: this.zoom,
+      zoom: 3,
     });
 
-    new mapboxgl.Marker().setLngLat([5.372594, 51.664729]).addTo(map);
+    new Marker().setLngLat([5.372594, 51.664729]).addTo(map);
   }
 
   sendMail() {
-    this.checkForm();
-    if (this.error) return;
-
-    emailjs.send(
-      "service_aaz65ue",
-      "template_u9s6t3c",
-      {
-        to_name: "Mark",
-        from_name: this.name,
-        from_mail: this.mail,
-        message: this.message,
-      },
-      "user_NMitHqHt8szocKARc4txD"
-    );
-  }
-
-  checkForm() {
     const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (this.name.length < 3) return (this.error = "Name must be atleast 2 characters long");
