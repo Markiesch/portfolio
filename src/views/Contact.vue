@@ -83,7 +83,9 @@ export default class Home extends Vue {
       zoom: 3,
     });
 
-    new Marker().setLngLat([5.372594, 51.664729]).addTo(map);
+    map.on("load", () => {
+      new Marker().setLngLat([5.372594, 51.664729]).addTo(map);
+    });
   }
 
   sendMail() {
