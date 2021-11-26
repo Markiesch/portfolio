@@ -35,7 +35,7 @@
       </a>
     </article>
     <article>
-      <form data-netlify="true">
+      <form ref="form" data-netlify="true">
         <div>
           <label for="name">Name</label>
           <input v-model="name" type="text" id="name" />
@@ -88,14 +88,29 @@ export default class Home extends Vue {
     });
   }
 
-  sendMail() {
+  async sendMail(event: Event) {
+    event.preventDefault();
+    this.error = "";
+
     const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (this.name.length < 3) return (this.error = "Name must be atleast 2 characters long");
     if (!mailRegExp.test(this.mail.toLowerCase())) return (this.error = "Please enter a valid email");
     if (this.message.length < 20) return (this.error = "Please enter a message that has atleast 20 characters");
 
-    this.error = "";
+    // Passed checks
+    const formData: any = new FormData(this.$refs.form as HTMLFormElement);
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+      console.log("form succesfully submitted");
+    } catch (error) {
+      if (error instanceof Error) this.error = error.message;
+    }
   }
 }
 </script>
