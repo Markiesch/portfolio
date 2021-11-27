@@ -47,7 +47,7 @@
 
           <div>
             <label for="email">Email</label>
-            <input v-model="form.mail" type="text" id="email" name="email" />
+            <input v-model="form.mail" type="text" id="email" name="mail" />
           </div>
 
           <div>
@@ -115,12 +115,13 @@ export default class Home extends Vue {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: this.encode({
-          "form-name": "contact",
-          ...this.form,
-        }),
+        body: this.encode({ "form-name": "contact", ...this.form }),
       });
-      console.log("form succesfully submitted");
+      this.form = {
+        name: "",
+        mail: "",
+        message: "",
+      };
     } catch (error) {
       if (error instanceof Error) this.error = error.message;
     }
