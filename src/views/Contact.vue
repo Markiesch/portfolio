@@ -112,7 +112,7 @@ export default class Home extends Vue {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({
-          "form-name": "ask-question",
+          "form-name": "contact",
           ...this.form,
         }),
       });
