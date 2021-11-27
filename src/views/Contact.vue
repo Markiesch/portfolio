@@ -35,20 +35,20 @@
       </a>
     </article>
     <article>
-      <form ref="form" data-netlify="true">
+      <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
         <div>
           <label for="name">Name</label>
-          <input v-model="name" type="text" id="name" />
+          <input v-model="form.name" type="text" id="name" />
         </div>
 
         <div>
           <label for="email">Email</label>
-          <input v-model="mail" type="text" id="email" />
+          <input v-model="form.mail" type="text" id="email" />
         </div>
 
         <div>
           <label for="name">Message</label>
-          <textarea v-model="message" type="text" id="name" />
+          <textarea v-model="form.message" type="text" id="name" />
         </div>
       </form>
 
@@ -69,10 +69,18 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { Map, Marker } from "mapbox-gl";
 
 export default class Home extends Vue {
-  name = "";
-  mail = "";
-  message = "";
+  form = {
+    name: "",
+    mail: "",
+    message: "",
+  };
   error = "";
+
+  encode(data: any) {
+    return Object.keys(data)
+      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+      .join("&");
+  }
 
   mounted() {
     const map = new Map({
@@ -94,18 +102,19 @@ export default class Home extends Vue {
 
     const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (this.name.length < 3) return (this.error = "Name must be atleast 2 characters long");
-    if (!mailRegExp.test(this.mail.toLowerCase())) return (this.error = "Please enter a valid email");
-    if (this.message.length < 20) return (this.error = "Please enter a message that has atleast 20 characters");
+    if (this.form.name.length < 3) return (this.error = "Name must be atleast 2 characters long");
+    if (!mailRegExp.test(this.form.mail.toLowerCase())) return (this.error = "Please enter a valid email");
+    if (this.form.message.length < 20) return (this.error = "Please enter a message that has atleast 20 characters");
 
     // Passed checks
-    const formData: any = new FormData(this.$refs.form as HTMLFormElement);
-
     try {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
+        body: this.encode({
+          "form-name": "ask-question",
+          ...this.form,
+        }),
       });
       console.log("form succesfully submitted");
     } catch (error) {
