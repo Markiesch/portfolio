@@ -5,14 +5,6 @@
   </main>
   <mobile-navigation />
   <Footer />
-
-  <!-- hidden form which loads on runtime (for netlify)  -->
-  <form name="contact" method="POST" netlify data-netlify-honeypot="bot-field" hidden>
-    <input name="bot-field" />
-    <input type="text" name="name" />
-    <input type="text" name="email" />
-    <textarea name="message" />
-  </form>
 </template>
 
 <script lang="ts">
