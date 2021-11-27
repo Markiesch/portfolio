@@ -35,30 +35,35 @@
       </a>
     </article>
     <article>
-      <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
-        <div>
-          <label for="name">Name</label>
-          <input v-model="form.name" type="text" id="name" />
+      <form @submit.prevent="submitForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <div style="display: none;">
+          <label>Do not fill this if you are a human: <input name="bot-field"/></label>
+        </div>
+        <div class="form">
+          <div>
+            <label for="name">Name</label>
+            <input v-model="form.name" type="text" id="name" name="name" />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input v-model="form.mail" type="text" id="email" name="email" />
+          </div>
+
+          <div>
+            <label for="name">Message</label>
+            <textarea v-model="form.message" id="name" name="message" />
+          </div>
         </div>
 
-        <div>
-          <label for="email">Email</label>
-          <input v-model="form.mail" type="text" id="email" />
-        </div>
-
-        <div>
-          <label for="name">Message</label>
-          <textarea v-model="form.message" type="text" id="name" />
-        </div>
+        <div v-show="error" class="alert">{{ error }}</div>
+        <button class="send--button" type="submit">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+          </svg>
+          <span>SEND MESSAGE</span>
+        </button>
       </form>
-
-      <div v-show="error" class="alert">{{ error }}</div>
-      <div class="send--button" @click="sendMail">
-        <svg viewBox="0 0 24 24">
-          <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
-        </svg>
-        <span>SEND MESSAGE</span>
-      </div>
     </article>
   </section>
 </template>
@@ -96,8 +101,7 @@ export default class Home extends Vue {
     });
   }
 
-  async sendMail(event: Event) {
-    event.preventDefault();
+  async submitForm() {
     this.error = "";
 
     const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -164,7 +168,7 @@ export default class Home extends Vue {
     }
   }
 
-  form {
+  .form {
     display: flex;
     flex-wrap: wrap;
 
