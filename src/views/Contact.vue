@@ -35,7 +35,7 @@
       </a>
     </article>
     <article>
-      <form @submit.prevent="submitForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <form @submit.prevent="submitForm" name="contact" method="POST" data-netlify-honeypot="bot-field" netlify>
         <div style="display: none;">
           <label>Do not fill this if you are a human: <input name="bot-field"/></label>
         </div>
