@@ -11,11 +11,13 @@
       <div class="link--container">
         <router-link to="/">Home</router-link>
         <router-link to="/portfolio">Portfolio</router-link>
-        <!-- <router-link to="/Resume">Resume</router-link> -->
-        <router-link to="/contact">Contact</router-link>
+        <router-link to="/Resume">Resume</router-link>
       </div>
       <div @click="menuOpen = !menuOpen" class="burger--menu__container">
         <div class="burger--menu"></div>
+      </div>
+      <div class="contact--container">
+        <router-link to="/contact">Contact</router-link>
       </div>
     </nav>
   </header>
@@ -176,7 +178,7 @@ export default class Navigation extends Vue {
    ========================== */
 .burger--menu__container {
   position: relative;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 5rem;
@@ -201,6 +203,14 @@ export default class Navigation extends Vue {
 
 @media screen and (max-width: 50rem) {
   .link--container {
+    display: none;
+  }
+
+  .burger--menu__container {
+    display: flex;
+  }
+
+  .contact--container {
     display: none;
   }
 }
