@@ -68,61 +68,59 @@
   </section>
 </template>
 
-<script lang="ts">
-import { Vue } from "vue-class-component";
+<script lang="ts" setup>
+import { onMounted } from "vue";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Map, Marker } from "mapbox-gl";
 
-export default class Home extends Vue {
-  form = { name: "", email: "", message: "" };
+let form = { name: "", email: "", message: "" };
+let error = "";
+
+function encode(data: any) {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
+}
+
+async function submitForm() {
   error = "";
 
-  encode(data: any) {
-    return Object.keys(data)
-      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-      .join("&");
-  }
+  const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  mounted() {
-    const map = new Map({
-      accessToken: process.env.VUE_APP_MAPBOX_KEY,
-      container: "map",
-      style: "mapbox://styles/mapbox/streets-v11?optimize=true",
-      center: [5.372594, 51.664729],
-      zoom: 3,
+  if (form.name.length < 3) return (error = "Name must be atleast 2 characters long");
+  if (!mailRegExp.test(form.email.toLowerCase())) return (error = "Please enter a valid email");
+  if (form.message.length < 20) return (error = "Please enter a message that has atleast 20 characters");
+
+  // Passed checks
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...form }),
     });
-
-    map.on("load", () => {
-      new Marker().setLngLat([5.372594, 51.664729]).addTo(map);
-    });
-  }
-
-  async submitForm() {
-    this.error = "";
-
-    const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    if (this.form.name.length < 3) return (this.error = "Name must be atleast 2 characters long");
-    if (!mailRegExp.test(this.form.email.toLowerCase())) return (this.error = "Please enter a valid email");
-    if (this.form.message.length < 20) return (this.error = "Please enter a message that has atleast 20 characters");
-
-    // Passed checks
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: this.encode({ "form-name": "contact", ...this.form }),
-      });
-      this.form = {
-        name: "",
-        email: "",
-        message: "",
-      };
-    } catch (error) {
-      if (error instanceof Error) this.error = error.message;
-    }
+    form = {
+      name: "",
+      email: "",
+      message: "",
+    };
+  } catch (error) {
+    if (error instanceof Error) error = error.message;
   }
 }
+
+onMounted(() => {
+  const map = new Map({
+    accessToken: process.env.VUE_APP_MAPBOX_KEY,
+    container: "map",
+    style: "mapbox://styles/mapbox/streets-v11?optimize=true",
+    center: [5.372594, 51.664729],
+    zoom: 3,
+  });
+
+  map.on("load", () => {
+    new Marker().setLngLat([5.372594, 51.664729]).addTo(map);
+  });
+});
 </script>
 
 <style lang="scss" scoped>

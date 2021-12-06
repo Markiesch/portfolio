@@ -13,7 +13,7 @@
         <router-link to="/portfolio">Portfolio</router-link>
         <router-link to="/Resume">Resume</router-link>
       </div>
-      <div @click="menuOpen = !menuOpen" class="burger--menu__container">
+      <div @click="toggleMenu" class="burger--menu__container">
         <div class="burger--menu"></div>
       </div>
       <div class="contact--container">
@@ -22,7 +22,7 @@
     </nav>
   </header>
 
-  <div @click="menuOpen = !menuOpen" class="menu" :class="{ open: menuOpen }">
+  <div @click="toggleMenu" class="menu" :class="{ open: menuOpen }">
     <header>
       <div class="burger--menu__container">
         <div class="burger--menu"></div>
@@ -38,11 +38,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue } from "vue-class-component";
+<script lang="ts" setup>
+import { ref } from "vue";
 
-export default class Navigation extends Vue {
-  menuOpen = false;
+let menuOpen = ref(false);
+function toggleMenu() {
+  menuOpen.value = !menuOpen.value;
 }
 </script>
 

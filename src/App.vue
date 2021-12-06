@@ -7,31 +7,19 @@
   <Footer />
 </template>
 
-<script lang="ts">
-import { Vue, Options } from "vue-class-component";
+<script lang="ts" setup>
 import Navigation from "./components/Navigation.vue";
 import MobileNavigation from "./components/MobileNavigation.vue";
 import Footer from "./components/Footer.vue";
 
-@Options({
-  components: { Navigation, MobileNavigation, Footer },
-})
-export default class App extends Vue {
-  lastScrollTop = 0;
-
-  updateScroll() {
-    const root = document.documentElement;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    root.style.setProperty("--scroll", -scrollTop + "px");
-    this.lastScrollTop = scrollTop;
-  }
-
-  mounted() {
-    this.updateScroll();
-    window.addEventListener("scroll", this.updateScroll);
-  }
+function updateScroll() {
+  const root = document.documentElement;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  root.style.setProperty("--scroll", -scrollTop + "px");
 }
+
+updateScroll();
+window.addEventListener("scroll", updateScroll);
 </script>
 
 <style lang="scss">

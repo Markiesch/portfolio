@@ -1,17 +1,15 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production",
     "buildDev": "vue-cli-service build --mode development"
   },
   "dependencies": {
-    "mapbox-gl": "^2.6.1",
     "vue": "^3.0.0",
-    "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "mapbox-gl": "^2.6.1"
   },
   "devDependencies": {
     "@types/mapbox-gl": "^2.4.2",

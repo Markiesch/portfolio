@@ -31,20 +31,13 @@
   </section>
 </template>
 
-<script lang="ts">
-import { Vue } from "vue-class-component";
+<script lang="ts" setup>
 import projects, { IProjects } from "../utils/projects";
+import router from "../router";
 
-export default class Home extends Vue {
-  project: IProjects | null = null;
-
-  mounted() {
-    const paramProject = this.$route.params.project.toString().toLowerCase();
-    this.project = projects.find(({ name }) => name.includes(paramProject)) || null;
-
-    if (!this.project) this.$router.push("/404");
-  }
-}
+const paramProject = router.currentRoute.value.params.project.toString().toLowerCase();
+const project: IProjects | undefined = projects.find(({ name }) => name.includes(paramProject));
+if (!project) router.push("/404");
 </script>
 
 <style lang="scss" scoped>

@@ -15,13 +15,9 @@
   </article>
 </template>
 
-<script lang="ts">
-import { Vue, Options } from "vue-class-component";
-
-@Options({
-  props: ["project", "index"],
-})
-export default class Home extends Vue {}
+<script lang="ts" setup>
+import { IProjects } from "@/utils/projects";
+defineProps<{ project: IProjects; index: number }>();
 </script>
 
 <style lang="scss">

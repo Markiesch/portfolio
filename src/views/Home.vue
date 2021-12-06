@@ -53,19 +53,9 @@
   </section>
 </template>
 
-<script lang="ts">
-import { Vue, Options } from "vue-class-component";
+<script lang="ts" setup>
 import ProjectMockup from "../components/ProjectMockup.vue";
-import portfolio from "../utils/projects";
-
-@Options({
-  components: {
-    ProjectMockup,
-  },
-})
-export default class Home extends Vue {
-  projects = portfolio;
-}
+import projects from "../utils/projects";
 </script>
 
 <style lang="scss">
