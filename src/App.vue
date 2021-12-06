@@ -42,6 +42,10 @@ window.addEventListener("scroll", updateScroll);
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 nav,
 section,
 footer,
