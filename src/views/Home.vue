@@ -5,6 +5,7 @@
       <img src="../assets/character.png" alt="character" />
       <p class="slide-in">Hi! I'm Mark👋,</p>
       <h1 class="slide-in header">I build awesome experiences</h1>
+      <h2 class="slide-in subheader">a <span>Software Developer</span> with an eye for <span>UI design</span>. I am specialized in UI/UX design and responsive web development.</h2>
       <div class="slide-in cta">
         <router-link class="portfolio--link" to="/portfolio">
           <svg viewBox="0 0 576 512" class="svg-inline--fa fa-eye fa-w-18 fa-9x">
@@ -41,7 +42,7 @@
     <article>
       <p class="heading">Hey! I'm Mark👋,</p>
       <p>
-        a 17 year old front-end development enthusiast with 2+ years of experience. I currently live and study in 's-Hertogenbosch, the Netherlands. Learning and working with HTML, CSS, Javascript,
+        a 17 year old front-end development enthusiast with 1+ years of experience. I currently live and study in 's-Hertogenbosch, the Netherlands. Learning and working with HTML, CSS, Javascript,
         PHP, SQL, and VueJS is daily business for me, but when I am not coding or shifting pixels around, I like to fill my free time by playing video games and basketball.
       </p>
     </article>
@@ -63,7 +64,6 @@ import projects from "../utils/projects";
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   text-align: center;
   min-height: calc(100vh - var(--nav-height));
   padding-bottom: var(--nav-height);
@@ -82,18 +82,31 @@ import projects from "../utils/projects";
     padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
     display: inline-block;
-    margin: 0 auto;
   }
 
   h1 {
     animation-delay: 300ms;
     max-width: 17ch;
     line-height: 1;
-    margin: 1rem auto 3rem auto;
+    padding: 1rem 0 2rem 0;
+  }
+
+  h2 {
+    animation-delay: 600ms;
+    padding-bottom: 2rem;
+    line-height: 1.5;
+    font-size: clamp(1rem, 0.8rem + 0.88vw, 1.6rem);
+    font-weight: 400;
+    max-width: 38ch;
+    margin: 0 auto;
+
+    span {
+      font-weight: 600;
+    }
   }
 
   .cta {
-    animation-delay: 600ms;
+    animation-delay: 900ms;
   }
 
   a {
