@@ -40,7 +40,6 @@
   z-index: 20;
   width: 100%;
   height: var(--nav-height);
-  background-color: var(--secondary-color);
   background-color: var(--primary-color);
   color: white;
 
