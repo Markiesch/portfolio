@@ -14,7 +14,7 @@ const projects: IProjects[] = [
   {
     name: "foodz",
     title: "Foodz",
-    date: "March 2021",
+    date: "June 2021",
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",
     mockup: "foodz",
@@ -28,7 +28,7 @@ const projects: IProjects[] = [
   {
     name: "notes",
     title: "Notes",
-    date: "March 2021",
+    date: "October 2021",
     roles: ["UI/UX", "Frontend"],
     client: "Personal project",
     mockup: "notes",
@@ -42,7 +42,7 @@ const projects: IProjects[] = [
   {
     name: "memory",
     title: "Memory Game",
-    date: "March 2021",
+    date: "September 2021",
     roles: ["UI/UX", "Frontend"],
     client: "Personal project",
     mockup: "memory",
@@ -56,7 +56,7 @@ const projects: IProjects[] = [
   {
     name: "pettelaer",
     title: "De Pettelear",
-    date: "March 2021",
+    date: "May 2021",
     roles: ["UI/UX", "Frontend", "Backend"],
     client: "Koning Willem I College",
     mockup: "pettelaer",
