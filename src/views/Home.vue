@@ -27,7 +27,7 @@
 
   <section class="project--section">
     <div v-for="project of projects.slice(0, 3)">
-      <article class="image--container">
+      <article>
         <img :src="require(`@/assets/mockups/${project.mockup}.png`)" :alt="project.name" />
       </article>
       <article class="project--information">
@@ -160,13 +160,8 @@ import projects from "../utils/projects";
   & > div {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     padding: 2rem 0;
-  }
-
-  .image--container {
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    border-radius: 1rem;
-    overflow: hidden;
   }
 
   article {
@@ -178,13 +173,12 @@ import projects from "../utils/projects";
     height: 100%;
     object-fit: cover;
     display: block;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
   }
 
   .project--information {
     padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   h2 {
