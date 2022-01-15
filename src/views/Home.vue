@@ -27,10 +27,11 @@
 
   <section class="project--section">
     <div v-for="project of projects.slice(0, 3)">
-      <article>
+      <router-link class="image--container" :to="`/project/${project.name}`">
         <img :src="require(`@/assets/mockups/${project.mockup}.png`)" :alt="project.name" />
-      </article>
-      <article class="project--information">
+        <div class="overlay">View Project</div>
+      </router-link>
+      <div class="project--information">
         <h2>{{ project.title }}</h2>
         <p>{{ project.description }}</p>
         <div v-if="project.links" class="cta--container">
@@ -48,7 +49,7 @@
             </svg>
           </a>
         </div>
-      </article>
+      </div>
     </div>
     <div class="project--cta__container">
       <router-link class="project--cta" to="/portfolio">
@@ -164,8 +165,34 @@ import projects from "../utils/projects";
     padding: 2rem 0;
   }
 
-  article {
+  .image--container,
+  .project--information {
     flex: 1 1 400px;
+  }
+
+  .image--container {
+    position: relative;
+  }
+
+  .overlay {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms ease;
+    border-radius: 1rem;
+    color: white;
+    font-size: 2rem;
+  }
+
+  .image--container:hover .overlay {
+    opacity: 1;
   }
 
   img {
@@ -252,6 +279,10 @@ import projects from "../utils/projects";
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover::after {
+      content: "";
+    }
   }
 
   img {
