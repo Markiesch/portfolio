@@ -34,7 +34,7 @@ const projects: IProjects[] = [
     mockup: "dentist",
     links: [
       { name: "github", url: "https://github.com/kw1c-SchuurmansMark/POThema3" },
-      { name: "live demo", url: "https://markiesch.github.io/PraktijkOpdrachtThema3/" },
+      { name: "live demo", url: "https://kw1c-schuurmansmark.github.io/POThema3/" },
     ],
     description: "A small website made for patients at Tandarts Den Bosch where patients can do a self-test to receive a brush core.",
     gallery: ["homepage", "question", "print"],
