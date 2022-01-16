@@ -3,21 +3,17 @@
     <router-link :to="`/project/${project.name}`">
       <img :src="require(`@/assets/mockups/${project.mockup}.png`)" alt="Project" />
     </router-link>
+    <div class="overlay"></div>
     <div class="details">
-      <div>
-        <p>/ {{ index + 1 < 10 ? "0" + (index + 1) : index + 1 }}</p>
-      </div>
-      <div>
-        <p class="section--title">{{ project.title }}</p>
-        <p class="project--date">{{ project.date }}</p>
-      </div>
+      <h2 class="section--title">{{ project.title }}</h2>
+      <p class="about">{{ project.description }}</p>
     </div>
   </article>
 </template>
 
 <script lang="ts" setup>
 import { IProjects } from "@/utils/projects";
-defineProps<{ project: IProjects; index: number }>();
+defineProps<{ project: IProjects }>();
 </script>
 
 <style lang="scss">
@@ -25,31 +21,56 @@ defineProps<{ project: IProjects; index: number }>();
   margin: 0.5rem;
   overflow: hidden;
   border-radius: 0.5rem;
-  background-color: hsla(220, 33%, 10%, 0.075);
   box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.05);
+  position: relative;
 
   img {
     width: 100%;
-    padding: 2.5rem 1.5rem;
     display: block;
     transition: transform 300ms ease;
+  }
 
-    &:hover {
-      transform: scale(1.05);
-    }
+  .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    pointer-events: none;
+    transition: all 600ms ease;
+
+    background: linear-gradient(180deg, rgba(17, 23, 34, 0.2) 33.75%, rgba(17, 23, 34, 0.8) 75.19%);
+
+    opacity: 0.4;
+  }
+
+  &:hover .overlay {
+    opacity: 1;
   }
 
   .details {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    text-align: right;
-    padding: 1rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 2rem;
+    color: white;
+
+    h2 {
+      font-weight: 700;
+    }
   }
 
-  .project--date {
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
+  .about {
+    padding-top: 1rem;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 600ms ease, opacity 600ms ease;
+  }
+
+  &:hover .about {
+    opacity: 1;
+    max-height: 10rem;
   }
 }
 </style>
