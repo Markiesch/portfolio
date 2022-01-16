@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="primary">
     <article>
       <p>&copy; 2021 Mark Schuurmans</p>
       <p>All rights reserved</p>

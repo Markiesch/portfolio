@@ -16,7 +16,7 @@
       <div @click="toggleMenu" class="burger--menu__container">
         <div class="burger--menu"></div>
       </div>
-      <div class="contact--container">
+      <div class="contact--container primary">
         <router-link to="/contact">Contact</router-link>
       </div>
     </nav>

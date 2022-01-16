@@ -1,5 +1,5 @@
 <template>
-  <section class="breadcrumbs--section">
+  <section class="breadcrumbs--section primary">
     <div class="breadcrumbs">
       <router-link class="home--link" to="/">Home</router-link>
       <svg viewBox="0 0 192 512">

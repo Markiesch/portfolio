@@ -1,6 +1,6 @@
 <template>
   <p class="background-text">developer</p>
-  <section class="hero">
+  <section class="hero primary">
     <article>
       <img src="../assets/character.png" alt="character" />
       <p class="slide-in">Hi! I'm Mark👋,</p>
@@ -31,7 +31,7 @@
         <img :src="require(`@/assets/mockups/${project.mockup}.png`)" :alt="project.name" />
         <div class="overlay">View Project</div>
       </router-link>
-      <div class="project--information">
+      <div class="project--information primary">
         <h2>{{ project.title }}</h2>
         <p>{{ project.description }}</p>
         <div v-if="project.links" class="cta--container">
@@ -74,7 +74,7 @@
     </article>
   </section>
 
-  <section class="cta--section">
+  <section class="cta--section primary">
     <h2>Interested to work with me?</h2>
     <router-link class="section--title" to="/contact">Let's work together</router-link>
   </section>
@@ -330,11 +330,9 @@ import projects from "../utils/projects";
     display: inline-block;
     margin-top: 1rem;
     font-size: clamp(1.5rem, 1.16rem + 1.48vw, 2.5rem);
-
     padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
     font-weight: 500;
-    color: var(--primary-color);
 
     &:hover {
       text-decoration: underline;
