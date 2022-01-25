@@ -37,8 +37,8 @@
     </article>
     <article>
       <form @submit.prevent="submitForm" name="contact" method="POST" data-netlify-honeypot="bot-field" netlify>
-        <div style="display: none;">
-          <label>Do not fill this if you are a human: <input name="bot-field"/></label>
+        <div style="display: none">
+          <label>Do not fill this if you are a human: <input name="bot-field" /></label>
         </div>
 
         <label for="name">Name</label>
@@ -110,11 +110,12 @@ async function submitForm() {
 
 onMounted(() => {
   const map = new Map({
-    accessToken: process.env.VUE_APP_MAPBOX_KEY,
+    accessToken: <string>import.meta.env.VITE_APP_MAPBOX_KEY,
     container: "map",
     style: "mapbox://styles/mapbox/streets-v11?optimize=true",
     center: [5.372594, 51.664729],
     zoom: 3,
+    maxZoom: 9,
   });
 
   map.on("load", () => {

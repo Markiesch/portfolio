@@ -13,10 +13,3 @@
 <br />
 <br />
 <br />
-
-# TODO
-
-1. Add contact page
-1. Add Resume page
-1. ~~Fix mockups having different resolutions~~
-1. Add light/dark mode switch

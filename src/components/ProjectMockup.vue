@@ -1,18 +1,16 @@
 <template>
-  <article class="mockup--container">
-    <router-link :to="`/project/${project.name}`">
-      <img :src="require(`@/assets/mockups/${project.mockup}.png`)" alt="Project" />
-    </router-link>
+  <router-link class="mockup--container" :to="`/project/${project.name}`">
+    <img :src="`/assets/mockups/${project.mockup}.png`" alt="Project" />
     <div class="overlay"></div>
     <div class="details">
       <h2 class="section--title">{{ project.title }}</h2>
       <p class="about">{{ project.description }}</p>
     </div>
-  </article>
+  </router-link>
 </template>
 
 <script lang="ts" setup>
-import { IProjects } from "@/utils/projects";
+import { IProjects } from "../utils/projects";
 defineProps<{ project: IProjects }>();
 </script>
 

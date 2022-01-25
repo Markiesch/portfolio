@@ -26,7 +26,7 @@
     </div>
 
     <article v-for="(image, index) of project.gallery" :key="index">
-      <img :src="require(`@/assets/projects/${project.name}/${image}.png`)" alt="" />
+      <img :src="`/assets/projects/${project.name}/${image}.png`" :alt="project.name" />
     </article>
   </section>
 </template>

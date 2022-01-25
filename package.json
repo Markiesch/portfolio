@@ -1,24 +1,22 @@
 {
-  "name": "portfolio",
+  "name": "vite-project",
   "version": "1.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --mode production",
-    "buildDev": "vue-cli-service build --mode development"
+    "serve": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "mapbox-gl": "^2.6.1",
-    "vue": "^3.2.27",
-    "vue-router": "^4.0.0-0"
+    "vue": "^3.2.25",
+    "vue-router": "4"
   },
   "devDependencies": {
-    "@types/mapbox-gl": "^2.4.2",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "sass": "^1.43.2",
-    "sass-loader": "^8.0.2",
-    "typescript": "~4.1.5"
+    "@types/mapbox-gl": "^2.6.0",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "sass": "^1.49.0",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vue-tsc": "^0.29.8"
   }
 }

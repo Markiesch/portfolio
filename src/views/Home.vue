@@ -2,7 +2,7 @@
   <p class="background-text">developer</p>
   <section class="hero primary">
     <article>
-      <img src="../assets/character.png" alt="character" />
+      <img src="/assets/character.png" alt="character" />
       <p class="slide-in">Hi! I'm Mark👋,</p>
       <h1 class="slide-in header">I build awesome experiences</h1>
       <h2 class="slide-in subheader">a <span>Software Developer</span> with an eye for <span>UI design</span>. I am specialized in UI/UX design and responsive web development.</h2>
@@ -28,7 +28,7 @@
   <section class="project--section">
     <div v-for="project of projects.slice(0, 3)">
       <router-link class="image--container" :to="`/project/${project.name}`">
-        <img :src="require(`@/assets/mockups/${project.mockup}.png`)" :alt="project.name" />
+        <img :src="`/assets/mockups/${project.mockup}.png`" :alt="project.name" />
         <div class="overlay">View Project</div>
       </router-link>
       <div class="project--information primary">
@@ -63,7 +63,7 @@
 
   <section class="about--section">
     <article class="image--container">
-      <img src="../assets/character2.png" alt="character" />
+      <img src="/assets/character2.png" alt="character" />
     </article>
     <article>
       <p class="heading">Hey! I'm Mark👋,</p>
