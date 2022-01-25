@@ -69,11 +69,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Map, Marker } from "mapbox-gl";
 
-let form = { name: "", email: "", message: "" };
+let form = ref({ name: "", email: "", message: "" });
 let error = "";
 
 function encode(data: any) {
@@ -87,9 +87,9 @@ async function submitForm() {
 
   const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  if (form.name.length < 3) return (error = "Name must be atleast 2 characters long");
-  if (!mailRegExp.test(form.email.toLowerCase())) return (error = "Please enter a valid email");
-  if (form.message.length < 20) return (error = "Please enter a message that has atleast 20 characters");
+  if (form.value.name.length < 3) return (error = "Name must be atleast 2 characters long");
+  if (!mailRegExp.test(form.value.email.toLowerCase())) return (error = "Please enter a valid email");
+  if (form.value.message.length < 20) return (error = "Please enter a message that has atleast 20 characters");
 
   // Passed checks
   try {
@@ -98,7 +98,7 @@ async function submitForm() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...form }),
     });
-    form = {
+    form.value = {
       name: "",
       email: "",
       message: "",
