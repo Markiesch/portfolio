@@ -2,8 +2,8 @@
   <Head>
     <Title>Mark Schuurmans - Portfolio</Title>
     <Meta name="author" content="Mark Schuurmans" />
-    <Meta name="description" content="I design and develop digital products" />
-    <Meta name="keywords" content="web, website, responsive, developer, frontend, backend, portfolio, projects" />
+    <Meta name="description" content="I design and develop beautiful responsive websites" />
+    <Meta name="keywords" content="web, website, responsive, developer, frontend, backend, portfolio, projects, vuejs, vue, desktop, mobile, tablet" />
 
     <!-- Google Font imports -->
     <Link rel="preconnect" href="https://fonts.googleapis.com" />
