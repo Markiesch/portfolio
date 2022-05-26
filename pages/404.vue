@@ -1,15 +1,17 @@
 <template>
-  <p class="background-text">404</p>
-  <section>
-    <h3>Something went wrong...</h3>
-    <h2 class="section--title">Oops! We couldn't find that page.</h2>
-    <p class="subtitle">Maybe you can find what you need here?</p>
-    <p class="button--container">
-      <router-link class="link" to="/portfolio">projects</router-link>
-      <router-link class="link" to="/resume">resume</router-link>
-      <router-link class="link" to="/contact">contact</router-link>
-    </p>
-  </section>
+  <div>
+    <p class="background-text">404</p>
+    <section>
+      <h3>Something went wrong...</h3>
+      <h2 class="section--title">Oops! We couldn't find that page.</h2>
+      <p class="subtitle">Maybe you can find what you need here?</p>
+      <p class="button--container">
+        <NuxtLink class="link" to="/portfolio">projects</NuxtLink>
+        <NuxtLink class="link" to="/resume">resume</NuxtLink>
+        <NuxtLink class="link" to="/contact">contact</NuxtLink>
+      </p>
+    </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>

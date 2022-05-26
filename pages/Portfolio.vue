@@ -1,12 +1,14 @@
 <template>
-  <p class="background-text">Portfolio</p>
-  <Breadcrumbs>Portfolio</Breadcrumbs>
+  <div>
+    <p class="background-text">Portfolio</p>
+    <Breadcrumbs>Portfolio</Breadcrumbs>
 
-  <section class="projects--section">
-    <template v-for="(project, index) of projects" :key="index">
-      <ProjectMockup :project="project" :index="index" class="slide-in" :style="`animation-delay: ${index * 200}ms`" />
-    </template>
-  </section>
+    <section class="projects--section">
+      <template v-for="(project, index) of projects" :key="index">
+        <ProjectMockup :project="project" :index="index" class="slide-in" :style="`animation-delay: ${index * 200}ms`" />
+      </template>
+    </section>
+  </div>
 </template>
 
 <script lang="ts" setup>

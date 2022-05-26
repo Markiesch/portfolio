@@ -1,12 +1,12 @@
 <template>
-  <router-link class="mockup--container" :to="`/project/${project.name}`">
+  <NuxtLink class="mockup--container" :to="`/project/${project.name}`">
     <img :src="`/assets/mockups/${project.mockup}.png`" alt="Project" />
     <div class="overlay"></div>
     <div class="details">
       <h2 class="section--title">{{ project.title }}</h2>
       <p class="about">{{ project.description }}</p>
     </div>
-  </router-link>
+  </NuxtLink>
 </template>
 
 <script lang="ts" setup>
