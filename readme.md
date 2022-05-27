@@ -1,42 +1,12 @@
-# Nuxt 3 Minimal Starter
-
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
-
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+<div align="center">
+    <a>
+        <img src="public/favicon.ico" alt="Logo" width="80" height="80" />
+    </a>
+    <h1>Portfolio</h1>
+    <p>My portfolio website where you can see my recent projects, about me, my CV and contact me!</p>
+    <a href="https://markiesch.netlify.app/">View Website</a>
+    ·
+    <a href="https://github.com/Markiesch/vue-portfolio/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Markiesch/vue-portfolio/issues">Request Feature</a>
+</div>
