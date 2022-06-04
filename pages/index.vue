@@ -299,23 +299,16 @@ import projects from "../utils/projects";
 }
 
 .cta--section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 0 5rem 0;
-  text-align: center;
+  display: grid;
+  place-items: center;
+  padding: 5rem 0 7.5rem 0;
 
   a {
     display: inline-block;
     margin-top: 1rem;
     font-size: clamp(1.5rem, 1.16rem + 1.48vw, 2.5rem);
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.25rem;
-    font-weight: 500;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    font-weight: 400;
+    text-decoration: underline;
   }
 }
 
