@@ -5,6 +5,11 @@
     <Meta name="description" content="I design and develop beautiful responsive websites" />
     <Meta name="keywords" content="web, website, responsive, developer, frontend, backend, portfolio, projects, vuejs, vue, desktop, mobile, tablet" />
 
+    <Meta name="og:title" content="Portfolio - Mark Schuurmans" />
+    <Meta name="og:type" content="website" />
+    <Meta name="og:url" content="https://www.markschuurmans.nl" />
+    <Meta name="og:image" content="/assets/mockups/home-page.png" />
+
     <!-- Google Font imports -->
     <Link rel="preconnect" href="https://fonts.googleapis.com" />
     <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -48,7 +53,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import "./assets/styles/typography.scss";
+@use "./assets/styles/typography.scss";
 
 :root {
   --primary-color: hsl(220, 33%, 10%);
