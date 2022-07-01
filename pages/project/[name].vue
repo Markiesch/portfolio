@@ -1,10 +1,8 @@
 <template>
   <div>
-    <p class="background-text">Portfolio</p>
-
     <Breadcrumbs>{{ project?.title }}</Breadcrumbs>
 
-    <section class="project" v-if="project">
+    <section class="container project" v-if="project">
       <div class="project--information">
         <div>
           <h3>MY ROLE</h3>

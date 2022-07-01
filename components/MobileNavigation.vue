@@ -30,6 +30,8 @@
 </template>
 
 <style lang="scss">
+@use "@/styles/abstract/variables" as *;
+
 .mobile--navigation {
   opacity: 0;
   pointer-events: none;
@@ -40,7 +42,7 @@
   z-index: 20;
   width: 100%;
   height: var(--nav-height);
-  background-color: var(--primary-color);
+  background-color: $clr-primary-400;
   color: white;
 
   nav {

@@ -1,11 +1,11 @@
 <template>
-  <footer class="primary">
-    <article>
+  <footer class="container primary">
+    <div>
       <p>&copy; 2021 Mark Schuurmans</p>
       <p>All rights reserved</p>
-    </article>
+    </div>
 
-    <article class="link--container">
+    <div class="link--container">
       <a href="https://github.com/Markiesch" aria-label="Github" target="_blank" rel="noopener">
         <svg viewBox="0 0 496 512">
           <path
@@ -20,38 +20,10 @@
           ></path>
         </svg>
       </a>
-    </article>
+    </div>
   </footer>
 </template>
 
-<style lang="scss">
-footer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-
-  article {
-    padding: 1.5rem 0;
-  }
-
-  p {
-    font-size: clamp(0.8125rem, 0.75rem + 0.27vw, 1rem);
-    font-weight: 400;
-  }
-
-  .link--container {
-    display: flex;
-  }
-
-  svg {
-    height: 1.5rem;
-    margin: 0.5rem;
-    display: block;
-
-    path {
-      fill: var(--grey-color);
-    }
-  }
-}
+<style lang="scss" scoped>
+@use "@/styles/layout/footer";
 </style>
