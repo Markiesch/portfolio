@@ -1,3 +1,14 @@
+<script lang="ts" setup>
+import projects, { IProjects } from "../../utils/projects";
+
+const route = useRoute();
+const router = useRouter();
+
+const paramProject = route.params.name.toString().toLowerCase();
+const project: IProjects | undefined = projects.find(({ name }) => name.includes(paramProject));
+if (!project) router.push("/404");
+</script>
+
 <template>
   <div>
     <Breadcrumbs>{{ project?.title }}</Breadcrumbs>
@@ -30,16 +41,6 @@
     </section>
   </div>
 </template>
-
-<script lang="ts" setup>
-import projects, { IProjects } from "../../utils/projects";
-
-const route = useRoute();
-
-const paramProject = route.params.name.toString().toLowerCase();
-const project: IProjects | undefined = projects.find(({ name }) => name.includes(paramProject));
-// if (!project) route.push("/404");
-</script>
 
 <style lang="scss" scoped>
 .project {
