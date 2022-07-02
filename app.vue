@@ -32,15 +32,23 @@
     </Head>
   </Html>
 
-  <Navigation />
-  <main>
-    <NuxtPage />
-  </main>
-  <mobile-navigation />
-  <Footer />
+  <div id="app">
+    <Navigation />
+    <main>
+      <NuxtPage />
+    </main>
+    <mobile-navigation />
+    <Footer />
+  </div>
 </template>
 
 <style lang="scss">
 @use "@/styles/base/reset";
 @use "@/styles/base/util";
+
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
 </style>
