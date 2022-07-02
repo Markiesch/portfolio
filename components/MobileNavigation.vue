@@ -41,7 +41,7 @@
   left: 0;
   z-index: 20;
   width: 100%;
-  height: var(--nav-height);
+  height: $nav-height;
   background-color: $clr-primary-400;
   color: white;
 
@@ -72,7 +72,7 @@
 
 @media screen and (max-width: 50rem) {
   body {
-    padding-bottom: var(--nav-height);
+    padding-bottom: $nav-height;
   }
 
   .mobile--navigation {
