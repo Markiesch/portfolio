@@ -4,7 +4,7 @@
     </a>
     <h1>Portfolio</h1>
     <p>My portfolio website where you can see my recent projects, about me, my CV and contact me!</p>
-    <a href="https://markiesch.netlify.app/">View Website</a>
+    <a href="https://www.markschuurmans.nl/" target="_blank">View Website</a>
     ·
     <a href="https://github.com/Markiesch/vue-portfolio/issues">Report Bug</a>
     ·
