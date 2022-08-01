@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 let form = ref({ name: "", email: "", message: "" });
-let error = "";
+let error = ref("");
 
 async function submitForm() {
-  error = "";
+  error.value = "";
   const mailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (form.value.name.length < 3) return (error = "Name must be atleast 2 characters long");
-  if (!mailRegExp.test(form.value.email.toLowerCase())) return (error = "Please enter a valid email");
-  if (form.value.message.length < 20) return (error = "Please enter a message that has atleast 20 characters");
+  if (form.value.name.length < 3) return (error.value = "Name must be atleast 2 characters long");
+  if (!mailRegExp.test(form.value.email.toLowerCase())) return (error.value = "Please enter a valid email");
+  if (form.value.message.length < 20) return (error.value = "Please enter a message that has atleast 20 characters");
   // Passed checks
   try {
     const data = await $fetch("/api/mail", { method: "post", body: { name: form.value.name, email: form.value.email, message: form.value.message } });
