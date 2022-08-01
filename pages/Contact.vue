@@ -10,14 +10,9 @@ async function submitForm() {
   if (form.value.message.length < 20) return (error.value = "Please enter a message that has atleast 20 characters");
   // Passed checks
   try {
-    const data = await $fetch("/api/mail", { method: "post", body: { name: form.value.name, email: form.value.email, message: form.value.message } });
-    console.log(data);
+    await $fetch("/api/mail", { method: "post", body: { name: form.value.name, email: form.value.email, message: form.value.message } });
 
-    form.value = {
-      name: "",
-      email: "",
-      message: "",
-    };
+    form.value.message = "";
   } catch (error) {
     if (error instanceof Error) error = error.message;
   }
