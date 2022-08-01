@@ -1,4 +1,10 @@
 import { defineNuxtConfig } from "nuxt";
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
-export default defineNuxtConfig({});
+export default defineNuxtConfig({
+  runtimeConfig: {
+    mailService: process.env.MAIL_SERVICE,
+    mailFrom: process.env.MAIL_FROM,
+    mailAppPassword: process.env.MAIL_APP_PASSWORD,
+    mailTo: process.env.MAIL_TO,
+  },
+});
