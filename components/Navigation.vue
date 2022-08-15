@@ -11,7 +11,7 @@
       <div class="link--container">
         <NuxtLink class="link" to="/">Home</NuxtLink>
         <NuxtLink class="link" to="/portfolio">Portfolio</NuxtLink>
-        <NuxtLink class="link" to="/resume">Resume</NuxtLink>
+        <NuxtLink class="link" to="/construction">Resume</NuxtLink>
       </div>
       <div @click="toggleMenu" class="burger--menu__container">
         <div class="burger--menu"></div>
@@ -32,7 +32,7 @@
       <span>MENU</span>
       <NuxtLink to="/">Home</NuxtLink>
       <NuxtLink to="/portfolio">Portfolio</NuxtLink>
-      <NuxtLink to="/resume">Resume</NuxtLink>
+      <NuxtLink to="/construction">Resume</NuxtLink>
       <NuxtLink to="/contact">Contact</NuxtLink>
     </nav>
   </div>

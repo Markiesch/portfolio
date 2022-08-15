@@ -2,7 +2,7 @@
   <div>
     <section>
       <h3>Something went wrong...</h3>
-      <h2 class="section--title">Oops! We couldn't find that page.</h2>
+      <h2 class="section--title">This page is still under construction</h2>
       <p class="text-body subtitle">Maybe you can find what you need here?</p>
       <p class="text-body button--container">
         <NuxtLink class="link" to="/">Home</NuxtLink>
