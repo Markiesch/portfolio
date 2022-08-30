@@ -1,0 +1,12 @@
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+.output
+.nuxt
+node_modules
+dist
+*.local
+public
