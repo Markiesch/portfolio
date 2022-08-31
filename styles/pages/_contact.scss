@@ -64,10 +64,17 @@
   textarea {
     position: relative;
     padding: 0.75em;
-    border-radius: 0.25rem;
     width: 100%;
-    background-color: hsla(220, 33%, 10%, 0.04);
     overflow: hidden;
+    border: 1px solid $clr-neutral-200;
+
+    &:focus {
+      background-color: $clr-neutral-100;
+    }
+  }
+
+  .input-error {
+    border-color: hsl(0, 100%, 66%);
   }
 
   textarea {
@@ -76,27 +83,6 @@
     min-height: 3rem;
     height: 7rem;
     max-height: 20rem;
-  }
-
-  .input--container {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .input--container::after {
-    content: "";
-    position: absolute;
-    background-color: $clr-primary-400;
-    height: 1px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: translateX(-100%);
-    transition: 300ms transform ease;
-  }
-
-  .input--container:focus-within::after {
-    transform: translateX(0);
   }
 
   .alert {

@@ -1,37 +1,40 @@
 <script lang="ts" setup>
-let form = ref({ name: "", email: "", message: "" });
-let error = ref("");
+import { ArgumentError } from "~~/server/api/mail";
+
+let form = reactive({ name: "", email: "", message: "" });
+let errorMessages = ref<ArgumentError>({});
+let loading = ref(false);
+const hasErrors = computed(() => !!Object.keys(errorMessages.value).length);
 
 async function submitForm() {
-  error.value = "";
-  const mailRegExp =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  if (form.value.name.length < 3)
-    return (error.value = "Name must be atleast 2 characters long");
-
-  if (!mailRegExp.test(form.value.email.toLowerCase()))
-    return (error.value = "Please enter a valid email");
-
-  if (form.value.message.length < 20)
-    return (error.value =
-      "Please enter a message that has atleast 20 characters");
+  errorMessages.value = {};
+  loading.value = true;
 
   // Passed checks
   try {
     await $fetch("/api/mail", {
       method: "post",
       body: {
-        name: form.value.name,
-        email: form.value.email,
-        message: form.value.message,
+        name: form.name,
+        email: form.email,
+        message: form.message,
       },
     });
 
-    form.value.message = "";
+    form.message = "";
+
+    // TODO add success message
   } catch (error) {
-    if (error instanceof Error) error = error.message;
+    if (error instanceof Error) {
+      type ErrorData = {
+        data: { data: ArgumentError };
+      };
+
+      errorMessages.value = (error as unknown as ErrorData).data.data;
+    }
   }
+
+  loading.value = false;
 }
 </script>
 
@@ -59,42 +62,43 @@ async function submitForm() {
         </a>
       </div>
       <div>
-        <form
-          @submit.prevent="submitForm"
-          name="contact"
-          method="POST"
-          data-netlify-honeypot="bot-field"
-          netlify
-        >
-          <div style="display: none">
-            <label
-              >Do not fill this if you are a human: <input name="bot-field"
-            /></label>
-          </div>
-
+        <form @submit.prevent="submitForm" method="POST">
           <label for="name">Name</label>
-          <div class="input--container">
-            <input v-model="form.name" type="text" id="name" name="name" />
-          </div>
+          <input
+            :class="{ 'input-error': errorMessages['name'] }"
+            v-model="form.name"
+            type="text"
+            id="name"
+            name="name"
+          />
 
           <label for="email">E-mail</label>
-          <div class="input--container">
-            <input v-model="form.email" type="text" id="email" name="email" />
-          </div>
+          <input
+            :class="{ 'input-error': errorMessages['email'] }"
+            v-model="form.email"
+            type="email"
+            id="email"
+            name="email"
+          />
 
-          <label for="name">Message</label>
-          <div class="input--container">
-            <textarea v-model="form.message" id="name" name="message" />
-          </div>
+          <label for="message">Message</label>
+          <textarea
+            :class="{ 'input-error': errorMessages['message'] }"
+            v-model="form.message"
+            id="message"
+            name="message"
+          />
 
-          <div v-show="!!error" class="alert">{{ error }}</div>
+          <div v-show="hasErrors" class="alert">
+            <p v-for="errorMessage in errorMessages">{{ errorMessage }}</p>
+          </div>
           <button class="send--button" type="submit">
             <svg viewBox="0 0 24 24">
               <path
                 d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"
               />
             </svg>
-            <span>SEND MESSAGE</span>
+            <span>{{ loading ? "LOADING..." : "SEND MESSAGE" }}</span>
           </button>
         </form>
       </div>
