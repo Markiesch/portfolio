@@ -10,7 +10,7 @@
     "@types/nodemailer": "^6.4.4",
     "eslint": "^8.23.0",
     "eslint-plugin-nuxt": "^3.2.0",
-    "nuxt": "3.0.0-rc.3",
+    "nuxt": "^3.0.0-rc.8",
     "sass": "^1.52.1"
   },
   "dependencies": {
