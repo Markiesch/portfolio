@@ -36,7 +36,7 @@ import projects from "../utils/projects";
     </section>
 
     <section class="container project--section">
-      <div v-for="project of projects.slice(0, 3)">
+      <div v-for="project of projects.slice(0, 3)" :key="project.name">
         <NuxtLink class="image--container" :to="`/project/${project.name}`">
           <img
             :src="`/assets/mockups/${project.mockup}.png`"

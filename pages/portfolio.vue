@@ -9,6 +9,7 @@ import projects from "../utils/projects";
     <section class="container projects--section">
       <ProjectMockup
         v-for="(project, index) of projects"
+        :key="project.name"
         :project="project"
         class="slide-in"
         :style="`animation-delay: ${index * 200}ms`"
