@@ -13,7 +13,7 @@
         <NuxtLink class="link" to="/portfolio">Portfolio</NuxtLink>
         <NuxtLink class="link" to="/construction">Resume</NuxtLink>
       </div>
-      <div @click="toggleMenu" class="burger--menu__container">
+      <div class="burger--menu__container" @click="toggleMenu">
         <div class="burger--menu"></div>
       </div>
       <div class="contact--container primary">
@@ -22,7 +22,7 @@
     </nav>
   </header>
 
-  <div @click="toggleMenu" class="menu" :class="{ open: menuOpen }">
+  <div class="menu" :class="{ open: menuOpen }" @click="toggleMenu">
     <header>
       <div class="burger--menu__container">
         <div class="burger--menu"></div>

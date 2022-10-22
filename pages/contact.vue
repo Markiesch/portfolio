@@ -90,7 +90,9 @@ async function submitForm() {
           />
 
           <div v-show="hasErrors" class="alert">
-            <p v-for="errorMessage in errorMessages">{{ errorMessage }}</p>
+            <p v-for="errorMessage in errorMessages" :key="errorMessage">
+              {{ errorMessage }}
+            </p>
           </div>
           <button class="send--button" type="submit">
             <svg viewBox="0 0 24 24">
