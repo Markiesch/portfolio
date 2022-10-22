@@ -4,18 +4,25 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
   },
   "dependencies": {
     "nodemailer": "^6.8.0"
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.6",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
     "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.6.0",
     "nuxt": "^3.0.0-rc.12",
+    "prettier": "^2.7.1",
     "sass": "^1.55.0",
+    "typescript": "^4.8.4",
     "vite-plugin-eslint": "^1.8.1"
   }
 }
