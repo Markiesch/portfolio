@@ -62,30 +62,30 @@ async function submitForm() {
         </a>
       </div>
       <div>
-        <form @submit.prevent="submitForm" method="POST">
+        <form method="POST" @submit.prevent="submitForm">
           <label for="name">Name</label>
           <input
-            :class="{ 'input-error': errorMessages['name'] }"
-            v-model="form.name"
-            type="text"
             id="name"
+            v-model="form.name"
+            :class="{ 'input-error': errorMessages['name'] }"
+            type="text"
             name="name"
           />
 
           <label for="email">E-mail</label>
           <input
-            :class="{ 'input-error': errorMessages['email'] }"
-            v-model="form.email"
-            type="email"
             id="email"
+            v-model="form.email"
+            :class="{ 'input-error': errorMessages['email'] }"
+            type="email"
             name="email"
           />
 
           <label for="message">Message</label>
           <textarea
-            :class="{ 'input-error': errorMessages['message'] }"
-            v-model="form.message"
             id="message"
+            v-model="form.message"
+            :class="{ 'input-error': errorMessages['message'] }"
             name="message"
           />
 

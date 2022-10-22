@@ -15,7 +15,7 @@ if (!project) router.push("/404");
   <div>
     <Breadcrumbs>{{ project?.title }}</Breadcrumbs>
 
-    <section class="container project" v-if="project">
+    <section v-if="project" class="container project">
       <div class="project--information">
         <div>
           <h3>MY ROLE</h3>
