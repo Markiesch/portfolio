@@ -5,7 +5,9 @@ const route = useRoute();
 const router = useRouter();
 
 const paramProject = route.params.name.toString().toLowerCase();
-const project: IProjects | undefined = projects.find(({ name }) => name.includes(paramProject));
+const project: IProjects | undefined = projects.find(({ name }) => {
+  return name.includes(paramProject);
+});
 if (!project) router.push("/404");
 </script>
 
@@ -27,7 +29,9 @@ if (!project) router.push("/404");
 
           <h3>LINKS & RESOURCES</h3>
           <p v-for="(link, index) of project.links" :key="index">
-            <a :href="link.url" target="_blank" rel="noopener">{{ link.name }}</a>
+            <a :href="link.url" target="_blank" rel="noopener">
+              {{ link.name }}
+            </a>
           </p>
         </div>
         <div>
@@ -36,7 +40,10 @@ if (!project) router.push("/404");
       </div>
 
       <article v-for="(image, index) of project.gallery" :key="index">
-        <img :src="`/assets/projects/${project.name}/${image}.png`" :alt="project.name" />
+        <img
+          :src="`/assets/projects/${project.name}/${image}.png`"
+          :alt="project.name"
+        />
       </article>
     </section>
   </div>

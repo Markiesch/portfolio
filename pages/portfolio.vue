@@ -7,7 +7,12 @@ import projects from "../utils/projects";
     <Breadcrumbs>Portfolio</Breadcrumbs>
 
     <section class="container projects--section">
-      <ProjectMockup v-for="(project, index) of projects" :project="project" class="slide-in" :style="`animation-delay: ${index * 200}ms`" />
+      <ProjectMockup
+        v-for="(project, index) of projects"
+        :project="project"
+        class="slide-in"
+        :style="`animation-delay: ${index * 200}ms`"
+      />
     </section>
   </div>
 </template>

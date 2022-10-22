@@ -13,7 +13,9 @@
     "@types/nodemailer": "^6.4.6",
     "eslint": "^8.26.0",
     "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-vue": "^9.6.0",
     "nuxt": "^3.0.0-rc.12",
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "vite-plugin-eslint": "^1.8.1"
   }
 }

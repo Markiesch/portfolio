@@ -38,7 +38,11 @@ defineProps<{ project: IProjects }>();
     pointer-events: none;
     transition: all 600ms ease;
 
-    background: linear-gradient(180deg, rgba(17, 23, 34, 0.2) 33.75%, rgba(17, 23, 34, 0.8) 75.19%);
+    background: linear-gradient(
+      180deg,
+      rgba(17, 23, 34, 0.2) 33.75%,
+      rgba(17, 23, 34, 0.8) 75.19%
+    );
 
     opacity: 0.4;
   }
