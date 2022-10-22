@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import { createTransport } from "nodemailer";
 
 const NAME_LENGTH_ERROR = "Name must be atleast 2 characters long";
 const INVALID_EMAIL_ERROR = "Please enter a valid email";
@@ -13,7 +13,7 @@ export type ArgumentError = { [key in "name" | "email" | "message"]?: string };
 export default defineEventHandler(async (event) => {
   const { name, message, email } = await useBody(event);
 
-  let errors: ArgumentError = {};
+  const errors: ArgumentError = {};
 
   if (name.length < 3) errors.name = NAME_LENGTH_ERROR;
   if (!MAIL_REG_EXP.test(email)) errors.email = INVALID_EMAIL_ERROR;
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
 
   const config = useRuntimeConfig();
 
-  const transporter = nodemailer.createTransport({
+  const transporter = createTransport({
     service: config.mailService,
     auth: {
       user: config.mailFrom,
