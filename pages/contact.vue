@@ -56,9 +56,12 @@ async function submitForm() {
           <IconGithub />
           <span>Github</span>
         </a>
-        <a href="https://www.discord.com/" target="_blank">
-          <IconDiscord />
-          <span>Markiesch#4824</span>
+        <a
+          href="https://www.linkedin.com/in/mark-schuurmans-30329a1b7/"
+          target="_blank"
+        >
+          <IconLinkedin />
+          <span>LinkedIn</span>
         </a>
       </div>
       <div>
