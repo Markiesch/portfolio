@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from "nuxt";
-
 export default defineNuxtConfig({
   runtimeConfig: {
     mailService: process.env.MAIL_SERVICE,
