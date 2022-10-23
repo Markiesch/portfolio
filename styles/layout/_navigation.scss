@@ -1,182 +1,110 @@
 @use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
 
-.navigation {
-  width: 100%;
+header {
+  z-index: 100;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: $nav-height;
+}
 
-  nav {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .logo--container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70%;
-  }
+.logo--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
 
   svg {
     height: 100%;
     fill: $clr-primary-400;
   }
-
-  .link {
-    padding: 1rem;
-    color: $clr-primary-400;
-    display: inline-block;
-    position: relative;
-  }
-
-  .link.router-link-active::after {
-    content: "";
-    height: 2px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1.75rem;
-    top: 2.9em;
-    background-color: $clr-primary-400;
-  }
-
-  .router-link-active {
-    font-weight: bold;
-  }
-
-  .burger--menu::before,
-  .burger--menu::after,
-  .burger--menu {
-    background-color: $clr-primary-400;
-  }
-
-  .burger--menu::before {
-    transform: translateY(-0.7rem);
-  }
-
-  .burger--menu::after {
-    transform: translateY(0.7rem);
-  }
-
-  .burger--menu__container:hover .burger--menu::before {
-    transform: translateY(-0.9rem);
-  }
-
-  .burger--menu__container:hover .burger--menu::after {
-    transform: translateY(0.9rem);
-  }
 }
 
-.menu {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  background-color: $clr-primary-400;
-  color: white;
-  overflow: hidden;
-  transition: transform 300ms ease;
-  transform: translateY(-100%);
+.link--container {
+  flex-grow: 1;
+  display: flex;
 
-  &.open {
-    transform: translateY(0);
-  }
-
-  header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: $nav-height;
-    width: 100%;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  span {
-    color: $clr-neutral-400;
-    color: #ffffff99;
-    letter-spacing: 0.25rem;
-    margin-bottom: 1rem;
+  & > div:first-of-type {
+    margin: auto;
   }
 
   a {
-    display: block;
-    padding: 0.5rem;
-    text-align: center;
-    font-size: clamp(2rem, 1.33rem + 2.96vw, 4rem);
+    display: inline-block;
+    padding: 1rem;
+  }
+
+  .router-link-active {
     font-weight: 600;
-    line-height: 1;
-    opacity: 0.4;
-    transition: opacity 300ms ease;
   }
 
-  .router-link-active,
-  a:hover {
-    opacity: 1;
-  }
-
-  .burger--menu::before,
-  .burger--menu {
+  @include mobile {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 2rem;
     background-color: white;
-  }
+    transform: translateX(-100%);
+    transition: transform 300ms ease;
+    border-right: 1px solid $clr-neutral-200;
 
-  .burger--menu {
-    transform: rotate(45deg);
-  }
+    &.show {
+      transform: translateX(0);
+    }
 
-  .burger--menu::before {
-    transform: rotate(90deg);
+    a {
+      display: block;
+      padding: 0.5rem 1rem;
+    }
   }
 }
 
-/* ==========================
-   ===== Hamburger icon =====
-   ========================== */
-.burger--menu__container {
-  position: relative;
+.menu--icon__container {
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
   display: none;
   justify-content: center;
   align-items: center;
-  width: 5rem;
-  height: 100%;
-  cursor: pointer;
-}
+  border: none;
+  background-color: transparent;
 
-.burger--menu::before,
-.burger--menu::after,
-.burger--menu {
-  width: 2.75rem;
-  height: 0.25rem;
-  border-radius: 0.25rem;
-  transition: transform 600ms ease;
-}
-
-.burger--menu::before,
-.burger--menu::after {
-  content: "";
-  position: absolute;
-}
-
-@media screen and (max-width: 50rem) {
-  .link--container {
-    display: none;
-  }
-
-  .burger--menu__container {
+  @include mobile {
     display: flex;
   }
+}
 
-  .contact--container {
-    display: none;
+.menu--icon {
+  position: relative;
+
+  &,
+  &::before,
+  &::after {
+    height: 3px;
+    border-radius: 0.25rem;
+    width: 2.5rem;
+    background-color: $clr-neutral-400;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 1.75rem;
+  }
+
+  &::before {
+    left: 0;
+    transform: translateY(-10px);
+  }
+
+  &::after {
+    right: 0;
+    transform: translateY(10px);
   }
 }

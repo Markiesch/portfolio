@@ -1,6 +1,11 @@
+<script lang="ts" setup>
+const showMenu = ref(false);
+const toggleMenu = () => (showMenu.value = !showMenu.value);
+</script>
+
 <template>
-  <header class="navigation">
-    <nav class="container">
+  <header class="container">
+    <nav>
       <NuxtLink to="/" class="logo--container" aria-label="Logo">
         <svg viewBox="0, 0, 400,400">
           <path
@@ -8,44 +13,27 @@
           />
         </svg>
       </NuxtLink>
-      <div class="link--container">
-        <NuxtLink class="link" to="/">Home</NuxtLink>
-        <NuxtLink class="link" to="/portfolio">Portfolio</NuxtLink>
-        <NuxtLink class="link" to="/construction">Resume</NuxtLink>
+      <div class="link--container" :class="{ show: showMenu }">
+        <div>
+          <NuxtLink class="link" to="/">Home</NuxtLink>
+          <NuxtLink class="link" to="/portfolio">Portfolio</NuxtLink>
+          <NuxtLink class="link" to="/construction">Resume</NuxtLink>
+        </div>
+        <div>
+          <NuxtLink class="link link--contact" to="/contact">Contact</NuxtLink>
+        </div>
       </div>
-      <div class="burger--menu__container" @click="toggleMenu">
-        <div class="burger--menu"></div>
-      </div>
-      <div class="contact--container primary">
-        <NuxtLink class="link link--contact" to="/contact">Contact</NuxtLink>
-      </div>
+      <button
+        aria-label="open menu"
+        type="button"
+        class="menu--icon__container"
+        @click="toggleMenu"
+      >
+        <span class="menu--icon"></span>
+      </button>
     </nav>
   </header>
-
-  <div class="menu" :class="{ open: menuOpen }" @click="toggleMenu">
-    <header>
-      <div class="burger--menu__container">
-        <div class="burger--menu"></div>
-      </div>
-    </header>
-    <nav>
-      <span>MENU</span>
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/portfolio">Portfolio</NuxtLink>
-      <NuxtLink to="/construction">Resume</NuxtLink>
-      <NuxtLink to="/contact">Contact</NuxtLink>
-    </nav>
-  </div>
 </template>
-
-<script lang="ts" setup>
-import { ref } from "vue";
-
-let menuOpen = ref(false);
-function toggleMenu() {
-  menuOpen.value = !menuOpen.value;
-}
-</script>
 
 <style lang="scss" scoped>
 @use "@/styles/layout/navigation";
