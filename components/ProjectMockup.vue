@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IProjects } from "../utils/projects";
+import type { IProjects } from "~/utils/projects";
 defineProps<{ project: IProjects }>();
 </script>
 
@@ -34,15 +34,15 @@ defineProps<{ project: IProjects }>();
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
     pointer-events: none;
     transition: all 600ms ease;
 
-    background: linear-gradient(
-      180deg,
-      rgba(17, 23, 34, 0.2) 33.75%,
-      rgba(17, 23, 34, 0.8) 75.19%
-    );
+    background: black
+      linear-gradient(
+        180deg,
+        rgba(17, 23, 34, 0.2) 33.75%,
+        rgba(17, 23, 34, 0.8) 75.19%
+      );
 
     opacity: 0.4;
   }
@@ -67,7 +67,9 @@ defineProps<{ project: IProjects }>();
     padding-top: 1rem;
     max-height: 0;
     opacity: 0;
-    transition: max-height 600ms ease, opacity 600ms ease;
+    transition:
+      max-height 600ms ease,
+      opacity 600ms ease;
   }
 
   &:hover .about {

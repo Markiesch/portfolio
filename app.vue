@@ -1,7 +1,7 @@
 <template>
   <Html lang="en">
     <Head>
-      <Title>Mark Schuurmans - Portfolio</Title>
+      <Title>Mark Schuurmans - Portfolio Developer and Designer</Title>
       <Meta name="author" content="Mark Schuurmans" />
       <Meta
         name="description"

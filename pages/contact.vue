@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ArgumentError } from "~~/server/api/mail";
+import type { ArgumentError } from "~~/server/api/mail";
 
 let form = reactive({ name: "", email: "", message: "" });
 let errorMessages = ref<ArgumentError>({});
