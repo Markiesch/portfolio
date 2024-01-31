@@ -88,7 +88,7 @@ import projects from "../utils/projects";
       <article>
         <p class="heading">Hey! I'm Mark👋,</p>
         <p class="text-body">
-          a 18 year old front-end development enthusiast with 2+ years of
+          a 18 year old front-end development enthusiast with 4+ years of
           experience. I currently live and study in 's-Hertogenbosch, the
           Netherlands. Learning and working with front-end tools such as HTML,
           CSS, Javascript, and VueJS and backend technologies such as SQL and C#

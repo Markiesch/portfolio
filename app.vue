@@ -5,17 +5,21 @@
       <Meta name="author" content="Mark Schuurmans" />
       <Meta
         name="description"
-        content="I design and develop beautiful responsive websites"
+        content="I'm Mark Schuurmans, a software developer that develops creative web-applications. Specialized in frontend and backend development and UI/UX design."
       />
       <Meta
         name="keywords"
-        content="web, website, responsive, developer, frontend, backend, portfolio, projects, vuejs, vue, desktop, mobile, tablet"
+        content="web, website, responsive, developer, frontend, backend, portfolio, projects, showcase"
       />
 
       <Meta name="og:title" content="Portfolio - Mark Schuurmans" />
       <Meta name="og:type" content="website" />
       <Meta name="og:url" content="https://www.markschuurmans.nl" />
-      <Meta name="og:image" content="/assets/mockups/home-page.png" />
+      <Meta
+        name="og:image"
+        content="https://www.markschuurmans.nl/assets/mockups/home-page.png"
+      />
+      <Link rel="canonical" href="https://www.markschuurmans.nl" />
 
       <!-- Google Font imports -->
       <Link rel="preconnect" href="https://fonts.googleapis.com" />
